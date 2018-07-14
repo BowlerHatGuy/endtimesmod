@@ -1,0 +1,10 @@
+Test Cases to Run:
+Survey Earth
+	Spiritualist
+	Authoriatian
+	Egalitarian
+	Servitors
+	Exterminators
+	Assimilators
+	Other Machine
+	Hive Mind

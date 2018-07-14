@@ -1,0 +1,56 @@
+TODO:
+Insert method to list who is on the opposing side in the situation log for Vultaum
+
+## EVENTS
+Fill out radiant event effects
+Modify pulsing stars anomaly project
+
+## BUGFIX
+Events are missing pictures
+Special projects missing pictures
+Project E tech is missing picture
+Project E costs no tech points
+Biomechanical terror costs only energy, icon is defense army
+
+
+## LOCALIZATION
+Events:
+endtimescrisis.4101
+endtimescrisis.4102
+endtimescrisis.4103
+endtimescrisis.4303
+endtimescrisis.4104
+endtimescrisis.4304
+endtimescrisis.4504
+endtimescrisis.4105
+endtimescrisis.4305
+endtimescrisis.4405
+endtimescrisis.4106
+
+endtimesradiant.4101
+endtimesradiant.4102
+endtimesradiant.4103
+endtimesradiant.4104
+endtimesradiant.4501
+endtimesradiant.4502
+endtimesradiant.4503
+endtimesradiant.4504
+endtimesradiant.4505
+endtimesradiant.4506
+
+endtimesutility.0002
+
+Event Chains:
+fault_in_the_stars_chain
+neutron_star_chain
+crash_the_simulation_chain
+
+Misc:
+endtimes_requires_gas_giant
+endtimes_must_build_around_gas_giant
+
+Localization for Eva special project
+Localization for Eva event 2
+
+## TWEAK
+Tone down biomechanical terror health(?), increase upkeep, reduce morale damage

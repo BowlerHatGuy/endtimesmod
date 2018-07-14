@@ -1,0 +1,52 @@
+Global Flags:
+endtimes_faulty_stars
+endtimes_vultaum_crisis_happened
+endtimes_vultaum_shifting_stars - Prelude event
+endtimes_vultaum_neutron_star - Second Event
+endtimes_outsiders_signal - Third Event
+endtimes_outsiders_choice - used to indicate that empires have chosen sides
+endtimes_outsiders_plan - triggers the ability to build jupiter brains
+endtimes_first_jupiter_brain
+endtimes_instability_I
+endtimes_first_rift
+endtimes_instability_II
+endtimes_instability_III
+
+Country Flags:
+endtimes_what_they_want
+endtimes_country_counted
+endtimes_cooperator
+endtimes_resistance
+endtimes_no_choice
+endtimes_FE_build_jupiter_brain - ensures that cooperator FEs build jupiter brains quickly but only once
+endtimes_endtimes_how_to_crash
+endtimes_screams_in_the_void
+endtimes_harder_to_think
+endtimes_broken_laws
+endtimes_disappearing_people
+endtimes_reappearing_people
+endtimes_disappearing_planet
+
+Counters:
+endtimes_jupiter_brains
+
+Event Chains:
+fault_in_the_stars_chain - prelude chain for situation log tracking
+neutron_star_chain - holds pointer to neutron star system
+crash_the_simulation_chain - tells how many Jupiter brains are present, who is on the other side, how many rifts exist, etc.
+
+Variables:
+endtimes_active_jupiter_brains_var - global
+endtimes_jupiter_brains_kills_var - global
+endtimes_simulation_cracks_var - global
+endtimes_goal_jupiter_brains_var - global
+endtimes_goal_simulation_cracks_var - global
+endtimes_jb_to_crack_ratio_var - global
+endtimes_total_empires_var - global
+
+Event Targets:
+endtimes_neutron_star_evt
+endtimes_recent_jupiter_brain
+
+Overwritten Files:
+crisis_trigger_events
