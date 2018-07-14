@@ -1,0 +1,45 @@
+##################
+# Endtimes Armies
+##################
+
+# Bio-Mechanical Terror
+biomechanical_terror_army = {
+	damage = 3.0
+	health = 4.0
+	morale = 1.0
+	morale_damage = 3.0
+	collateral_damage = 4.0
+	war_exhaustion = 1.25
+	time = 180
+	maintenance = 3.0
+	icon_fram = 11
+	prerequisites = { "tech_project_e" }
+	cost = {
+		mineral = 400
+		energy = 100
+	}
+	potential = {
+		from = {
+			NOR = {
+				has_trait = "trait_robotic_1"
+				has_trait = "trait_robotic_2"
+				has_trait = "trait_robotic_3"
+				has_trait = "trait_machine_unit"
+				is_sapient = no
+			}
+		}
+		owner = {
+			NOR = {
+				has_civic = civic_machine_assimilator
+				has_civic = civic_machine_servitor
+				has_civic = civic_machine_terminator
+				has_ethic = ethic_spiritualist
+				has_ethic = ethic_fanatic_spiritualist
+				has_ethic = ethic_pacifist
+				has_ethic = ethic_fanatic_pacifist
+				has_ethic = ethic_xenophile
+				has_ethic = ethic_fanatic_xenophile
+			}
+		}
+	}
+}

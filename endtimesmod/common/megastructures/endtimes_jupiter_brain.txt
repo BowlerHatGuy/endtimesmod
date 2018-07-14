@@ -1,0 +1,150 @@
+@phase_0_entity_x = -15
+@phase_0_entity_y = -5
+@entity_x = -15
+@entity_y = -15
+
+# Jupiter Brain Site
+jupiter_brain_0 = {
+	entity = "construction_platform_entity"
+	construction_entity = "construction_platform_entity"
+	portrait = "GFX_megastructure_construction_background"
+	place_entity_on_planet_plane = no
+	entity_offset = { x = -7 y = -7 }
+	build_time = 600
+	build_cost = {
+		minerals = 10000
+		influence = 60
+	}
+	maintenance = {
+		energy = 5
+	}
+	potential = {
+		has_global_flag = endtimes_outsiders_plan
+		has_country_flag = endtimes_cooperator
+	}
+	possible = {
+		custom_tooltip = {
+			fail_text = "requires_inside_border"
+			is_inside_border = from
+		}
+		custom_tooltip = {
+			fail_text = "requires_surveyed_system"
+			NOT = {
+				any_planet = {
+					is_surveyed = {
+						who = prev.from
+						status = no
+					}
+				}
+			}
+		}
+		custom_tooltip = {
+			fail_text = "endtimes_requires_gas_giant"
+			is_planet_class = pc_gas_giant
+		}
+		custom_tooltip = {
+			fail_text = "requires_no_existing_megastructure"
+			has_no_non_gate_megastructure = yes
+		}
+	}
+	placement_rules = {
+		planet_possible = {
+			custom_tooltip = {
+				fail_text = "endtimes_must_build_around_gas_giant"
+				is_planet_class = pc_gas_giant
+			}
+			custom_tooltip = {
+				fail_text = "requires_no_anomaly"
+				NOT = { has_anomaly = yes }
+			}
+			custom_tooltip = {
+				fail_text = "requires_no_orbital_station"
+				has_orbital_station = no
+			}
+		}
+	}
+	
+	ai_weight = {
+		factor = 1
+		
+		modifier = {
+			factor = 0.5
+			starbase = { NOT = { has_starbase_size >= starbase_starfortress } }
+		}	
+		
+		modifier = {
+			factor = 0.1
+			any_neighbor_system = { 
+				NOT = { 
+					owner = { is_same_value = from } 
+				}
+			}
+		}
+		
+		modifier = {
+			factor = 0
+			AND = {
+				OR = {
+					country_type = fallen_empire
+					country_type = awakened_fallen_empire
+				}
+				has_country_flag = endtimes_FE_builds_jupiter_brain
+			}
+		}
+		
+		modifier = {
+			factor = 10
+			AND = {
+				OR = {
+					country_type = fallen_empire
+					country_type = awakened_fallen_empire
+				}
+				NOT = { has_country_flag = endtimes_FE_builds_jupiter_brain }
+			}
+		}
+	}
+	
+	on_build_start = {}
+	on_build_cancel = {}
+	on_build_complete = {
+		# Put pointer to event that either alerts empires to the first brain under construction OR that a new brain is being built
+	}
+}
+
+jupiter_brain_1 = { # Needs update
+	entity = "dyson_sphere_phase_05_entity"
+	construction_entity = "dyson_sphere_part_4_entity"
+	portrait = "GFX_megastructure_dyson_sphere_background"
+	
+	upgrade_from = {
+		jupiter_brain_0
+	}
+	build_time = 3600
+	build_cost = {
+		minerals = 30000
+	}
+	monthly_production = {
+		society_research = 75
+		engineering_research = 75
+		physics_research = 75
+	}
+
+	possible = {
+		has_global_flag = endtimes_outsiders_plan
+		has_country_flag = endtimes_cooperator
+	}
+
+	on_build_complete = {
+		# Put pointer to event that ups the counter and alerts empires to the completion and adds POI
+		set_ship_flag = endtimes_jupiter_brain
+		if = {
+			limit = { 
+				OR = {
+					from.country_type = fallen_empire
+					from.country_type = awakened_fallen_empire
+				}
+			}
+			set_country_flag = endtimes_FE_builds_jupiter_brain
+		}
+	}
+}

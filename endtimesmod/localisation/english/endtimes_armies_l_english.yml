@@ -1,0 +1,11 @@
+﻿l_english:
+
+ ####################################
+ # Endtimes Armies
+ ####################################
+ 
+ ## Human Instrumentality Armies
+ biomechanical_terror_army:0 "Bio-Mechanical Terror"
+ biomechanical_terror_army_plural:0 "Bio-Mechanical Terrors"
+ biomechanical_terror_army_desc:0 "Giant biological machines piloted by juveniles. Very effective on the battlefield but combat takes a huge toll on the pilot's psyche."
+ 

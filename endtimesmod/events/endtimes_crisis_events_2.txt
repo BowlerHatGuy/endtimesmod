@@ -1,0 +1,579 @@
+#################################
+#
+# Endtimes Crisis Radiant Events
+#
+# Written by BowlerHatGuy
+#
+#################################
+
+# Naming Scheme
+# PSNN = [PRIMARY][STAGE][NUMBER][NUMBER] 
+# Note: Number 00 is reserved for "hub" event
+# Note: Primary/Stage 00 is reserved for utility events
+
+namespace = endtimesradiant
+
+### THE FAULT IN THE STARS
+# Radiant Events that fire with the Outsider Signal
+country_event = {
+	id = endtimesradiant.4100
+	hide_window = yes
+	
+	is_triggered_only = yes
+	
+	
+	immediate = {
+		random_list = {
+			25 = { # Skepticism
+				modifier = {
+					factor = 2
+					OR = {
+						has_ethic = ethic_spiritualist
+						has_ethic = ethic_fanatic_spiritualist
+						has_ethic = ethic_xenophobe
+						has_ethic = ethic_fanatic_xeonophobe
+					}
+				}
+				country_event = { id = endtimesradiant.4101 }
+			}
+			25 = { # Panic
+				modifier = {
+					factor = 0
+					OR = {
+						has_ethic = ethic_spiritualist
+						has_ethic = ethic_fanatic_spiritualist
+						has_ethic = ethic_xenophobe
+						has_ethic = ethic_fanatic_xeonophobe
+						has_ethic = ethic_gestalt_consciousness
+					}
+				}
+				country_event = { id = endtimesradiant.4102 }
+			}
+			25 = { # Rioting
+				modifier = {
+					factor = 0
+					OR = {
+						has_ethic = ethic_authoritarian
+						has_ethic = ethic_fanatic_authoritarian
+						has_ethic = ethic_gestalt_consciousness
+					}
+				}
+				country_event = { id = endtimesradiant.4103 }
+			}
+			25 = { # Suicides
+				modifier = {
+					factor = 0
+					OR = {
+						has_ethic = ethic_spiritualist
+						has_ethic = ethic_fanatic_spiritualist
+						has_ethic = ethic_xenophobe
+						has_ethic = ethic_fanatic_xeonophobe
+						has_ethic = ethic_gestalt_consciousness
+					}
+				}
+				country_event = { id = endtimesradiant.4104 }
+			}
+		}
+	}
+}
+
+# Skepticism
+country_event = {
+	id = endtimesradiant.4101
+	title = "endtimesradiant.4101.name"
+	desc = "endtimesradiant.4101.desc"
+	picture = GFX_evt_colony_settlement
+	show_sound = event_conversation
+	
+	is_triggered_only = yes
+	
+	immediate = {
+	
+	}
+	
+	option = {
+	
+	}
+}
+# Panic
+country_event = {
+	id = endtimesradiant.4102
+	title = "endtimesradiant.4102.name"
+	desc = "endtimesradiant.4102.desc"
+	picture = GFX_evt_arguing_senate
+	show_sound = event_factions_01
+	
+	is_triggered_only = yes
+	
+	immediate = {
+	
+	}
+	
+	option = {
+	
+	}
+}
+# Rioting
+country_event = {
+	id = endtimesradiant.4103
+	title = "endtimesradiant.4103.name"
+	desc = "endtimesradiant.4103.desc"
+	picture = GFX_evt_burning_settlement
+	show_sound = event_celebration
+	
+	is_triggered_only = yes
+	
+	immediate = {
+	
+	}
+	
+	option = {
+	
+	}
+}
+# Mass Suicides
+country_event = {
+	id = endtimesradiant.4104
+	title = "endtimesradiant.4104.name"
+	desc = "endtimesradiant.4104.desc"
+	picture = GFX_evt_news_room
+	show_sound = event_administrative_work_04
+	
+	is_triggered_only = yes
+	
+	immediate = {
+	
+	}
+	
+	option = {
+	
+	}
+}
+
+# THE CHOICE Radiant Events
+country_event = {
+	id = endtimesradiant.4200
+	hide_window = yes
+	
+	mean_time_to_happen = {
+		months = 60
+	}
+	
+	trigger = {
+		is_country_type = default
+		has_global_flag = endtimes_outsiders_choice
+	}
+	
+	
+	immediate = {
+		random_list = {
+			
+		}
+	}
+}
+
+
+# Tier 1 Instability Radiant Events
+country_event = {
+	id = endtimesradiant.4300
+	hide_window = yes
+	
+	mean_time_to_happen = {
+		months = 60
+	}
+	
+	trigger = {
+		is_country_type = default
+		OR = {
+			has_global_flag = endtimes_instability_I
+			has_global_flag = endtimes_instability_II
+		}
+	}
+	
+	
+	immediate = {
+		random_list = {
+			
+		}
+	}
+}
+
+# Tier 2 Instability Radiant Events
+country_event = {
+	id = endtimesradiant.4400
+	hide_window = yes
+	
+	mean_time_to_happen = {
+		months = 60
+	}
+	
+	trigger = {
+		is_country_type = default
+		has_global_flag = endtimes_instability_II
+	}
+	
+	
+	immediate = {
+		random_list = {
+			
+		}
+	}
+}
+
+# Tier 3 Instability Radiant Events
+country_event = {
+	id = endtimesradiant.4500
+	hide_window = yes
+	
+	mean_time_to_happen = {
+		months = 60
+	}
+	
+	trigger = {
+		is_country_type = default
+		has_global_flag = endtimes_instability_III
+		NAND = {
+			has_country_flag = endtimes_screams_in_the_void
+			has_country_flag = endtimes_harder_to_think
+			has_country_flag = endtimes_broken_laws
+			has_country_flag = endtimes_disappearing_people
+		}
+	}
+	
+	
+	immediate = {
+		random_list = {
+			# List Needs to be continuously weighted to prevent possible-never-to-fire events from having higher weights
+			25 = { # Screams in the Void
+				modifier = {
+					factor = 0
+					has_country_flag = endtimes_screams_in_the_void
+				}
+				modifier = {
+					add = 8
+					OR = {
+						has_country_flag = endtimes_harder_to_think
+						has_country_flag = endtimes_broken_laws
+						has_country_flag = endtimes_disappearing_people
+					}
+				}
+				modifier = {
+					factor = 2
+					OR = {
+						AND = {
+							has_country_flag = endtimes_harder_to_think
+							has_country_flag = endtimes_broken_laws
+						}
+						AND = {
+							has_country_flag = endtimes_broken_laws
+							has_country_flag = endtimes_disappearing_people
+						}
+						AND = {
+							has_country_flag = endtimes_harder_to_think
+							has_country_flag = endtimes_disappearing_people
+						}
+					}
+				}
+				modifier = {
+					factor = 4
+					AND = {
+						has_country_flag = endtimes_harder_to_think
+						has_country_flag = endtimes_broken_laws
+						has_country_flag = endtimes_disappearing_people
+					}
+				}
+				country_event = { id = endtimesradiant.4501 }
+			}
+			25 = { # Harder to Think
+				modifier = {
+					factor = 0
+					has_country_flag = endtimes_harder_to_think
+				}
+				modifier = {
+					add = 8
+					OR = {
+						has_country_flag = endtimes_screams_in_the_void
+						has_country_flag = endtimes_broken_laws
+						has_country_flag = endtimes_disappearing_people
+					}
+				}
+				modifier = {
+					factor = 2
+					OR = {
+						AND = {
+							has_country_flag = endtimes_screams_in_the_void
+							has_country_flag = endtimes_broken_laws
+						}
+						AND = {
+							has_country_flag = endtimes_broken_laws
+							has_country_flag = endtimes_disappearing_people
+						}
+						AND = {
+							has_country_flag = endtimes_screams_in_the_void
+							has_country_flag = endtimes_disappearing_people
+						}
+					}
+				}
+				modifier = {
+					factor = 4
+					AND = {
+						has_country_flag = endtimes_screams_in_the_void
+						has_country_flag = endtimes_broken_laws
+						has_country_flag = endtimes_disappearing_people
+					}
+				}
+				country_event = { id = endtimesradiant.4502 }
+			}
+			25 = { # Broken Laws
+				modifier = {
+					factor = 0
+					has_country_flag = endtimes_broken_laws
+				}
+				modifier = {
+					add = 8
+					OR = {
+						has_country_flag = endtimes_harder_to_think
+						has_country_flag = endtimes_screams_in_the_void
+						has_country_flag = endtimes_disappearing_people
+					}
+				}
+				modifier = {
+					factor = 2
+					OR = {
+						AND = {
+							has_country_flag = endtimes_harder_to_think
+							has_country_flag = endtimes_screams_in_the_void
+						}
+						AND = {
+							has_country_flag = endtimes_screams_in_the_void
+							has_country_flag = endtimes_disappearing_people
+						}
+						AND = {
+							has_country_flag = endtimes_harder_to_think
+							has_country_flag = endtimes_disappearing_people
+						}
+					}
+				}
+				modifier = {
+					factor = 4
+					AND = {
+						has_country_flag = endtimes_harder_to_think
+						has_country_flag = endtimes_screams_in_the_void
+						has_country_flag = endtimes_disappearing_people
+					}
+				}
+				country_event = { id = endtimesradiant.4503 }
+			}
+			25 = { # Disappearing People
+				modifier = {
+					factor = 0
+					has_country_flag = endtimes_disappearing_people
+				}
+				modifier = {
+					add = 8
+					OR = {
+						has_country_flag = endtimes_harder_to_think
+						has_country_flag = endtimes_broken_laws
+						has_country_flag = endtimes_screams_in_the_void
+					}
+				}
+				modifier = {
+					factor = 2
+					OR = {
+						AND = {
+							has_country_flag = endtimes_harder_to_think
+							has_country_flag = endtimes_broken_laws
+						}
+						AND = {
+							has_country_flag = endtimes_broken_laws
+							has_country_flag = endtimes_screams_in_the_void
+						}
+						AND = {
+							has_country_flag = endtimes_harder_to_think
+							has_country_flag = endtimes_screams_in_the_void
+						}
+					}
+				}
+				modifier = {
+					factor = 4
+					AND = {
+						has_country_flag = endtimes_harder_to_think
+						has_country_flag = endtimes_broken_laws
+						has_country_flag = endtimes_screams_in_the_void
+					}
+				}
+				country_event = { id = endtimesradiant.4504 }
+			}
+			
+			10 = { # Reappearing People
+				modifier = {
+					factor = 0
+					OR = {
+						NOT = { has_country_flag = endtimes_disappearing_people }
+						has_country_flag = endtimes_reappearing_people
+						has_country_flag = endtimes_disappearing_planet
+					}
+				}
+				country_event = { id = endtimesradiant.4505 }
+			}
+			5 = { # Disappearing World
+				modifier = {
+					factor = 0
+					OR = {
+						NOT = { has_country_flag = endtimes_disappearing_people }
+						has_country_flag = endtimes_reappearing_people
+						has_country_flag = endtimes_disappearing_planet
+					}
+				}
+				country_event = { id = endtimesradiant.4506 }
+			}
+		}
+	}
+}
+
+# Screams in the Void (Admiral goes crazy and crashes ship)
+country_event = {
+	id = endtimesradiant.4501
+	title = "endtimesradiant.4501.name"
+	desc = "endtimesradiant.4501.desc"
+	#picture = GFX_evt_news_room
+	#show_sound = event_administrative_work_04
+	
+	is_triggered_only = yes
+	
+	immediate = {
+	
+	}
+	
+	option = {
+	
+	}
+}
+
+# Harder to Think (Walruses?)
+country_event = {
+	id = endtimesradiant.4502
+	title = "endtimesradiant.4502.name"
+	desc = "endtimesradiant.4502.desc"
+	#picture = GFX_evt_news_room
+	#show_sound = event_administrative_work_04
+	
+	is_triggered_only = yes
+	
+	immediate = {
+	
+	}
+	
+	option = {
+	
+	}
+}
+
+# Broken Laws (Physics)
+country_event = {
+	id = endtimesradiant.4503
+	title = "endtimesradiant.4503.name"
+	desc = "endtimesradiant.4503.desc"
+	#picture = GFX_evt_news_room
+	#show_sound = event_administrative_work_04
+	
+	is_triggered_only = yes
+	
+	immediate = {
+	
+	}
+	
+	option = {
+	
+	}
+}
+
+# Disappearing People
+country_event = {
+	id = endtimesradiant.4504
+	title = "endtimesradiant.4504.name"
+	desc = "endtimesradiant.4504.desc"
+	#picture = GFX_evt_news_room
+	#show_sound = event_administrative_work_04
+	
+	is_triggered_only = yes
+	
+	immediate = {
+	
+	}
+	
+	option = {
+	
+	}
+}
+
+# Reappearing People
+country_event = {
+	id = endtimesradiant.4505
+	title = "endtimesradiant.4505.name"
+	desc = "endtimesradiant.4505.desc"
+	#picture = GFX_evt_news_room
+	#show_sound = event_administrative_work_04
+	
+	is_triggered_only = yes
+	
+	immediate = {
+	
+	}
+	
+	option = {
+	
+	}
+}
+
+# Disappearing World
+country_event = {
+	id = endtimesradiant.4506
+	title = "endtimesradiant.4506.name"
+	desc = "endtimesradiant.4506.desc"
+	#picture = GFX_evt_news_room
+	#show_sound = event_administrative_work_04
+	
+	is_triggered_only = yes
+	
+	immediate = {
+	
+	}
+	
+	option = {
+	
+	}
+}
+
+## BOOKKEEPER EVENTS
+# Pared Down FE Awakening Event to prevent War in Heaven on Awakening
+country_event = {
+	id = endtimesradiant.0001
+	title = OK
+	desc = OK
+	hide_window = yes
+	
+	is_triggered_only = yes
+
+	immediate = {
+		set_global_flag = sleepers_awake_happened
+
+		country_event = { id = fallen_empires_awakening.3 }
+
+		# Notify players
+		every_country = {
+			limit = {
+				is_ai = no
+			}
+			country_event = { id = fallen_empires_awakening.2 }
+		}
+
+		# Fragged a holy world
+		if = {
+			limit = {
+				has_country_flag = holy_world_killed
+			}
+			country_event = { id = planet_destruction.611 days = 5 }
+		}
+	}
+}

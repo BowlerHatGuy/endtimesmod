@@ -1,0 +1,22 @@
+##############################
+# Endtimes Anomaly Categories
+##############################
+
+@distar_weight = 1
+
+# Human Instrumentality (Water World Earth)
+SOL_INSTRUMENTALITY_CAT = {
+	desc = "SOL_INTRUMENTALITY_1_DESC"
+	picture = "GFX_evt_continental_planet"
+	level = 6
+	max_once = yes
+	
+	spawn_chance = {
+		modifier = {
+			add = 100
+			has_planet_flag = empty_earth
+		}
+	}
+	
+	on_success = endtimesevent.1000
+}

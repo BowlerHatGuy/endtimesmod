@@ -1,0 +1,25 @@
+############################
+# Endtimes Special Projects
+############################
+
+special_project = {
+	key = "BIOLOGICAL_ROBOTS"
+	cost = 0
+	days_to_research = 210
+	tech_department = society_technology
+	picture = GFX_evt_continental_planet
+	
+	event_scope = ship_event
+	
+	requirements = {
+		shipclass_science_ship = 1
+		leader = scientist
+	}
+	
+	on_success = {
+		ship_event = { id = endtimesevent.1001 }
+	}
+	
+	on_fail = {
+	}
+}

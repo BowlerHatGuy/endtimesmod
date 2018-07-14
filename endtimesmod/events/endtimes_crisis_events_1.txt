@@ -1,0 +1,720 @@
+############################
+#
+# Endtimes Crisis Events
+#
+# Written by BowlerHatGuy
+#
+############################
+
+# Naming Scheme
+# PSNN = [PRIMARY][SUBTYPE][NUMBER][NUMBER] 
+# Subtypes:
+# 0 = hidden
+# 1 = basic text box
+# 2 = utility (hidden)
+# 3 = diplomatic
+# Note: Number 00 is unused
+
+namespace = endtimescrisis
+
+### THE FAULT IN THE STARS
+
+### Triggering Event
+# Notice: Meta-crisis may have side effects including depression, mass suicide, and universal destruction. Use only as advised.
+
+country_event = {
+	id = endtimescrisis.404
+	hide_window = yes
+	
+	trigger = { always = no }
+	
+	immediate = {
+		endgame_telemetry = vultaum
+		country_event = { id = endtimescrisis.4001 days = 10}
+	}
+}
+
+### PRELUDE
+# Initializes the chain and distributes events to all empires (HIDDEN)
+country_event = {
+	id = endtimescrisis.4001
+	hide_window = yes
+	fire_only_once = yes
+	
+	is_triggered_only = yes
+	
+	immediate = {
+		endgame_telemetry = vultaum
+		set_global_flag = endtimes_vultaum_shifting_stars
+		set_global_flag = endtimes_vultaum_crisis_happened
+		set_global_flag = galactic_crisis_happened
+		every_country = {
+			limit = { is_country_type = default }
+			country_event = { id = endtimescrisis.4101 }
+		}
+	}
+}
+
+# Alerts an empire about the strange patterns in the stars
+country_event = {
+	id = endtimescrisis.4101
+	title = "endtimescrisis.4101.name"
+	desc = "endtimescrisis.4101.desc"
+	picture = GFX_evt_physics_research
+	show_sound = event_alien_nature
+	
+	is_triggered_only = yes
+	
+	option = {
+		trigger = {
+			has_global_flag = endtimes_faulty_stars
+		}
+		name = endtimescrisis.4101.a
+		begin_event_chain = {
+			event_chain = "fault_in_the_stars"
+			target = ROOT
+		}
+	}
+	option = {
+		trigger = {
+			AND = {
+				has_country_flag = star_crazy
+				NOT = { has_global_flag = endtimes_faulty_stars }
+			}
+		}
+		name = endtimescrisis.4101.b
+		begin_event_chain = {
+			event_chain = "fault_in_the_stars_chain"
+			target = ROOT
+		}
+	}
+	option = {
+		trigger = {
+			NOR = {
+				has_country_flag = star_crazy
+				has_global_flag = endtimes_faulty_stars
+			}
+		}
+		name = endtimescrisis.4101.c
+		begin_event_chain = {
+			event_chain = "fault_in_the_stars"
+		}
+	}
+}
+
+### NEUTRON STAR
+# Initializes the Vultaum home system if has not already been discovered (HIDDEN)
+country_event = {
+	id = endtimescrisis.4002
+	hide_window = yes
+	fire_only_once = yes
+	
+	mean_time_to_happen = {
+		months = 600
+	}
+	
+	trigger = {
+		is_country_type = default
+		has_global_flag = endtimes_vultaum_shifting_stars
+	}
+	
+	immediate = {
+		remove_global_flag = endtimes_vultaum_shifting_stars
+		set_global_flag = endtimes_vultaum_neutron_star
+		set_global_flag = endtimes_faulty_stars
+		
+		if = {
+			# Catch for if the game does not have Vultaum precursors
+			limit = { 
+				NOT = { any_country = { has_country_flag = vultaum_intro } }
+			}
+			
+			# Spawns a low-value version of the Vultaum home system with Neutron Star already in place
+			random_system = {
+				spawn_system = {
+					min_distance = 20
+					max_distance = 80
+					initializer = "endtimes_dep_vultaumar_system"
+				}
+			}
+		}
+		else_if = {
+			# Checks if there are Vultaum precursors and whether the homeworld is discovered
+			limit = {
+				any_country = { has_country_flag = vultaum_intro }
+				NOT = {
+					any_system = { has_star_flag = vultaumar }
+				}
+			}
+			
+			# Generates Vultaum Home System
+			random_system = {
+				limit = { has_star_flag = precursor_1 }
+				spawn_system = {
+					min_distance = 20
+					max_distance = 50
+					initializer = "vultaumar_system"
+				}
+			}
+			
+			# Converts star to Neutron Star
+			random_system = {
+				limit = { has_star_flag = vultaumar }
+				random_system_planet = {
+					limit = { is_star = yes }
+					change_pc = pc_pulsar
+				}
+			}
+			
+			# Ends the precursor chain and alerts everyone to the home system AFTER the neutron signal is observed
+			set_global_flag = vultaum_system_discovered
+			every_country = {
+				limit = { is_country_type = default }
+				add_event_chain_counter = {
+					event_chain = "vultaum_chain"
+					counter = "vultaum_artifacts"
+					amount = 6
+				}
+				country_event = { id = precursor.97 days = 5 }
+			}
+		}
+		else = {
+			# Converts star to Neutron Star
+			random_system = {
+				limit = { has_star_flag = vultaumar }
+				random_system_planet = {
+					limit = { is_star = yes }
+					change_pc = pc_pulsar
+				}
+			}
+		}
+		
+		# Creates POI
+		random_system = {
+			limit = { has_star_flag = vultaumar }
+			save_event_target_as = endtimes_neutron_star_evt
+		}
+		
+		every_country = {
+			limit = { is_country_type = default }
+			country_event = { id = endtimescrisis.4102 }
+		}
+	}
+}
+
+# Alerts empires to the neutron star
+country_event = {
+	id = endtimescrisis.4102
+	title = "endtimescrisis.4102.name"
+	
+	is_triggered_only = yes
+	
+	# Decription if there was no Vultaum precursor in the galaxy
+	desc = {
+		trigger = {
+			NOT = {
+				any_country = { has_country_flag = vultaum_intro }
+			}
+		}
+		text = "endtimescrisis.4102.novultaum"
+	}
+	
+	# Description if Vultaum HW was not yet discovered
+	desc = {
+		trigger = {
+			AND = {
+				NOT = { has_country_flag = vultaum_system }
+				any_country = { has_country_flag = vultaum_intro }
+			}
+		}
+		text = "endtimescrisis.4102.nohomeworld"
+	}
+	
+	# Description if Vultaum HW already known
+	desc = {
+		trigger = {
+			has_country_flag = vultaum_system
+		}
+		text = "endtimescrisis.4102.main"
+	}
+	
+	immediate = {
+		end_event_chain = { "fault_in_the_stars_chain" }
+		begin_event_chain = {
+			event_chain = "neutron_star_chain"
+			target = ROOT
+		}
+		
+		create_point_of_interest = {
+			id = neutronstar.1
+			name = "neutron_star_poi"
+			desc = "neutron_star_poi_desc"
+			event_chain = neutron_star_chain
+			location = event_target:endtimes_neutron_star_evt
+		}
+	}
+}
+
+
+## THE OUTSIDERS
+# Distributes messages to all of the empires (HIDDEN)
+country_event = {
+	id = endtimescrisis.4003
+	hide_window = yes
+	fire_only_once = yes
+	
+	mean_time_to_happen = {
+		months = 120
+	}
+	
+	trigger = {
+		is_country_type = default
+		has_global_flag = endtimes_vultaum_neutron_star
+	}
+	
+	immediate = {
+		remove_global_flag = endtimes_vultaum_neutron_star
+		set_global_flag = endtimes_outsiders_signal
+		every_country = {
+			limit = {is_country_type = default }
+			country_event = { id = endtimescrisis.4103 }
+		}
+		every_country = {
+			limit = { is_country_type = fallen_empire }
+			country_event = { id = endtimesradiant.0001 days = 30 }
+		}
+	}
+}
+
+# Message to alert empires that the Neutron Star is talking to them
+country_event = {
+	id = endtimescrisis.4103
+	title = "endtimescrisis.4103.name"
+	desc = "endtimescrisis.4103.desc"
+	picture = GFX_evt_wormhole
+	show_sound = event_radio_chatter
+	
+	is_triggered_only = yes
+	
+	
+	option = {
+		name = endtimescrisis.4103.a
+		hidden_effect = {
+			country_event = { id = endtimescrisis.4303 }
+			country_event = { id = endtimesradiant.4100 days = 10 }
+		}
+	}
+}
+
+# First Diplomatic Event to Contact the Outsiders
+country_event = {
+	id = endtimescrisis.4303
+	title = "TRANSMISSION"
+	
+	is_triggered_only = yes
+	
+	desc = {
+		text = endtimescrisis.4303.desc
+	}
+	
+	diplomatic = yes
+	
+	picture_event_data = {
+		room = no_video_feed_room
+	}
+	
+	option = {
+		name = endtimescrisis.4303.WHOAREYOU
+		response_text = endtimescrisis.4303.WEARE
+		is_dialog_only = yes
+	}
+	option = {
+		name = endtimescrisis.4303.WHATDOYOUWANT
+		response_text = endtimescrisis.4303.WEWANT
+		hidden_effect = {
+			set_country_flag = endtimes_what_they_want
+		}
+		is_dialog_only = yes
+	}
+	option = {
+		allow = {
+			has_country_flag = endtimes_what_they_want
+		}
+		name = endtimescrisis.4303.HOW
+		response_text = endtimescrisis.4303.TOOSOON
+		is_dialog_only = yes
+	}
+	option = {
+		allow = {
+			has_country_flag = endtimes_what_they_want
+		}
+		name = endtimescrisis.4303.WHY
+		response_text = endtimescrisis.4303.HERESWHY
+		is_dialog_only = yes
+	}
+	option = {
+		trigger = {
+			has_authority = auth_machine_intelligence
+		}
+		allow = {
+			has_country_flag = endtimes_what_they_want	
+		}
+		name = endtimescrisis.4303.ISTHEREROOM
+		response_text = endtimescrisis.4303.ROOMFORALL
+		is_dialog_only = yes
+	}
+	option = { # HERESY
+		trigger = {
+			OR = {
+				has_ethic = ethic_spiritualist
+				has_ethic = ethic_fanatic_spiritualist
+			}
+		}
+		allow = {
+			has_country_flag = endtimes_what_they_want
+		}
+		
+		name = endtimescrisis.4303.GOODBYE.SPIR
+		response_text = endtimescrisis.4303.FAREWELL
+		remove_country_flag = endtimes_what_they_want
+	}
+	option = {
+		allow = {
+			has_country_flag = endtimes_what_they_want
+			NOR = {
+				has_ethic = ethic_spiritualist
+				has_ethic = ethic_fanatic_spiritualist
+			}
+		}
+		name = endtimescrisis.4303.GOODBYE
+		response_text = endtimescrisis.4303.FAREWELL
+		remove_country_flag = endtimes_what_they_want
+	}
+}
+
+
+## THE CHOICE
+country_event = {
+	id = endtimescrisis.4004
+	hide_window = yes
+	fire_only_once = yes
+	
+	mean_time_to_happen = {
+		months = 24
+	}
+	
+	trigger = {
+		is_country_type = default
+		has_global_flag = endtimes_outsiders_signal
+	}
+	
+	immediate = {
+		remove_global_flag = endtimes_outsiders_signal
+		set_global_flag = endtimes_outsiders_choice
+		every_country = {
+			limit = { is_country_type = default }
+			country_event = { id = endtimescrisis.4104 }
+		}
+	
+		every_country = {
+			limit = { is_country_type = awakened_fallen_empire }
+			country_event = { id = endtimescrisis.4204 days = 10 }
+		}
+	}
+}
+
+country_event = {
+	id = endtimescrisis.4104
+	title = "endtimescrisis.4104.name"
+	desc = "endtimescrisis.4104.desc"
+	picture = GFX_evt_wormhole
+	show_sound = event_radio_chatter
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = endtimescrisis.4104.a
+		hidden_effect = { country_event = { id = endtimescrisis.4304 } }
+	}
+}
+
+# Forces Awakened FEs onto sides after main empires have chosen
+country_event = {
+	id = endtimescrisis.4204
+	hide_window = yes
+	
+	is_triggered_only = yes
+	
+	immediate = {
+		if = {
+			limit = { 
+				OR = {
+					has_ethic = ethic_fanatic_spritualist
+					has_ethic = ethic_fanatic_xenophile
+				}
+			}
+			set_country_flag = endtimes_resistance
+		}
+		else = {
+			set_country_flag = endtimes_cooperator
+		}
+	}
+}
+
+# The Outsiders levy a choice on the empires: help them or stand aside
+country_event = {
+	id = endtimescrisis.4304
+	title = "TRANSMISSION"
+	
+	is_triggered_only = yes
+	
+	desc = {
+		text = endtimescrisis.4304.desc
+	}
+	
+	diplomatic = yes
+	
+	picture_event_data = {
+		room = no_video_feed_room
+	}
+	
+	# Yes based on ethics
+	option = {
+		trigger = {
+			OR = {
+				has_ethic = ethic_spiritualist
+				has_ethic = ethic_fanatic_spiritualist
+			}
+		}
+		name = endtimescrisis.4304.YES.SPIR
+		response_text = endtimescrisis.4304.WONDERFUL
+		
+		set_country_flag = endtimes_cooperator
+		hidden_effect = {
+			end_event_chain = { "neutron_star_chain" }
+			begin_event_chain = {
+				event_chain = "crash_the_simulation_chain"
+				target = ROOT
+			}
+		}
+		
+		ai_weight = {
+			factor = 0
+		}
+	}
+	
+	# Universal YES
+	option = {
+		trigger = {
+			NOR = {
+				has_ethic = ethic_spiritualist
+				has_ethic = ethic_fanatic_spiritualist
+			}
+		}
+		name = endtimescrisis.4304.YES
+		response_text = endtimescrisis.4304.WONDERFUL
+		
+		set_country_flag = endtimes_cooperator
+		hidden_effect = {
+			end_event_chain = { "neutron_star_chain" }
+			begin_event_chain = {
+				event_chain = "crash_the_simulation_chain"
+				target = ROOT
+			}
+		}
+		
+		ai_weight = {
+			factor = 50
+			modifier = {
+				factor = 1.5
+				OR = {
+					has_ethic = ethic_materialist
+					has_ethic = ethic_egalitarian
+					has_ethic = ethic_fanatic_egalitarian
+				}
+			}
+			modifier = {
+				factor = 2
+				OR = {
+					has_ethic = ethic_fanatic_materialist
+					has_civic = civic_machine_assimilator
+				}
+			}
+			modifier = {
+				factor = 5
+				OR = {
+					has_civic = civic_machine_terminator
+					has_civic = civic_fanatic_purifiers
+				}
+			}
+			modifier = {
+				factor = 0
+				OR = {
+					has_ethic = ethic_spititualist
+					has_ethic = ethic_fanatic_spiritualist
+					has_civic = civic_hive_devouring_swarm
+					has_civic = civic_inwards_perfection
+				}
+			}
+		}
+	}
+	
+	# Universal NO
+	option = {
+		name = endtimescrisis.4304.NO
+		response_text = endtimescrisis.4304.SADDENING
+		
+		set_country_flag = endtimes_resistance
+		hidden_effect = {
+			end_event_chain = { "neutron_star_chain" }
+			begin_event_chain = {
+				event_chain = "crash_the_simulation_chain"
+				target = ROOT
+			}
+			
+			create_point_of_interest = {
+				id = neutronstar.1
+				name = "neutron_star_poi"
+				desc = "neutron_star_poi_desc"
+				event_chain = crash_the_simulation_chain
+				location = event_target:endtimes_neutron_star_evt
+			}
+		}
+		
+		ai_weight = {
+			factor = 50
+			modifier = {
+				factor = 1.5
+				OR = {
+					has_authority = auth_machine_intelligence
+					has_ethic = ethic_authoritarian
+					has_ethic = ethic_xenophile
+					has_ethic = ethic_fanatic_xenophile
+				}
+			}
+			modifier = {
+				factor = 2
+				OR = {
+					has_ethic = ethic_fanatic_authoritarian
+				}
+			}
+			modifier = {
+				factor = 0
+				OR = {
+					
+				}
+			}
+		}
+	}
+}
+
+### Cooperator Chain
+## THE PLAN
+# Initializing Event that contacts the empires to explain the plan
+country_event = {
+	id = endtimescrisis.4005
+	hide_window = yes
+	fire_only_once = yes
+	
+	mean_time_to_happen = {
+		months = 12
+	}
+	
+	trigger = {
+		has_country_flag = endtimes_cooperator
+	}
+	
+	immediate = {
+		set_global_flag = endtimes_outsiders_plan
+		country_event = { id = endtimescrisis.4105 }
+	}
+}
+
+# Contact Event for Default Empires
+country_event = {
+	id = endtimescrisis.4105
+	title = "endtimescrisis.4105.name"
+	desc = "endtimescrisis.4105.desc"
+	picture = GFX_evt_wormhole
+	show_sound = event_radio_chatter
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = endtimescrisis.4105.a
+		hidden_effect = { country_event = { id = endtimescrisis.4305 } }
+	}
+}
+
+country_event = {
+	id = endtimescrisis.4305
+	title = "TRANSMISSION"
+	desc = endtimescrisis.4305.desc
+	
+	is_triggered_only = yes
+	
+	diplomatic = yes
+	
+	picture_event_data = {
+		room = no_video_feed_room
+	}
+	
+	option = {
+	
+	}
+	option = {
+	
+	}
+}
+
+
+### Resistance Chain
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

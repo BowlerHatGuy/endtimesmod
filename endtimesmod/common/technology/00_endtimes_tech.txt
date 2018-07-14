@@ -1,0 +1,27 @@
+#########################
+# End Times Technologies
+#########################
+tech_project_e = {
+	cost = @tier4cost
+	area = engineering
+	tier = 4
+	is_rare = yes
+	category = { materials }
+	weight = 0
+	
+	# unlocks bio-mechanical terror armies
+	
+	potential = {
+		NOR = {
+			has_civic = civic_machine_assimilator
+			has_civic = civic_machine_servitor
+			has_civic = civic_machine_terminator
+			has_ethic = ethic_spiritualist
+			has_ethic = ethic_fanatic_spiritualist
+			has_ethic = ethic_pacifist
+			has_ethic = ethic_fanatic_pacifist
+			has_ethic = ethic_xenophile
+			has_ethic = ethic_fanatic_xenophile
+		}
+	}
+}
