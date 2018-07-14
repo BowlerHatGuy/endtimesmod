@@ -1,0 +1,153 @@
+#################################
+#
+# Endtimes Crisis Utility Events
+#
+# Written by BowlerHatGuy
+#
+#################################
+
+# Naming Scheme
+# PSNN = [PRIMARY][STAGE][NUMBER][NUMBER] 
+# Note: Number 00 is reserved for "hub" event
+# Note: Primary/Stage 00 is reserved for utility events
+
+namespace = endtimesutility
+
+### THE FAULT IN THE STARS
+# Pared Down FE Awakening Event to prevent War in Heaven on Awakening
+country_event = {
+	id = endtimesutility.0001
+	hide_window = yes
+	
+	is_triggered_only = yes
+
+	immediate = {
+		set_global_flag = sleepers_awake_happened
+
+		country_event = { id = fallen_empires_awakening.3 }
+
+		# Notify players
+		every_country = {
+			limit = {
+				is_ai = no
+			}
+			country_event = { id = fallen_empires_awakening.2 }
+		}
+
+		# Fragged a holy world
+		if = {
+			limit = {
+				has_country_flag = holy_world_killed
+			}
+			country_event = { id = planet_destruction.611 days = 5 }
+		}
+	}
+}
+
+# Event calculate the number of Jupiter Brains needed to destabilize the universe at all stages
+country_event = { # Not sure where to call this from yet, will be scoped to global_event country to centralize
+	id = endtimesutility.0002
+	hide_window = yes
+	fire_only_once = yes
+	
+	is_triggered_only = yes
+	
+	immediate = {
+		set_variable = { which = "endtimes_goal_jupiter_brains_var" value = 0 }
+		set_variable = { which = "endtimes_goal_simulation_cracks_var" value = 0 }
+		set_variable = { which = "endtimes_jb_to_crack_ratio_var" value = 0 }
+		set_variable = { which = "endtimes_total_empires_var" value = 0 }
+		
+		# Counts the number of countries in the game
+		while = {
+			limit = {
+				any_country = {
+					AND = {
+						OR = {
+							is_country_type = default
+							is_country_type = fallen_empire
+							is_country_type = awakened_fallen_empire
+						}
+						NOT = { has_country_flag = endtimes_country_counted }
+					}
+				}
+			}
+			random_country = {
+				limit = {
+					AND = {
+						OR = {
+							is_country_type = default
+							is_country_type = fallen_empire
+							is_country_type = awakened_fallen_empire
+						}
+						NOT = { has_country_flag = endtimes_country_counted }
+					}
+				}
+				set_country_flag = endtimes_country_counted
+			}
+			
+			change_variable = { which = "endtimes_total_empires_var" value = 1 }
+		}
+		
+		log = "======================================================"
+		log = "= There are this many non-FE empires in the game: [endtimesGetNumEmpires] ="
+		log = "======================================================"
+	}
+}
+
+## Events to catch new empires up to global stats
+# Tracks number of Jupiter brains to a) catch up new empires and b) track the win condition.
+country_event = {
+	id = endtimesutility.0003
+	hide_window = yes
+	
+	is_triggered_only = yes
+	
+	immediate = {
+		if = {
+			limit = { NOT = { has_global_flag = endtimes_first_jupiter_brain } }
+			set_variable = { which = "endtimes_active_jupiter_brains_var" value = 0 }
+		}
+		change_variable = { which = "endtimes_active_jupiter_brains_var" value = 1 }
+	}
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

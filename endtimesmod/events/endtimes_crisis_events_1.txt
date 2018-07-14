@@ -11,8 +11,9 @@
 # Subtypes:
 # 0 = hidden
 # 1 = basic text box
-# 2 = utility (hidden)
+# 2 = catch event (default states and when players think thye are clever)
 # 3 = diplomatic
+# 4-9 = utility
 # Note: Number 00 is unused
 
 namespace = endtimescrisis
@@ -30,7 +31,7 @@ country_event = {
 	
 	immediate = {
 		endgame_telemetry = vultaum
-		country_event = { id = endtimescrisis.4001 days = 10}
+		country_event = { id = endtimescrisis.4001 days = 10 }
 	}
 }
 
@@ -61,7 +62,7 @@ country_event = {
 	title = "endtimescrisis.4101.name"
 	desc = "endtimescrisis.4101.desc"
 	picture = GFX_evt_physics_research
-	show_sound = event_alien_nature
+	show_sound = event_alien_signal_03
 	
 	is_triggered_only = yes
 	
@@ -246,9 +247,9 @@ country_event = {
 		}
 		
 		create_point_of_interest = {
-			id = neutronstar.1
-			name = "neutron_star_poi"
-			desc = "neutron_star_poi_desc"
+			id = endtimes_neutronstar.1
+			name = "endtimes_neutron_star_poi"
+			desc = "endtimes_neutron_star_poi_desc"
 			event_chain = neutron_star_chain
 			location = event_target:endtimes_neutron_star_evt
 		}
@@ -281,7 +282,7 @@ country_event = {
 		}
 		every_country = {
 			limit = { is_country_type = fallen_empire }
-			country_event = { id = endtimesradiant.0001 days = 30 }
+			country_event = { id = endtimesutility.0001 days = 30 }
 		}
 	}
 }
@@ -433,30 +434,48 @@ country_event = {
 	is_triggered_only = yes
 	
 	option = {
+		trigger = {
+			NOT = { has_country_flag = endtimes_no_choice }
+		}
+		
 		name = endtimescrisis.4104.a
-		hidden_effect = { country_event = { id = endtimescrisis.4304 } }
+		country_event = { id = endtimescrisis.4304 }
+	}
+	option = {
+		trigger = {
+			has_country_flag = endtimes_no_choice
+		}
+		
+		name = endtimescrisis.4104.RUDE
+		country_event = { id = endtimescrisis.4304 }
 	}
 }
 
-# Forces Awakened FEs onto sides after main empires have chosen
-country_event = {
+country_event = { # Refires the dialog if the player exits out before choosing a side, or triggers an autoflag if the player is being obstinent
 	id = endtimescrisis.4204
 	hide_window = yes
 	
-	is_triggered_only = yes
-	
+	trigger = {
+		is_country_type = default
+		has_global_flag = endtimes_outsiders_choice
+		NOR = {
+			has_country_flag = endtimes_resistance
+			has_country_flag = endtimes_cooperator
+		}
+	}
+
 	immediate = {
-		if = {
-			limit = { 
-				OR = {
-					has_ethic = ethic_fanatic_spritualist
-					has_ethic = ethic_fanatic_xenophile
-				}
-			}
-			set_country_flag = endtimes_resistance
+		if = { # TODO: Need event to indicate to other empires that a new empire has come into existance and they have made a choice.
+			limit = { NOT = { has_country_flag = endtimes_no_choice } }
+			set_country_flag = endtimes_no_choice
+			
+			country_event = { id = endtimescrisis.4104 }
 		}
 		else = {
-			set_country_flag = endtimes_cooperator
+			remove_country_flag = endtimes_no_choice
+			set_country_flag = endtimes_resistance
+			
+			country_event = { id = endtimescrisis.4504 }
 		}
 	}
 }
@@ -469,7 +488,16 @@ country_event = {
 	is_triggered_only = yes
 	
 	desc = {
+		trigger = {
+			NOT = { has_country_flag = endtimes_no_choice }
+		}
 		text = endtimescrisis.4304.desc
+	}
+	desc = {
+		trigger = {
+			has_country_flag = endtimes_no_choice
+		}
+		text = endtimescrisis.4304.desc.RUDE
 	}
 	
 	diplomatic = yes
@@ -515,6 +543,8 @@ country_event = {
 		response_text = endtimescrisis.4304.WONDERFUL
 		
 		set_country_flag = endtimes_cooperator
+		remove_country_flag = endtimes_no_choice
+		
 		hidden_effect = {
 			end_event_chain = { "neutron_star_chain" }
 			begin_event_chain = {
@@ -524,7 +554,7 @@ country_event = {
 		}
 		
 		ai_weight = {
-			factor = 50
+			base = 50
 			modifier = {
 				factor = 1.5
 				OR = {
@@ -565,6 +595,8 @@ country_event = {
 		response_text = endtimescrisis.4304.SADDENING
 		
 		set_country_flag = endtimes_resistance
+		remove_country_flag = endtimes_no_choice
+		
 		hidden_effect = {
 			end_event_chain = { "neutron_star_chain" }
 			begin_event_chain = {
@@ -573,16 +605,16 @@ country_event = {
 			}
 			
 			create_point_of_interest = {
-				id = neutronstar.1
-				name = "neutron_star_poi"
-				desc = "neutron_star_poi_desc"
+				id = endtimes_neutronstar.1
+				name = "endtimes_neutron_star_poi"
+				desc = "endtimes_neutron_star_poi_desc"
 				event_chain = crash_the_simulation_chain
 				location = event_target:endtimes_neutron_star_evt
 			}
 		}
 		
 		ai_weight = {
-			factor = 50
+			base = 50
 			modifier = {
 				factor = 1.5
 				OR = {
@@ -605,6 +637,58 @@ country_event = {
 				}
 			}
 		}
+	}
+}
+
+# Forces Awakened FEs onto sides after main empires have chosen
+country_event = {
+	id = endtimescrisis.4404
+	hide_window = yes
+	
+	is_triggered_only = yes
+	
+	immediate = {
+		if = {
+			limit = { 
+				OR = {
+					has_ethic = ethic_fanatic_spritualist
+					has_ethic = ethic_fanatic_xenophile
+				}
+			}
+			set_country_flag = endtimes_resistance
+		}
+		else = {
+			set_country_flag = endtimes_cooperator
+		}
+	}
+}
+
+country_event = { # Vultaum let the empire know that they take their silence as a statement of intent to resist
+	id = endtimescrisis.4504
+	title = "endtimescrisis.4504.name"
+	desc = "endtimescrisis.4504.desc"
+	picture = GFX_evt_physics_research
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = endtimescrisis.4504.a
+		
+		hidden_effect = {
+				end_event_chain = { "neutron_star_chain" }
+				begin_event_chain = {
+					event_chain = "crash_the_simulation_chain"
+					target = ROOT
+				}
+			
+				create_point_of_interest = {
+					id = endtimes_neutronstar.1
+					name = "endtimes_neutron_star_poi"
+					desc = "endtimes_neutron_star_poi_desc"
+					event_chain = crash_the_simulation_chain
+					location = event_target:endtimes_neutron_star_evt
+				}
+			}
 	}
 }
 
@@ -646,6 +730,22 @@ country_event = {
 	}
 }
 
+# Catch event so the player doesn't accidentally miss the plan
+country_event = {
+	id = endtimescrisis.4205
+	hide_window = yes
+	
+	trigger = {
+		has_global_flag = endtimes_outsiders_plan
+		has_country_flag = endtimes_cooperator
+		NOT = { has_country_flag = endtimes_how_to_crash }
+	}
+	
+	immediate = { # Go straight into the diplo screen again to avoid annoyances. EVALUATE FOR CHANGE
+		country_event = { id = endtimescrisis.4305 }
+	}
+}
+
 country_event = {
 	id = endtimescrisis.4305
 	title = "TRANSMISSION"
@@ -660,18 +760,292 @@ country_event = {
 	}
 	
 	option = {
-	
+		name = endtimescrisis.4305.HOW
+		response_text = endtimescrisis.4305.HERESHOW
+		
+		hidden_effect = {
+			set_country_flag = endtimes_how_to_crash
+			country_event = { id = endtimescrisis.4405 days = 1 }
+		}
+		is_dialog_only = yes
 	}
 	option = {
+		name = endtimescrisis.4305.VERYWELL
+		response_text = endtimescrisis.4305.WERECOUNTINGONYOU
 	
+		allow = {
+			has_country_flag = endtimes_how_to_crash
+		}
 	}
 }
+
+country_event = { # Informs player that they can now build Jupiter Brains on gas giants
+	id = endtimescrisis.4405
+	title = "endtimescrisis.4405.name"
+	desc = "endtimescrisis.4405.desc"
+	
+	option = {
+		name = endtimescrisis.4405.a
+		custom_tooltip = {
+			text = endtimescrisis.4405.TT
+		}
+	}
+}
+
+## Events Related to the construction of Jupiter Brains
+# Alerts all empires to the start of construction of a brain
+country_event = {
+	id = endtimescrisis.4006
+	hide_window = yes
+	
+	is_triggered_only = yes
+	
+	immediate = {
+		if = { # Inelegant solution until I come up with something better. TODO: Come up with something better.
+			limit = { NOT = { has_global_flag = endtimes_first_jupiter_brain_const } }
+			country_event = { id = endtimescrisis.4206 days = 1 } 
+		}
+		
+		every_country = {
+			limit = { is_country_type = default }
+			country_event = { id = endtimescrisis.4106 }
+		}
+	}
+}
+
+country_event = {
+	id = endtimescrisis.4106
+	title = { # Does this even work???
+		trigger = { 
+			has_global_flag = endtimes_first_jupiter_brain_const
+			has_country_flag = endtimes_resistance
+		}
+		text = endtimescrisis.4106.name.FIRST
+	}
+	title = {
+		trigger = { 
+			OR = {
+				NOT = { has_global_flag = endtimes_first_jupiter_brain_const }
+				has_country_flag = endtimes_cooperator
+			}
+		}
+		text = endtimescrisis.4106.name
+	}
+	
+	desc = {
+		trigger = { 
+			NOT = { has_global_flag = endtimes_first_jupiter_brain_const }
+			has_country_flag = endtimes_resistance
+		}
+		text = endtimescrisis.4106.desc.RESISTFIRST
+	}
+	desc = {
+		trigger = { 
+			NOT = { has_global_flag = endtimes_first_jupiter_brain_const }
+			has_country_flag = endtimes_cooperator
+		}
+		text = endtimescrisis.4106.desc.COOPFIRST
+	}
+	desc = {
+		trigger = { 
+			has_global_flag = endtimes_first_jupiter_brain_const
+			has_country_flag = endtimes_resistance
+			NOT = { has_global_flag = endtimes_first_rift }
+		}
+		text = endtimescrisis.4106.desc.RESISTNORIFT
+	}
+	desc = {
+		trigger = { 
+			has_global_flag = endtimes_first_jupiter_brain_const
+			has_country_flag = endtimes_resistance
+			has_global_flag = endtimes_first_rift
+		}
+		text = endtimescrisis.4106.desc.RESIST
+	}
+	desc = {
+		trigger = { 
+			has_global_flag = endtimes_first_jupiter_brain_const
+			has_country_flag = endtimes_cooperator
+		}
+		text = endtimescrisis.4106.desc.COOP
+	}
+	
+	option = {
+		trigger = {
+			has_country_flag = endtimes_cooperator
+		}
+		text = endtimescrisis.4106.a
+		hidden_effect = {
+			endtimes_allocate_poi = yes
+		}
+	}
+	option = {
+		trigger = {
+			has_country_flag = endtimes_resistance
+		}
+		text = endtimescrisis.4106.b
+		hidden_effect = {
+			endtimes_allocate_poi = yes
+		}
+	}
+}
+
+# Solution to setting the flag after the empires have already been alerted to the first brain
+country_event = {
+	id = endtimescrisis.4206
+	hide_window = yes
+	
+	is_triggered_only = yes
+	
+	immediate = {
+		set_global_flag = endtimes_first_jupiter_brain_const
+	}
+}
+
+
+# Alerts all empires to the completion of construction of a brain
+country_event = {
+	id = endtimescrisis.4007
+	hide_window = yes
+	
+	is_triggered_only = yes
+	
+	immediate = {
+		if = { # Inelegant solution until I come up with something better. TODO: Come up with something better.
+			limit = { NOT = { has_global_flag = endtimes_first_jupiter_brain } }
+			country_event = { id = endtimescrisis.4207 days = 1 } 
+		}
+		
+		every_country = {
+			limit = { is_country_type = default }
+			country_event = { id = endtimescrisis.4107 }
+		}
+		
+		every_country = {
+			limit = { has_event_chain = "crash_the_simulation_chain" }
+			add_event_chain_counter = {
+				event_chain = "crash_the_simulation_chain"
+				counter = "endtimes_active_jupiter_brains"
+				amount = 1
+			}
+		}
+		
+		every_country = { # Variables for tracking. Again, not ideal implemenation.
+			limit = { is_country_type = global_event }
+			country_event = { id = entimesutility.0003 }
+		}
+	}
+}
+
+country_event = {
+	id = endtimescrisis.4107
+	title = { # Does this even work???
+		trigger = { 
+			has_global_flag = endtimes_first_jupiter_brain
+			has_country_flag = endtimes_resistance
+		}
+		text = endtimescrisis.4107.name.FIRST
+	}
+	title = {
+		trigger = { 
+			OR = {
+				NOT = { has_global_flag = endtimes_first_jupiter_brain }
+				has_country_flag = endtimes_cooperator
+			}
+		}
+		text = endtimescrisis.4107.name
+	}
+	
+	desc = {
+		trigger = { 
+			has_global_flag = endtimes_first_jupiter_brain
+			has_country_flag = endtimes_resistance
+		}
+		text = endtimescrisis.4107.desc.RESISTFIRST
+	}
+	desc = {
+		trigger = { 
+			has_global_flag = endtimes_first_jupiter_brain
+			has_country_flag = endtimes_cooperator
+		}
+		text = endtimescrisis.4107.desc.COOPFIRST
+	}
+	desc = {
+		trigger = { 
+			has_global_flag = endtimes_first_jupiter_brain
+			has_country_flag = endtimes_resistance
+			NOT = { has_global_flag = endtimes_first_rift }
+		}
+		text = endtimescrisis.4107.desc.RESISTNORIFT
+	}
+	desc = {
+		trigger = { 
+			has_global_flag = endtimes_first_jupiter_brain
+			has_country_flag = endtimes_resistance
+			has_global_flag = endtimes_first_rift
+		}
+		text = endtimescrisis.4107.desc.RESIST
+	}
+	desc = {
+		trigger = { 
+			NOT = { has_global_flag = endtimes_first_jupiter_brain }
+			has_country_flag = endtimes_cooperator
+		}
+		text = endtimescrisis.4107.desc.COOP
+	}
+	
+	option = {
+		trigger = {
+			has_country_flag = endtimes_cooperator
+		}
+		text = endtimescrisis.4107.a
+		
+		hidden_effect = { 
+		#	endtimes_allocate_poi = yes
+			add_event_chain_counter = {
+				event_chain = "crash_the_simulation_chain"
+				counter = "endtimes_active_jupiter_brains"
+				amount = 1
+			}
+		}
+	}
+	option = {
+		trigger = {
+			has_country_flag = endtimes_resistance
+		}
+		text = endtimescrisis.4107.b
+		
+		hidden_effect = {
+		#	endtimes_allocate_poi = yes
+			add_event_chain_counter = {
+				event_chain = "crash_the_simulation_chain"
+				counter = "endtimes_active_jupiter_brains"
+				amount = 1
+			}
+		}
+	}
+}
+
+# Solution to setting the flag after the empires have already been alerted to the first brain
+country_event = {
+	id = endtimescrisis.4207
+	hide_window = yes
+	
+	is_triggered_only = yes
+	
+	immediate = {
+		set_global_flag = endtimes_first_jupiter_brain
+	}
+}
+
+
 
 
 ### Resistance Chain
 
 
-
+## Events Related to destruction of Jupiter Brains
+# TODO
 
 
 

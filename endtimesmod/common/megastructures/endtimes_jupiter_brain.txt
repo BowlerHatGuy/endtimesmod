@@ -4,7 +4,7 @@
 @entity_y = -15
 
 # Jupiter Brain Site
-jupiter_brain_0 = {
+jupiter_brain_0 = { 
 	entity = "construction_platform_entity"
 	construction_entity = "construction_platform_entity"
 	portrait = "GFX_megastructure_construction_background"
@@ -107,11 +107,12 @@ jupiter_brain_0 = {
 	on_build_start = {}
 	on_build_cancel = {}
 	on_build_complete = {
-		# Put pointer to event that either alerts empires to the first brain under construction OR that a new brain is being built
+		country_event = { id = endtimescrisis.4006 }
+		save_event_target_as = endtimes_recent_jupiter_brain
 	}
 }
 
-jupiter_brain_1 = { # Needs update
+jupiter_brain_1 = { # Entities are temporary until new art assets are generated
 	entity = "dyson_sphere_phase_05_entity"
 	construction_entity = "dyson_sphere_part_4_entity"
 	portrait = "GFX_megastructure_dyson_sphere_background"
@@ -135,8 +136,9 @@ jupiter_brain_1 = { # Needs update
 	}
 
 	on_build_complete = {
-		# Put pointer to event that ups the counter and alerts empires to the completion and adds POI
-		set_ship_flag = endtimes_jupiter_brain
+		country_event = { id = endtimescrisis.4007 }
+		save_event_target_as = endtimes_recent_jupiter_brain
+		# Need to devise method for converting brain to destructible structure.
 		if = {
 			limit = { 
 				OR = {

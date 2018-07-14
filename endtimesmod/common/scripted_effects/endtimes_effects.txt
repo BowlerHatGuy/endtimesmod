@@ -1,0 +1,263 @@
+endtimes_allocate_poi = {
+	if = {
+		limit = {
+			NOT = { has_point_of_interest = { poi = endtimes_jupiter_brain.1 } }
+			has_event_chain = crash_the_simulation_chain
+		}
+		create_point_of_interest = {
+		id = endtimes_jupiter_brain.1
+		name = "endtimes_jupiter_brain_poi"
+			desc = "endtimes_jupiter_brain_poi_desc"
+			event_chain = crash_the_simulation_chain
+			location = event_target:endtimes_recent_jupiter_brain
+		}
+	}
+	else_if = {
+		limit = {
+			NOT = { has_point_of_interest = { poi = endtimes_jupiter_brain.2 } }
+			has_event_chain = crash_the_simulation_chain
+		}
+		create_point_of_interest = {
+			id = endtimes_jupiter_brain.2
+			name = "endtimes_jupiter_brain_poi"
+			desc = "endtimes_jupiter_brain_poi_desc"
+			event_chain = crash_the_simulation_chain
+			location = event_target:endtimes_recent_jupiter_brain
+		}
+	}
+	else_if = {
+		limit = {
+			NOT = { has_point_of_interest = { poi = endtimes_jupiter_brain.3 } }
+			has_event_chain = crash_the_simulation_chain
+		}
+		create_point_of_interest = {
+			id = endtimes_jupiter_brain.3
+			name = "endtimes_jupiter_brain_poi"
+			desc = "endtimes_jupiter_brain_poi_desc"
+			event_chain = crash_the_simulation_chain
+			location = event_target:endtimes_recent_jupiter_brain
+		}
+	}
+	else_if = {
+		limit = {
+			NOT = { has_point_of_interest = { poi = endtimes_jupiter_brain.4 } }
+			has_event_chain = crash_the_simulation_chain
+		}
+		create_point_of_interest = {
+			id = endtimes_jupiter_brain.4
+			name = "endtimes_jupiter_brain_poi"
+			desc = "endtimes_jupiter_brain_poi_desc"
+			event_chain = crash_the_simulation_chain
+			location = event_target:endtimes_recent_jupiter_brain
+		}
+	}
+	else_if = {
+		limit = {
+			NOT = { has_point_of_interest = { poi = endtimes_jupiter_brain.5 } }
+			has_event_chain = crash_the_simulation_chain
+		}
+		create_point_of_interest = {
+			id = endtimes_jupiter_brain.5
+			name = "endtimes_jupiter_brain_poi"
+			desc = "endtimes_jupiter_brain_poi_desc"
+			event_chain = crash_the_simulation_chain
+			location = event_target:endtimes_recent_jupiter_brain
+		}
+	}
+	else_if = {
+		limit = {
+			NOT = { has_point_of_interest = { poi = endtimes_jupiter_brain.6 } }
+			has_event_chain = crash_the_simulation_chain
+		}
+		create_point_of_interest = {
+			id = endtimes_jupiter_brain.6
+			name = "endtimes_jupiter_brain_poi"
+			desc = "endtimes_jupiter_brain_poi_desc"
+			event_chain = crash_the_simulation_chain
+			location = event_target:endtimes_recent_jupiter_brain
+		}
+	}
+	else_if = {
+		limit = {
+			NOT = { has_point_of_interest = { poi = endtimes_jupiter_brain.7 } }
+			has_event_chain = crash_the_simulation_chain
+		}
+		create_point_of_interest = {
+			id = endtimes_jupiter_brain.7
+			name = "endtimes_jupiter_brain_poi"
+			desc = "endtimes_jupiter_brain_poi_desc"
+			event_chain = crash_the_simulation_chain
+			location = event_target:endtimes_recent_jupiter_brain
+		}
+	}
+	else_if = {
+		limit = {
+			NOT = { has_point_of_interest = { poi = endtimes_jupiter_brain.8 } }
+			has_event_chain = crash_the_simulation_chain
+		}
+		create_point_of_interest = {
+			id = endtimes_jupiter_brain.8
+			name = "endtimes_jupiter_brain_poi"
+			desc = "endtimes_jupiter_brain_poi_desc"
+			event_chain = crash_the_simulation_chain
+			location = event_target:endtimes_recent_jupiter_brain
+		}
+	}
+	else_if = {
+		limit = {
+			NOT = { has_point_of_interest = { poi = endtimes_jupiter_brain.9 } }
+			has_event_chain = crash_the_simulation_chain
+		}
+		create_point_of_interest = {
+			id = endtimes_jupiter_brain.9
+			name = "endtimes_jupiter_brain_poi"
+			desc = "endtimes_jupiter_brain_poi_desc"
+			event_chain = crash_the_simulation_chain
+			location = event_target:endtimes_recent_jupiter_brain
+		}
+	}
+	else_if = {
+		limit = {
+			NOT = { has_point_of_interest = { poi = endtimes_jupiter_brain.10 } }
+			has_event_chain = crash_the_simulation_chain
+		}
+		create_point_of_interest = {
+			id = endtimes_jupiter_brain.10
+			name = "endtimes_jupiter_brain_poi"
+			desc = "endtimes_jupiter_brain_poi_desc"
+			event_chain = crash_the_simulation_chain
+			location = event_target:endtimes_recent_jupiter_brain
+		}
+	}
+	else_if = {
+		limit = {
+			NOT = { has_point_of_interest = { poi = endtimes_jupiter_brain.11 } }
+			has_event_chain = crash_the_simulation_chain
+		}
+		create_point_of_interest = {
+			id = endtimes_jupiter_brain.11
+			name = "endtimes_jupiter_brain_poi"
+			desc = "endtimes_jupiter_brain_poi_desc"
+			event_chain = crash_the_simulation_chain
+			location = event_target:endtimes_recent_jupiter_brain
+		}
+	}
+	else_if = {
+		limit = {
+			NOT = { has_point_of_interest = { poi = endtimes_jupiter_brain.12 } }
+			has_event_chain = crash_the_simulation_chain
+		}
+		create_point_of_interest = {
+			id = endtimes_jupiter_brain.12
+			name = "endtimes_jupiter_brain_poi"
+			desc = "endtimes_jupiter_brain_poi_desc"
+			event_chain = crash_the_simulation_chain
+			location = event_target:endtimes_recent_jupiter_brain
+		}
+	}
+	else_if = {
+		limit = {
+			NOT = { has_point_of_interest = { poi = endtimes_jupiter_brain.13 } }
+			has_event_chain = crash_the_simulation_chain
+		}
+		create_point_of_interest = {
+			id = endtimes_jupiter_brain.13
+			name = "endtimes_jupiter_brain_poi"
+			desc = "endtimes_jupiter_brain_poi_desc"
+			event_chain = crash_the_simulation_chain
+			location = event_target:endtimes_recent_jupiter_brain
+		}
+	}
+	else_if = {
+		limit = {
+			NOT = { has_point_of_interest = { poi = endtimes_jupiter_brain.14 } }
+			has_event_chain = crash_the_simulation_chain
+		}
+		create_point_of_interest = {
+			id = endtimes_jupiter_brain.14
+			name = "endtimes_jupiter_brain_poi"
+			desc = "endtimes_jupiter_brain_poi_desc"
+			event_chain = crash_the_simulation_chain
+			location = event_target:endtimes_recent_jupiter_brain
+		}
+	}
+	else_if = {
+		limit = {
+			NOT = { has_point_of_interest = { poi = endtimes_jupiter_brain.15 } }
+			has_event_chain = crash_the_simulation_chain
+		}
+		create_point_of_interest = {
+			id = endtimes_jupiter_brain.15
+			name = "endtimes_jupiter_brain_poi"
+			desc = "endtimes_jupiter_brain_poi_desc"
+			event_chain = crash_the_simulation_chain
+			location = event_target:endtimes_recent_jupiter_brain
+		}
+	}
+	else_if = {
+		limit = {
+			NOT = { has_point_of_interest = { poi = endtimes_jupiter_brain.16 } }
+			has_event_chain = crash_the_simulation_chain
+		}
+		create_point_of_interest = {
+			id = endtimes_jupiter_brain.16
+			name = "endtimes_jupiter_brain_poi"
+			desc = "endtimes_jupiter_brain_poi_desc"
+			event_chain = crash_the_simulation_chain
+			location = event_target:endtimes_recent_jupiter_brain
+		}
+	}
+	else_if = {
+		limit = {
+			NOT = { has_point_of_interest = { poi = endtimes_jupiter_brain.17 } }
+			has_event_chain = crash_the_simulation_chain
+		}
+		create_point_of_interest = {
+			id = endtimes_jupiter_brain.17
+			name = "endtimes_jupiter_brain_poi"
+			desc = "endtimes_jupiter_brain_poi_desc"
+			event_chain = crash_the_simulation_chain
+			location = event_target:endtimes_recent_jupiter_brain
+		}
+	}
+	else_if = {
+		limit = {
+			NOT = { has_point_of_interest = { poi = endtimes_jupiter_brain.18 } }
+			has_event_chain = crash_the_simulation_chain
+		}
+		create_point_of_interest = {
+			id = endtimes_jupiter_brain.18
+			name = "endtimes_jupiter_brain_poi"
+			desc = "endtimes_jupiter_brain_poi_desc"
+			event_chain = crash_the_simulation_chain
+			location = event_target:endtimes_recent_jupiter_brain
+		}
+	}
+	else_if = {
+		limit = {
+			NOT = { has_point_of_interest = { poi = endtimes_jupiter_brain.19 } }
+			has_event_chain = crash_the_simulation_chain
+		}
+		create_point_of_interest = {
+			id = endtimes_jupiter_brain.19
+			name = "endtimes_jupiter_brain_poi"
+			desc = "endtimes_jupiter_brain_poi_desc"
+			event_chain = crash_the_simulation_chain
+			location = event_target:endtimes_recent_jupiter_brain
+		}
+	}
+	else_if = {
+		limit = {
+			NOT = { has_point_of_interest = { poi = endtimes_jupiter_brain.20 } }
+			has_event_chain = crash_the_simulation_chain
+		}
+		create_point_of_interest = {
+			id = endtimes_jupiter_brain.20
+			name = "endtimes_jupiter_brain_poi"
+			desc = "endtimes_jupiter_brain_poi_desc"
+			event_chain = crash_the_simulation_chain
+			location = event_target:endtimes_recent_jupiter_brain
+		}
+	}	
+}
+
