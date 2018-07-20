@@ -1,0 +1,19 @@
+####################
+# Endtimes Deposits
+####################
+
+# Jupiter Brain
+endtimes_d_jupiter_brain_deposit = {
+	resources = {
+		society_research = 75
+		engineering_research = 75
+		physics_research = 75
+	}
+	station = shipclass_research_station 
+	orbital_weight = {
+		weight = 0
+	}
+	drop_weight = {
+		weight = 0
+	}
+}

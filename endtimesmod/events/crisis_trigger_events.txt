@@ -38,7 +38,7 @@ event = {
 						factor = 7
 						has_global_flag = endtimes_faulty_stars
 					}
-					country_event = { id = endtimescrisis.405 days = 200 random = 800 }
+					country_event = { id = endtimescrisis.4001 days = 200 random = 800 }
 					set_global_flag = galactic_crisis_happened
 				}
 

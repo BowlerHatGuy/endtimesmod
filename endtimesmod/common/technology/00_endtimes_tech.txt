@@ -2,10 +2,11 @@
 # End Times Technologies
 #########################
 tech_project_e = {
-	cost = @tier4cost
+	cost = @tier4cost2
 	area = engineering
 	tier = 4
 	is_rare = yes
+	icon = "t_space_construction" #temp
 	category = { materials }
 	weight = 0
 	

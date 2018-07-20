@@ -1,0 +1,63 @@
+############################
+#
+# Endtimes Debug Events
+#
+# Written by BowlerHatGuy
+#
+############################
+
+namespace = endtimesdebug
+
+# Generates a debug text for instability events
+country_event = {
+	id = endtimesdebug.9998
+	hide_window = yes
+	is_triggered_only = yes
+	immediate = {
+		every_country = {
+			limit = { is_country_type = default }
+			country_event = { id = endtimesdebug.9999 }
+		}
+	}
+}
+
+country_event = {
+	id = endtimesdebug.9996
+	hide_window = yes
+	is_triggered_only = yes
+	immediate = {
+		every_country = {
+			limit = { is_country_type = default }
+			country_event = { id = endtimesdebug.9997 }
+		}
+	}
+}
+
+country_event = {
+	id = endtimesdebug.9997
+	title = "Monthly Tick"
+	desc = "endtimesutility.9997.desc"
+	
+	trigger = {
+		has_global_flag = endtimes_outsiders_plan
+	}
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = endtimesutility.9997.a
+	}
+}
+
+# Debug Event
+country_event = {
+	id = endtimesdebug.9999
+	title = "Scope"
+	desc = "endtimesutility.9999.desc"
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = endtimesutility.9999.a
+	}
+}

@@ -9,58 +9,17 @@
  crash_the_simulation_chain_title:0 "crash the potato"
  crash_the_simulation_chain_desc:0 "temporary potato"
  
+ # Chain Counters
+ endtimes_active_jupiter_brains:0 "active potato brains:"
+ endtimes_jupiter_brains_kills_us:0 "we kill potato brains:"
+ endtimes_jupiter_brains_kills_others:0 "they kill potato brains"
+ endtimes_simulation_cracks:0 "potato world breaks"
+ 
  # Points of Interest
  neutron_star_poi:0 "potato star"
  neutron_star_poi_desc:0 "it's a potato star"
  
- # Events
- endtimescrisis.4101.name:0 "potato01"
- endtimescrisis.4101.desc:0 "potato01"
- endtimescrisis.4101.a:0 "potato faulty_stars"
- endtimescrisis.4101.b:0 "potato should have listened"
- endtimescrisis.4101.c:0 "potato!"
+ # Main Path(s) Events
+
  
- endtimescrisis.4102.name:0 "neutron potato found"
- endtimescrisis.4102.novultaum:0 "potato from an unknown precursor"
- endtimescrisis.4102.nohomeworld:0 "potato from a missing precursor homeworld"
- endtimescrisis.4102.main:0 "potato from Vultaumar"
- 
- endtimescrisis.4103.name:0 "potato signal"
- endtimescrisis.4103.desc:0 "we've received a signal from the neutron potato"
- endtimescrisis.4103.a:0 "main screen turn on"
- 
- endtimescrisis.4303.desc:0 "hello, we are potato"
- endtimescrisis.4303.WHOAREYOU:0 "who be you?"
- endtimescrisis.4303.WEARE:0 "as said, we are potato"
- endtimescrisis.4303.WHATDOYOUWANT:0 "what want?"
- endtimescrisis.4303.WEWANT:0 "potato take pity, we help not potatoes"
- endtimescrisis.4303.HOW:0 "how help?"
- endtimescrisis.4303.TOOSOON:0 "too soon to say"
- endtimescrisis.4303.WHY:0 "why help?"
- endtimescrisis.4303.HERESWHY:0 "because potato can"
- endtimescrisis.4303.ISTHEREROOM:0 "can robot be potato?"
- endtimescrisis.4303.ROOMFORALL:0 "all can be potato"
- endtimescrisis.4303.GOODBYE:0 "goodbye potato"
- endtimescrisis.4303.GOODBYE.SPIR:0 "potato are heretic!"
- endtimescrisis.4303.FAREWELL:0 "potato will speak again"
- 
- endtimescrisis.4104.name:0 "potato speaks again"
- endtimescrisis.4104.desc:0 "potatoes wish to speak again"
- endtimescrisis.4104.a:0 "ah, it's you"
- 
- endtimescrisis.4304.desc:0 "have you made mind?"
- endtimescrisis.4304.YES:0 "yes, we join potato"
- endtimescrisis.4304.YES.SPIR:0 "yes, we join creator potato"
- endtimescrisis.4304.NO:0 "no, we not potato"
- endtimescrisis.4304.WONDERFUL:0 "we welcome to potato"
- endtimescrisis.4304.SADDENING:0 "all your base are belong to us"
- 
- ### Fault in the Stars Radiant
- endtimesradiant.4101.name:0 "skeptical potato"
- endtimesradiant.4101.desc:0 "potatoes are skeptical"
- endtimesradiant.4102.name:0 "panicking potato"
- endtimesradiant.4102.desc:0 "potatoes are panicking"
- endtimesradiant.4103.name:0 "riot potato"
- endtimesradiant.4103.desc:0 "potatoes are rioting"
- endtimesradiant.4104.name:0 "suicidal potato"
- endtimesradiant.4104.desc:0 "potatoes are going to latvia"
+ # Radiant Events

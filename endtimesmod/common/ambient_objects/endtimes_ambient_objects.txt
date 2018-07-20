@@ -1,0 +1,13 @@
+###############################
+# Ambient Objects for Endtimes
+###############################
+
+# Universal Rift
+ambient_object = {
+	name = "endtimes_stellar_rift"
+	entity = "dimensional_horror_energy_particle_entity" # Definitely temporary
+	selectable = yes
+	show_name = yes
+	tooltip = "endtimes_stellar_rift_tooltip"
+	description = "endtimes_stellar_rift_desc"
+}

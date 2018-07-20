@@ -22,7 +22,6 @@ namespace = endtimescrisis
 
 ### Triggering Event
 # Notice: Meta-crisis may have side effects including depression, mass suicide, and universal destruction. Use only as advised.
-
 country_event = {
 	id = endtimescrisis.404
 	hide_window = yes
@@ -53,6 +52,8 @@ country_event = {
 			limit = { is_country_type = default }
 			country_event = { id = endtimescrisis.4101 }
 		}
+		
+		set_timed_global_flag = { flag = endtimes_crisis_timeout days = 60 }
 	}
 }
 
@@ -62,7 +63,7 @@ country_event = {
 	title = "endtimescrisis.4101.name"
 	desc = "endtimescrisis.4101.desc"
 	picture = GFX_evt_physics_research
-	show_sound = event_alien_signal_03
+	show_sound = event_alien_signal
 	
 	is_triggered_only = yes
 	
@@ -72,7 +73,7 @@ country_event = {
 		}
 		name = endtimescrisis.4101.a
 		begin_event_chain = {
-			event_chain = "fault_in_the_stars"
+			event_chain = "fault_in_the_stars_chain"
 			target = ROOT
 		}
 	}
@@ -98,7 +99,7 @@ country_event = {
 		}
 		name = endtimescrisis.4101.c
 		begin_event_chain = {
-			event_chain = "fault_in_the_stars"
+			event_chain = "fault_in_the_stars_chain"
 		}
 	}
 }
@@ -117,6 +118,8 @@ country_event = {
 	trigger = {
 		is_country_type = default
 		has_global_flag = endtimes_vultaum_shifting_stars
+		
+		NOT = { has_global_flag = endtimes_crisis_timeout }
 	}
 	
 	immediate = {
@@ -155,6 +158,8 @@ country_event = {
 					min_distance = 20
 					max_distance = 50
 					initializer = "vultaumar_system"
+					
+					save_global_event_target_as = endtimes_neutron_star_evt
 				}
 			}
 			
@@ -165,6 +170,7 @@ country_event = {
 					limit = { is_star = yes }
 					change_pc = pc_pulsar
 				}
+				save_global_event_target_as = endtimes_neutron_star_evt
 			}
 			
 			# Ends the precursor chain and alerts everyone to the home system AFTER the neutron signal is observed
@@ -187,19 +193,21 @@ country_event = {
 					limit = { is_star = yes }
 					change_pc = pc_pulsar
 				}
+				save_global_event_target_as = endtimes_neutron_star_evt
 			}
 		}
 		
 		# Creates POI
 		random_system = {
 			limit = { has_star_flag = vultaumar }
-			save_event_target_as = endtimes_neutron_star_evt
 		}
 		
 		every_country = {
 			limit = { is_country_type = default }
 			country_event = { id = endtimescrisis.4102 }
 		}
+		
+		set_timed_global_flag = { flag = endtimes_crisis_timeout days = 60 }
 	}
 }
 
@@ -207,6 +215,8 @@ country_event = {
 country_event = {
 	id = endtimescrisis.4102
 	title = "endtimescrisis.4102.name"
+	picture = GFX_evt_star_pulsar
+	location = event_target:endtimes_neutron_star_evt
 	
 	is_triggered_only = yes
 	
@@ -239,19 +249,22 @@ country_event = {
 		text = "endtimescrisis.4102.main"
 	}
 	
-	immediate = {
-		end_event_chain = { "fault_in_the_stars_chain" }
-		begin_event_chain = {
-			event_chain = "neutron_star_chain"
-			target = ROOT
-		}
+	option = {
+		name = endtimescrisis.4102.a
+		hidden_effect = {
+			end_event_chain = "fault_in_the_stars_chain"
+			begin_event_chain = {
+				event_chain = "neutron_star_chain"
+				target = ROOT
+			}
 		
-		create_point_of_interest = {
-			id = endtimes_neutronstar.1
-			name = "endtimes_neutron_star_poi"
-			desc = "endtimes_neutron_star_poi_desc"
-			event_chain = neutron_star_chain
-			location = event_target:endtimes_neutron_star_evt
+			create_point_of_interest = {
+				id = endtimes_neutronstar.1
+				name = "endtimes_neutron_star_poi"
+				desc = "endtimes_neutron_star_poi_desc"
+				event_chain = neutron_star_chain
+				location = event_target:endtimes_neutron_star_evt
+			}
 		}
 	}
 }
@@ -271,6 +284,8 @@ country_event = {
 	trigger = {
 		is_country_type = default
 		has_global_flag = endtimes_vultaum_neutron_star
+		
+		NOT = { has_global_flag = endtimes_crisis_timeout }
 	}
 	
 	immediate = {
@@ -280,10 +295,15 @@ country_event = {
 			limit = {is_country_type = default }
 			country_event = { id = endtimescrisis.4103 }
 		}
-		every_country = {
-			limit = { is_country_type = fallen_empire }
+		every_country = { # Forces non-machine fallen empires to awaken
+			limit = { 
+				is_country_type = fallen_empire 
+				NOT = { has_authority = auth_machine_intelligence }
+			}
 			country_event = { id = endtimesutility.0001 days = 30 }
 		}
+		
+		set_timed_global_flag = { flag = endtimes_crisis_timeout days = 120 }
 	}
 }
 
@@ -407,6 +427,8 @@ country_event = {
 	trigger = {
 		is_country_type = default
 		has_global_flag = endtimes_outsiders_signal
+		
+		NOT = { has_global_flag = endtimes_crisis_timeout }
 	}
 	
 	immediate = {
@@ -421,6 +443,13 @@ country_event = {
 			limit = { is_country_type = awakened_fallen_empire }
 			country_event = { id = endtimescrisis.4204 days = 10 }
 		}
+		
+		every_country = {
+			limit = { is_country_type = global_event }
+			country_event = { id = endtimesutility.0002 }
+		}
+		
+		set_timed_global_flag = { flag = endtimes_crisis_timeout days = 30 }
 	}
 }
 
@@ -514,20 +543,30 @@ country_event = {
 				has_ethic = ethic_fanatic_spiritualist
 			}
 		}
+		
 		name = endtimescrisis.4304.YES.SPIR
 		response_text = endtimescrisis.4304.WONDERFUL
 		
 		set_country_flag = endtimes_cooperator
+		remove_country_flag = endtimes_no_choice
+		
 		hidden_effect = {
-			end_event_chain = { "neutron_star_chain" }
+			end_event_chain = "neutron_star_chain"
 			begin_event_chain = {
-				event_chain = "crash_the_simulation_chain"
+				event_chain = "crash_the_simulation_chain_coop"
 				target = ROOT
+			}
+			create_point_of_interest = {
+				id = endtimes_neutronstar.1
+				name = "endtimes_neutron_star_poi"
+				desc = "endtimes_neutron_star_poi_desc"
+				event_chain = crash_the_simulation_chain_coop
+				location = event_target:endtimes_neutron_star_evt
 			}
 		}
 		
-		ai_weight = {
-			factor = 0
+		ai_chance = {
+			base = 0
 		}
 	}
 	
@@ -546,14 +585,21 @@ country_event = {
 		remove_country_flag = endtimes_no_choice
 		
 		hidden_effect = {
-			end_event_chain = { "neutron_star_chain" }
+			end_event_chain = "neutron_star_chain"
 			begin_event_chain = {
-				event_chain = "crash_the_simulation_chain"
+				event_chain = "crash_the_simulation_chain_coop"
 				target = ROOT
+			}
+			create_point_of_interest = {
+				id = endtimes_neutronstar.1
+				name = "endtimes_neutron_star_poi"
+				desc = "endtimes_neutron_star_poi_desc"
+				event_chain = crash_the_simulation_chain_coop
+				location = event_target:endtimes_neutron_star_evt
 			}
 		}
 		
-		ai_weight = {
+		ai_chance = {
 			base = 50
 			modifier = {
 				factor = 1.5
@@ -580,7 +626,7 @@ country_event = {
 			modifier = {
 				factor = 0
 				OR = {
-					has_ethic = ethic_spititualist
+					has_ethic = ethic_spiritualist
 					has_ethic = ethic_fanatic_spiritualist
 					has_civic = civic_hive_devouring_swarm
 					has_civic = civic_inwards_perfection
@@ -598,9 +644,9 @@ country_event = {
 		remove_country_flag = endtimes_no_choice
 		
 		hidden_effect = {
-			end_event_chain = { "neutron_star_chain" }
+			end_event_chain = "neutron_star_chain"
 			begin_event_chain = {
-				event_chain = "crash_the_simulation_chain"
+				event_chain = "crash_the_simulation_chain_resist"
 				target = ROOT
 			}
 			
@@ -608,12 +654,12 @@ country_event = {
 				id = endtimes_neutronstar.1
 				name = "endtimes_neutron_star_poi"
 				desc = "endtimes_neutron_star_poi_desc"
-				event_chain = crash_the_simulation_chain
+				event_chain = crash_the_simulation_chain_resist
 				location = event_target:endtimes_neutron_star_evt
 			}
 		}
 		
-		ai_weight = {
+		ai_chance = {
 			base = 50
 			modifier = {
 				factor = 1.5
@@ -651,7 +697,7 @@ country_event = {
 		if = {
 			limit = { 
 				OR = {
-					has_ethic = ethic_fanatic_spritualist
+					has_ethic = ethic_fanatic_spiritualist
 					has_ethic = ethic_fanatic_xenophile
 				}
 			}
@@ -675,9 +721,9 @@ country_event = { # Vultaum let the empire know that they take their silence as 
 		name = endtimescrisis.4504.a
 		
 		hidden_effect = {
-				end_event_chain = { "neutron_star_chain" }
+				end_event_chain = "neutron_star_chain"
 				begin_event_chain = {
-					event_chain = "crash_the_simulation_chain"
+					event_chain = "crash_the_simulation_chain_resist"
 					target = ROOT
 				}
 			
@@ -685,7 +731,7 @@ country_event = { # Vultaum let the empire know that they take their silence as 
 					id = endtimes_neutronstar.1
 					name = "endtimes_neutron_star_poi"
 					desc = "endtimes_neutron_star_poi_desc"
-					event_chain = crash_the_simulation_chain
+					event_chain = crash_the_simulation_chain_resist
 					location = event_target:endtimes_neutron_star_evt
 				}
 			}
@@ -706,11 +752,17 @@ country_event = {
 	
 	trigger = {
 		has_country_flag = endtimes_cooperator
+		
+		NOT = { has_country_flag = endtimes_crisis_timeout }
 	}
 	
 	immediate = {
 		set_global_flag = endtimes_outsiders_plan
-		country_event = { id = endtimescrisis.4105 }
+		every_country = {
+			limit = { is_country_type = default }
+			country_event = { id = endtimescrisis.4105 }
+			set_timed_country_flag = { flag = endtimes_event_holdoff days = 10 }
+		}
 	}
 }
 
@@ -739,10 +791,11 @@ country_event = {
 		has_global_flag = endtimes_outsiders_plan
 		has_country_flag = endtimes_cooperator
 		NOT = { has_country_flag = endtimes_how_to_crash }
+		NOT = { has_country_flag = endtimes_event_holdoff }
 	}
 	
 	immediate = { # Go straight into the diplo screen again to avoid annoyances. EVALUATE FOR CHANGE
-		country_event = { id = endtimescrisis.4305 }
+		country_event = { id = endtimescrisis.4305 days = 1 }
 	}
 }
 
@@ -765,7 +818,6 @@ country_event = {
 		
 		hidden_effect = {
 			set_country_flag = endtimes_how_to_crash
-			country_event = { id = endtimescrisis.4405 days = 1 }
 		}
 		is_dialog_only = yes
 	}
@@ -776,19 +828,25 @@ country_event = {
 		allow = {
 			has_country_flag = endtimes_how_to_crash
 		}
+		
+		hidden_effect = {
+			country_event = { id = endtimescrisis.4405 days = 1 }
+		}
 	}
 }
 
-country_event = { # Informs player that they can now build Jupiter Brains on gas giants
+# Informs player that they can now build Jupiter Brains on gas giants
+country_event = {
 	id = endtimescrisis.4405
 	title = "endtimescrisis.4405.name"
 	desc = "endtimescrisis.4405.desc"
+	picture = GFX_evt_megastructure_construction
+	
+	is_triggered_only = yes
 	
 	option = {
 		name = endtimescrisis.4405.a
-		custom_tooltip = {
-			text = endtimescrisis.4405.TT
-		}
+		custom_tooltip = "endtimescrisis.4405.TT"
 	}
 }
 
@@ -808,37 +866,30 @@ country_event = {
 		
 		every_country = {
 			limit = { is_country_type = default }
-			country_event = { id = endtimescrisis.4106 }
+			if = {
+				limit = { 
+					AND = {
+						NOT = { has_global_flag = endtimes_first_jupiter_brain_const }
+						has_country_flag = endtimes_resistance
+					}
+				}
+				country_event = { id = endtimescrisis.4406 }
+			}
+			else = {
+				country_event = { id = endtimescrisis.4106 }
+			}
 		}
+		
 	}
 }
 
 country_event = {
 	id = endtimescrisis.4106
-	title = { # Does this even work???
-		trigger = { 
-			has_global_flag = endtimes_first_jupiter_brain_const
-			has_country_flag = endtimes_resistance
-		}
-		text = endtimescrisis.4106.name.FIRST
-	}
-	title = {
-		trigger = { 
-			OR = {
-				NOT = { has_global_flag = endtimes_first_jupiter_brain_const }
-				has_country_flag = endtimes_cooperator
-			}
-		}
-		text = endtimescrisis.4106.name
-	}
+	title = "endtimescrisis.4106.name"
+	picture = GFX_evt_megastructure_construction
+	location = event_target:endtimes_recent_jupiter_brain
+	is_triggered_only = yes
 	
-	desc = {
-		trigger = { 
-			NOT = { has_global_flag = endtimes_first_jupiter_brain_const }
-			has_country_flag = endtimes_resistance
-		}
-		text = endtimescrisis.4106.desc.RESISTFIRST
-	}
 	desc = {
 		trigger = { 
 			NOT = { has_global_flag = endtimes_first_jupiter_brain_const }
@@ -874,31 +925,40 @@ country_event = {
 		trigger = {
 			has_country_flag = endtimes_cooperator
 		}
-		text = endtimescrisis.4106.a
-		hidden_effect = {
-			endtimes_allocate_poi = yes
-		}
+		name = endtimescrisis.4106.a
 	}
 	option = {
 		trigger = {
 			has_country_flag = endtimes_resistance
 		}
-		text = endtimescrisis.4106.b
-		hidden_effect = {
-			endtimes_allocate_poi = yes
-		}
+		name = endtimescrisis.4106.b
 	}
 }
 
 # Solution to setting the flag after the empires have already been alerted to the first brain
-country_event = {
+country_event = { # Can probably be merged with 4406
 	id = endtimescrisis.4206
 	hide_window = yes
+	fire_only_once = yes
 	
 	is_triggered_only = yes
 	
 	immediate = {
 		set_global_flag = endtimes_first_jupiter_brain_const
+	}
+}
+
+# Because Titles cannot be variable... First Jupiter Brain for resistance
+country_event = {
+	id = endtimescrisis.4406
+	title = "endtimescrisis.4406.name"
+	desc = "endtimescrisis.4406.desc"
+	picture = GFX_evt_megastructure_construction
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = endtimescrisis.4406.a
 	}
 }
 
@@ -911,61 +971,44 @@ country_event = {
 	is_triggered_only = yes
 	
 	immediate = {
-		if = { # Inelegant solution until I come up with something better. TODO: Come up with something better.
+		if = {
 			limit = { NOT = { has_global_flag = endtimes_first_jupiter_brain } }
-			country_event = { id = endtimescrisis.4207 days = 1 } 
+			country_event = { id = endtimescrisis.4207 days = 1 } # Cannot be moved due to need for delayed flag
 		}
 		
 		every_country = {
 			limit = { is_country_type = default }
-			country_event = { id = endtimescrisis.4107 }
-		}
-		
-		every_country = {
-			limit = { has_event_chain = "crash_the_simulation_chain" }
-			add_event_chain_counter = {
-				event_chain = "crash_the_simulation_chain"
-				counter = "endtimes_active_jupiter_brains"
-				amount = 1
+			if = {
+				limit = { 
+					AND = {
+						NOT = { has_global_flag = endtimes_first_jupiter_brain }
+						has_country_flag = endtimes_resistance
+					}
+				}
+				country_event = { id = endtimescrisis.4407 }
+			}
+			else = {
+				country_event = { id = endtimescrisis.4107 }
 			}
 		}
 		
 		every_country = { # Variables for tracking. Again, not ideal implemenation.
 			limit = { is_country_type = global_event }
-			country_event = { id = entimesutility.0003 }
+			country_event = { id = endtimesutility.0003 }
 		}
 	}
 }
 
 country_event = {
 	id = endtimescrisis.4107
-	title = { # Does this even work???
-		trigger = { 
-			has_global_flag = endtimes_first_jupiter_brain
-			has_country_flag = endtimes_resistance
-		}
-		text = endtimescrisis.4107.name.FIRST
-	}
-	title = {
-		trigger = { 
-			OR = {
-				NOT = { has_global_flag = endtimes_first_jupiter_brain }
-				has_country_flag = endtimes_cooperator
-			}
-		}
-		text = endtimescrisis.4107.name
-	}
+	title = endtimescrisis.4107.name
+	picture = GFX_evt_gas_giant
+	location = event_target:endtimes_recent_jupiter_brain
+	is_triggered_only = yes
 	
 	desc = {
 		trigger = { 
-			has_global_flag = endtimes_first_jupiter_brain
-			has_country_flag = endtimes_resistance
-		}
-		text = endtimescrisis.4107.desc.RESISTFIRST
-	}
-	desc = {
-		trigger = { 
-			has_global_flag = endtimes_first_jupiter_brain
+			NOT = { has_global_flag = endtimes_first_jupiter_brain }
 			has_country_flag = endtimes_cooperator
 		}
 		text = endtimescrisis.4107.desc.COOPFIRST
@@ -988,7 +1031,7 @@ country_event = {
 	}
 	desc = {
 		trigger = { 
-			NOT = { has_global_flag = endtimes_first_jupiter_brain }
+			has_global_flag = endtimes_first_jupiter_brain
 			has_country_flag = endtimes_cooperator
 		}
 		text = endtimescrisis.4107.desc.COOP
@@ -998,14 +1041,17 @@ country_event = {
 		trigger = {
 			has_country_flag = endtimes_cooperator
 		}
-		text = endtimescrisis.4107.a
+		name = endtimescrisis.4107.a
 		
 		hidden_effect = { 
-		#	endtimes_allocate_poi = yes
-			add_event_chain_counter = {
-				event_chain = "crash_the_simulation_chain"
-				counter = "endtimes_active_jupiter_brains"
-				amount = 1
+			if = {
+				limit = { has_event_chain = "crash_the_simulation_chain_coop" }
+				endtimes_allocate_poi = yes
+				add_event_chain_counter = {
+					event_chain = "crash_the_simulation_chain_coop"
+					counter = "endtimes_active_jupiter_brains"
+					amount = 1
+				}
 			}
 		}
 	}
@@ -1013,23 +1059,27 @@ country_event = {
 		trigger = {
 			has_country_flag = endtimes_resistance
 		}
-		text = endtimescrisis.4107.b
+		name = endtimescrisis.4107.b
 		
 		hidden_effect = {
-		#	endtimes_allocate_poi = yes
-			add_event_chain_counter = {
-				event_chain = "crash_the_simulation_chain"
-				counter = "endtimes_active_jupiter_brains"
-				amount = 1
+			if = {
+				limit = { has_event_chain = "crash_the_simulation_chain_resist" }
+				endtimes_allocate_poi = yes
+				add_event_chain_counter = {
+					event_chain = "crash_the_simulation_chain_resist"
+					counter = "endtimes_active_jupiter_brains"
+					amount = 1
+				}
 			}
 		}
 	}
 }
 
 # Solution to setting the flag after the empires have already been alerted to the first brain
-country_event = {
+country_event = { # Can probably be consolidated into 4407
 	id = endtimescrisis.4207
 	hide_window = yes
+	fire_only_once = yes
 	
 	is_triggered_only = yes
 	
@@ -1038,8 +1088,969 @@ country_event = {
 	}
 }
 
+# Solution for inability to set Title text based on conditions
+country_event = {
+	id = endtimescrisis.4407
+	title = "endtimescrisis.4407.name"
+	desc = "endtimescrisis.4407.desc"
+	picture = GFX_evt_gas_giant
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = endtimescrisis.4407.a
+		hidden_effect = {
+			if = {
+				limit = { has_event_chain = "crash_the_simulation_chain_resist" }
+				endtimes_allocate_poi = yes
+				add_event_chain_counter = {
+					event_chain = "crash_the_simulation_chain_resist"
+					counter = "endtimes_active_jupiter_brains"
+					amount = 1
+				}
+			}
+		}
+	}
+}
 
+## Instability (aka Crisis Severity) Events
+# Instability I Initializer
+country_event = {
+	id = endtimescrisis.4008
+	hide_window = yes
+	fire_only_once = yes
+	
+	trigger = {
+		has_global_flag = endtimes_outsiders_plan
+		any_country = {
+			has_country_flag = endtimes_allow_instability
+		}
+		NOR = {
+			has_global_flag = endtimes_instability_I
+			has_global_flag = endtimes_instability_II
+			has_global_flag = endtimes_instability_III
+			has_global_flag = endtimes_the_escape
+		}
+	}
+	
+	immediate  ={
+		set_global_flag = endtimes_instability_I
+		
+		every_country = {
+			limit = { is_country_type = default }
+			country_event = { id = endtimescrisis.4108 }
+			
+			remove_country_flag = endtimes_allow_instability
+		}
+		
+		every_country = { # Debug
+			limit = { is_country_type = global_event }
+			country_event = { id = endtimesdebug.9998 }
+		}
+	}
+}
 
+# Something is wrong...
+country_event = {
+	id = endtimescrisis.4108
+	title = "endtimescrisis.4108.name"
+	desc = "endtimescrisis.4108.desc"
+	picture = "GFX_evt_surreal_visions"
+	
+	is_triggered_only = yes
+	
+	option = {
+		trigger = {
+			has_country_flag = endtimes_cooperator
+		}
+		name = endtimescrisis.4108.a
+	}
+	option = {
+		trigger = {
+			has_country_flag = endtimes_resistance
+		}
+		name = endtimescrisis.4108.b
+	}
+}
+
+# Workaround event because idiot cannot the language
+#country_event = {
+#	id = endtimescrisis.4208
+#	hide_window = yes
+#	
+#	# To be added to On_Monthly_Pulse
+#	
+#	trigger = {
+#		has_global_flag = endtimes_outsiders_plan
+#		NOR = { 
+#			has_global_flag = endtimes_instability_I
+#			has_global_flag = endtimes_instability_II
+#			has_global_flag = endtimes_instability_III
+#			
+#			has_global_flag = endtimes_monthly_flag
+#		}
+#		NOT = { any_country = { has_country_flag = endtimes_allow_instability } }
+#	}
+#	
+#	immediate = {
+#		every_country = {
+#			limit = { is_country_type = global_event }
+#			if = {
+#				limit = {
+#					check_variable = { 
+#						which = endtimes_jb_stage_I_var 
+#						value <= endtimes_active_jupiter_brains_var
+#					}
+#				}
+#				set_country_flag = endtimes_allow_instability
+#			}
+#			else = {
+#				set_timed_global_flag = { flag = endtimes_monthly_flag months = 1 }
+#			}
+#		}
+#	}
+#}
+
+# First Rift Event
+country_event = {
+	id = endtimescrisis.4009
+	hide_window = yes
+	fire_only_once = yes
+	
+	trigger = {
+		is_country_type = default
+		has_global_flag = endtimes_instability_I
+	}
+	
+	mean_time_to_happen = {
+		months = 6
+	}
+	
+	immediate = {
+		set_global_flag = endtimes_first_rift
+		random_system = {
+			limit = { 
+				any_planet = { has_planet_flag = endtimes_is_jupiter_brain }
+			}
+			random_planet = {
+				limit = { has_planet_flag = endtimes_is_jupiter_brain }
+				
+				create_ambient_object = {
+					location = this
+					type = endtimes_stellar_rift
+					
+					entity_offset = { min = 10 max = 20 }
+					entity_offset_angle = { min = 0 max = 360 }
+					entity_offset_height = { min = -5 max = 5 }
+					
+					save_global_event_target_as = endtimes_rift_01
+					save_global_event_target_as = endtimes_recent_rift
+				}
+				
+				set_planet_flag = endtimes_spawned_rift
+			}
+		}
+		
+		every_country = {
+			limit = { is_country_type = global_event }
+			set_variable = { which = "endtimes_rift_count_var" value = 1 }
+		}
+		
+		every_country = {
+			limit = { is_country_type = default }
+			country_event = { id = endtimescrisis.4109 }
+		}
+	}
+}
+
+country_event = {
+	id = endtimescrisis.4109
+	title = "endtimescrisis.4109.name"
+	desc = "endtimescrisis.4109.desc"
+	picture = "GFX_evt_star_pulsar"
+	location = event_target:endtimes_recent_rift
+	
+	is_triggered_only = yes
+	
+	option = {
+		trigger = {
+			has_country_flag = endtimes_cooperator
+		}
+		name = endtimescrisis.4109.a
+		
+		hidden_effect = {
+			if = {
+				limit = { has_event_chain = crash_the_simulation_chain_coop }
+				create_point_of_interest = {
+					id = endtimes_stellar_rift.1
+					name = "endtimes_stellar_rift_poi" # Can I remove name/desc to make it invisible?
+					desc = "endtimes_stellar_rift_poi_desc"
+					event_chain = crash_the_simulation_chain_coop
+					location = event_target:endtimes_rift_01
+				}
+				add_event_chain_counter = {
+					event_chain = "crash_the_simulation_chain_coop"
+					counter = endtimes_simulation_cracks
+					amount = 1
+				}
+			}
+		}
+	}
+	option = {
+		trigger = {
+			has_country_flag = endtimes_resistance
+		}
+		name = endtimescrisis.4109.b
+		
+		hidden_effect = {
+			if = {
+				limit = { has_event_chain = crash_the_simulation_chain_resist }
+				create_point_of_interest = {
+					id = endtimes_stellar_rift.1
+					name = "endtimes_stellar_rift_poi" # Can I remove name/desc to make it invisible?
+					desc = "endtimes_stellar_rift_poi_desc"
+					event_chain = crash_the_simulation_chain_resist
+					location = event_target:endtimes_rift_01
+				}
+				add_event_chain_counter = {
+					event_chain = "crash_the_simulation_chain_resist"
+					counter = endtimes_simulation_cracks
+					amount = 1
+				}
+			}
+		}
+	}
+}
+
+# Instability II Initializer
+country_event = {
+	id = endtimescrisis.4010
+	hide_window = yes
+	fire_only_once = yes
+	
+	trigger = {
+		has_global_flag = endtimes_outsiders_plan
+		has_global_flag = endtimes_instability_I
+		any_country = {
+			has_country_flag = endtimes_allow_instability
+		}
+	}
+	
+	immediate  ={
+		set_global_flag = endtimes_instability_II
+		remove_global_flag = endtimes_instability_I
+		
+		every_country = {
+			limit = { is_country_type = global_event }
+			remove_country_flag = endtimes_allow_instability
+		}
+		
+		every_country = { # Debug
+			limit = { is_country_type = global_event }
+			country_event = { id = endtimesdebug.9998 }
+		}
+	}
+}
+
+# Workaround event because idiot cannot the language
+#country_event = {
+#	id = endtimescrisis.4210
+#	hide_window = yes
+#	
+#	# To be added to On_Montly_Pulse
+#	
+#	trigger = {
+#		has_global_flag = endtimes_outsiders_plan
+#		has_global_flag = endtimes_instability_I
+#		NOR = { 
+#			has_global_flag = endtimes_instability_II
+#			has_global_flag = endtimes_instability_III
+#			
+#			has_global_flag = endtimes_monthly_flag
+#		}
+#		NOT = { any_country = { has_country_flag = endtimes_allow_instability } }
+#	}
+#	
+#	immediate = {
+#		every_country = {
+#			limit = { is_country_type = global_event }
+#			if = {
+#				limit = {
+#					check_variable = { 
+#						which = endtimes_jb_stage_II_var 
+#						value <= endtimes_active_jupiter_brains_var
+#					}
+#				}
+#				set_country_flag = endtimes_allow_instability
+#			}
+#			else = {
+#				set_timed_global_flag = { flag = endtimes_monthly_flag months = 1 }
+#			}
+#		}
+#	}
+#}
+
+# Second Rift Event
+country_event = {
+	id = endtimescrisis.4011
+	hide_window = yes
+	fire_only_once = yes
+	
+	trigger = {
+		is_country_type = default
+		has_global_flag = endtimes_instability_II
+	}
+	
+	mean_time_to_happen = {
+		months = 6
+	}
+	
+	immediate = {
+		random_system = {
+			limit = { 
+				any_planet = { 
+					AND = { 
+						has_planet_flag = endtimes_is_jupiter_brain
+						NOT = { has_planet_flag = endtimes_spawned_rift }
+					}
+				}
+			}
+			random_planet = {
+				limit = {
+					AND = { 
+						has_planet_flag = endtimes_is_jupiter_brain
+						NOT = { has_planet_flag = endtimes_spawned_rift }
+					}
+				}
+				
+				create_ambient_object = {
+					location = this
+					type = endtimes_stellar_rift
+					
+					entity_offset = { min = 10 max = 20 }
+					entity_offset_angle = { min = 0 max = 360 }
+					entity_offset_height = { min = -5 max = 5 }
+					
+					save_global_event_target_as = endtimes_rift_02
+					save_global_event_target_as = endtimes_recent_rift
+				}
+				
+				set_planet_flag = endtimes_spawned_rift
+			}
+		}
+		
+		every_country = {
+			limit = { is_country_type = global_event }
+			change_variable = { which = endtimes_rift_count_var value = 1 }
+		}
+		
+		every_country = {
+			limit = { is_country_type = default }
+			country_event = { id = endtimescrisis.4111 }
+		}
+	}
+}
+
+country_event = {
+	id = endtimescrisis.4111
+	title = "endtimescrisis.4111.name"
+	desc = "endtimescrisis.4111.desc"
+	picture = "GFX_evt_star_pulsar"
+	location = event_target:endtimes_recent_rift
+	
+	is_triggered_only = yes
+	
+	option = {
+		trigger = {
+			has_country_flag = endtimes_cooperator
+		}
+		name = endtimescrisis.4111.a
+		
+		hidden_effect = {
+			if = {
+				limit = { has_event_chain = crash_the_simulation_chain_coop }
+				create_point_of_interest = {
+					id = endtimes_stellar_rift.2
+					name = "endtimes_stellar_rift_poi" # Can I remove name/desc to make it invisible?
+					desc = "endtimes_stellar_rift_poi_desc"
+					event_chain = crash_the_simulation_chain_coop
+					location = event_target:endtimes_rift_02
+				}
+				add_event_chain_counter = {
+					event_chain = "crash_the_simulation_chain_coop"
+					counter = endtimes_simulation_cracks
+					amount = 1
+				}
+			}
+		}
+	}
+	option = {
+		trigger = {
+			has_country_flag = endtimes_resistance
+		}
+		name = endtimescrisis.4111.b
+		
+		hidden_effect = {
+			if = {
+				limit = { has_event_chain = crash_the_simulation_chain_resist }
+				create_point_of_interest = {
+					id = endtimes_stellar_rift.2
+					name = "endtimes_stellar_rift_poi" # Can I remove name/desc to make it invisible?
+					desc = "endtimes_stellar_rift_poi_desc"
+					event_chain = crash_the_simulation_chain_resist
+					location = event_target:endtimes_rift_02
+				}
+				add_event_chain_counter = {
+					event_chain = "crash_the_simulation_chain_resist"
+					counter = endtimes_simulation_cracks
+					amount = 1
+				}
+			}
+		}
+	}
+}
+
+# Instability III Initializer
+country_event = {
+	id = endtimescrisis.4012
+	hide_window = yes
+	fire_only_once = yes
+	
+	trigger = {
+		has_global_flag = endtimes_outsiders_plan
+		has_global_flag = endtimes_instability_II
+		any_country = {
+			has_country_flag = endtimes_allow_instability
+		}
+	}
+	
+	immediate  ={
+		set_global_flag = endtimes_instability_III
+		remove_global_flag = endtimes_instability_II
+		
+		every_country = {
+			limit = { is_country_type = global_event }
+			remove_country_flag = endtimes_allow_instability
+		}
+	}
+}
+
+# Workaround Event
+#country_event = {
+#	id = endtimescrisis.4212
+#	hide_window = yes
+#	
+#	# To be added to On_Monthly_Pulse
+#	
+#	trigger = {
+#		has_global_flag = endtimes_outsiders_plan
+#		has_global_flag = endtimes_instability_II
+#		NOR = { 
+#			has_global_flag = endtimes_instability_III
+#			
+#			has_global_flag = endtimes_monthly_flag
+#		}
+#		NOT = { any_country = { has_country_flag = endtimes_allow_instability } }
+#	}
+#	
+#	immediate = {
+#		every_country = {
+#			limit = { is_country_type = global_event }
+#			if = {
+#				limit = {
+#					check_variable = { 
+#						which = endtimes_jb_stage_III_var 
+#						value <= endtimes_active_jupiter_brains_var
+#					}
+#				}
+#				set_country_flag = endtimes_allow_instability
+#			}
+#			else = {
+#				set_timed_global_flag = { flag = endtimes_monthly_flag months = 1 }
+#			}
+#		}
+#	}
+#}
+
+# Third Rift Event
+country_event = {
+	id = endtimescrisis.4013
+	hide_window = yes
+	fire_only_once = yes
+	
+	trigger = {
+		is_country_type = default
+		has_global_flag = endtimes_instability_III
+	}
+	
+	mean_time_to_happen = {
+		months = 6
+	}
+	
+	immediate = {
+		set_global_flag = endtimes_first_rift
+		random_system = {
+			limit = { 
+				any_planet = { 
+					AND = { 
+						has_planet_flag = endtimes_is_jupiter_brain
+						NOT = { has_planet_flag = endtimes_spawned_rift }
+					}
+				}
+			}
+			random_planet = {
+				limit = {
+					AND = { 
+						has_planet_flag = endtimes_is_jupiter_brain
+						NOT = { has_planet_flag = endtimes_spawned_rift }
+					}
+				}
+				
+				create_ambient_object = {
+					location = this
+					type = endtimes_stellar_rift
+					
+					entity_offset = { min = 10 max = 20 }
+					entity_offset_angle = { min = 0 max = 360 }
+					entity_offset_height = { min = 0 max = 0 }
+					
+					save_global_event_target_as = endtimes_rift_02
+					save_global_event_target_as = endtimes_recent_rift
+				}
+				
+				set_planet_flag = endtimes_spawned_rift
+			}
+		}
+		
+		every_country = {
+			limit = { is_country_type = global_event }
+			change_variable = { which = endtimes_rift_count_var value = 1 }
+		}
+		
+		every_country = {
+			limit = { is_country_type = default }
+			country_event = { id = endtimescrisis.4113 }
+		}
+	}
+}
+
+country_event = {
+	id = endtimescrisis.4113
+	title = "endtimescrisis.4113.name"
+	desc = "endtimescrisis.4113.desc"
+	picture = "GFX_evt_star_pulsar"
+	location = event_target:endtimes_recent_rift
+	
+	is_triggered_only = yes
+	
+	option = {
+		trigger = {
+			has_country_flag = endtimes_cooperator
+		}
+		name = endtimescrisis.4113.a
+		
+		hidden_effect = {
+			if = {
+				limit = { has_event_chain = crash_the_simulation_chain_coop }
+				create_point_of_interest = {
+					id = endtimes_stellar_rift.3
+					name = "endtimes_stellar_rift_poi" # Can I remove name/desc to make it invisible?
+					desc = "endtimes_stellar_rift_poi_desc"
+					event_chain = crash_the_simulation_chain_coop
+					location = event_target:endtimes_rift_03
+				}
+				add_event_chain_counter = {
+					event_chain = "crash_the_simulation_chain_coop"
+					counter = endtimes_simulation_cracks
+					amount = 1
+				}
+			}
+		}
+	}
+	option = {
+		trigger = {
+			has_country_flag = endtimes_resistance
+		}
+		name = endtimescrisis.4113.b
+		
+		hidden_effect = {
+			if = {
+				limit = { has_event_chain = crash_the_simulation_chain_resist }
+				create_point_of_interest = {
+					id = endtimes_stellar_rift.3
+					name = "endtimes_stellar_rift_poi" # Can I remove name/desc to make it invisible?
+					desc = "endtimes_stellar_rift_poi_desc"
+					event_chain = crash_the_simulation_chain_resist
+					location = event_target:endtimes_rift_03
+				}
+				add_event_chain_counter = {
+					event_chain = "crash_the_simulation_chain_resist"
+					counter = endtimes_simulation_cracks
+					amount = 1
+				}
+			}
+		}
+	}
+}
+
+### ESCAPE
+country_event = {
+	id = endtimescrisis.4014
+	hide_window = yes
+	fire_only_once = yes
+	
+	trigger = {
+		has_global_flag = endtimes_outsiders_plan
+		has_global_flag = endtimes_instability_III
+		any_country = {
+			has_country_flag = endtimes_allow_instability
+		}
+	}
+	
+	immediate  ={
+		set_global_flag = endtimes_the_escape
+		remove_global_flag = endtimes_instability_III
+		
+		every_country = {
+			limit = { is_country_type = global_event }
+		}
+	}
+}
+
+# Workaround Event
+#country_event = {
+#	id = endtimescrisis.4214
+#	hide_window = yes
+#	
+#	# To be added to On_Monthly_Pulse
+#	
+#	trigger = {
+#		has_global_flag = endtimes_outsiders_plan
+#		has_global_flag = endtimes_instability_III
+#		NOT = { 
+#			has_global_flag = endtimes_monthly_flag
+#		}
+#		NOT = { any_country = { has_country_flag = endtimes_allow_instability } }
+#	}
+#	
+#	immediate = {
+#		every_country = {
+#			limit = { is_country_type = global_event }
+#			if = {
+#				limit = {
+#					check_variable = { 
+#						which = endtimes_goal_jupiter_brains_var
+#						value <= endtimes_active_jupiter_brains_var
+#					}
+#				}
+#				set_country_flag = endtimes_allow_instability
+#			}
+#			else = {
+#				set_timed_global_flag = { flag = endtimes_monthly_flag months = 1 }
+#			}
+#		}
+#	}
+#}
+
+# Pulsing Rift Events
+country_event = {
+	id = endtimescrisis.4015
+	hide_window = yes
+	
+	trigger = {
+		is_country_type = default
+		has_global_flag = endtimes_the_escape
+	}
+	
+	mean_time_to_happen = {
+		months = 4
+	}
+	
+	immediate = {
+		random_system = {
+			limit = { 
+				any_planet = { 
+					AND = { 
+						has_planet_flag = endtimes_is_jupiter_brain
+						NOT = { has_planet_flag = endtimes_spawned_rift }
+					}
+				}
+			}
+			random_planet = {
+				limit = {
+					AND = { 
+						has_planet_flag = endtimes_is_jupiter_brain
+						NOT = { has_planet_flag = endtimes_spawned_rift }
+					}
+				}
+				
+				create_ambient_object = {
+					location = this
+					type = endtimes_stellar_rift
+					
+					entity_offset = { min = 10 max = 20 }
+					entity_offset_angle = { min = 0 max = 360 }
+					entity_offset_height = { min = -5 max = 5 }
+				}
+				
+				save_global_event_target_as = endtimes_recent_rift
+				set_planet_flag = endtimes_spawned_rift
+			}
+		}
+		
+		every_country = {
+			limit = { is_country_type = global_event }
+			change_variable = { which = endtimes_rift_count_var value = 1 }
+		}
+		
+		every_country = {
+			limit = { is_country_type = default }
+			country_event = { id = endtimescrisis.4215 }
+		}
+	}
+}
+
+# Beginning of the End
+country_event = {
+	id = endtimescrisis.4115
+	title = "endtimescrisis.4115.name"
+	desc = { 
+		trigger = { 
+			has_country_flag = endtimes_cooperator
+		}
+		text = endtimescrisis.4115.coop
+	}
+	desc = { 
+		trigger = { 
+			has_country_flag = endtimes_resistance
+		}
+		text = endtimescrisis.4115.resist
+	}
+	picture = "GFX_evt_star_pulsar"
+	location = event_target:endtimes_recent_rift
+	
+	is_triggered_only = yes
+	
+	immediate = {
+		remove_global_flag = endtimes_outsiders_choice
+		remove_global_flag = endtimes_outsiders_plan
+	}
+	
+	option = {
+		trigger = {
+			has_country_flag = endtimes_cooperator
+		}
+		name = endtimescrisis.4115.a
+		
+		hidden_effect = {
+			if = {
+				limit = { has_event_chain = crash_the_simulation_chain_coop }
+				add_event_chain_counter = {
+					event_chain = "crash_the_simulation_chain_coop"
+					counter = endtimes_simulation_cracks
+					amount = 1
+				}
+			}
+			add_modifier = {
+				modifier = endtimes_nihilist_outlook
+				days = -1
+			}
+		}
+	}
+	option = {
+		trigger = {
+			has_country_flag = endtimes_resistance
+		}
+		name = endtimescrisis.4115.b
+		
+		hidden_effect = {
+			if = {
+				limit = { has_event_chain = crash_the_simulation_chain_resist }
+				add_event_chain_counter = {
+					event_chain = "crash_the_simulation_chain_resist"
+					counter = endtimes_simulation_cracks
+					amount = 1
+				}
+			}
+			add_modifier = {
+				modifier = endtimes_nihilist_outlook
+				days = -1
+			}
+		}
+	}
+}
+
+# Allocates between named events
+country_event = {
+	id = endtimescrisis.4215
+	hide_window = yes
+	
+	is_triggered_only = yes
+	
+	immediate = {
+		every_country = {
+			limit = { NOT = { has_country_flag = endtimes_beginning_of_the_end } }
+			country_event = { id = endtimescrisis.4115 }
+		}
+		every_country = {
+			limit = { has_country_flag = endtimes_beginning_of_the_end }
+			country_event = { id = endtimescrisis.4415 }
+		}
+	}
+}
+
+# The End Comes Closer
+country_event = {
+	id = endtimescrisis.4415
+	title = "endtimescrisis.4415.name"
+	desc = { 
+		trigger = { 
+			has_country_flag = endtimes_cooperator
+		}
+		text = endtimescrisis.4415.coop
+	}
+	desc = { 
+		trigger = { 
+			has_country_flag = endtimes_resistance
+		}
+		text = endtimescrisis.4415.resist
+	}
+	picture = "GFX_evt_star_pulsar"
+	location = event_target:endtimes_recent_rift
+	
+	is_triggered_only = yes
+	
+	option = {
+		trigger = {
+			has_country_flag = endtimes_cooperator
+		}
+		name = endtimescrisis.4415.a
+		
+		hidden_effect = {
+			if = {
+				limit = { has_event_chain = crash_the_simulation_chain_coop }
+				add_event_chain_counter = {
+					event_chain = "crash_the_simulation_chain_coop"
+					counter = endtimes_simulation_cracks
+					amount = 1
+				}
+			}
+		}
+	}
+	option = {
+		trigger = {
+			has_country_flag = endtimes_resistance
+		}
+		name = endtimescrisis.4415.b
+		
+		hidden_effect = {
+			if = {
+				limit = { has_event_chain = crash_the_simulation_chain_resist }
+				add_event_chain_counter = {
+					event_chain = "crash_the_simulation_chain_resist"
+					counter = endtimes_simulation_cracks
+					amount = 1
+				}
+			}
+		}
+	}
+}
+
+country_event = {
+	id = endtimescrisis.4016
+	hide_window = yes
+	fire_only_once = yes
+	
+	trigger = {
+		has_global_flag = endtimes_the_escape
+		any_country = {
+			has_country_flag = endtimes_allow_end_game
+		}
+	}
+	
+	immediate = {
+		every_country = {
+			limit = { is_country_type = default }
+			country_event = { id = endtimescrisis.4116 }
+		}
+		
+		every_country = {
+			limit = { NOT = { is_country_type = global_event } }
+			country_event = { id = endtimescrisis.4416 days = 1 }
+		}
+	}
+}
+
+country_event = {
+	id = endtimescrisis.4116
+	title = "endtimescrisis.4116.name"
+	desc = "endtimescrisis.4116.desc"
+	picture = GFX_evt_clocks
+	#show_sound = 
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = endtimescrisis.4116.a
+	}
+}
+
+# THE END OF DAYS
+# Workaround Event
+#country_event = {
+#	id = endtimescrisis.4216
+#	hide_window = yes
+#	
+#	# To be added to On_Monthly_Pulse
+#	
+#	trigger = {
+#		has_global_flag = endtimes_the_escape
+#		NOT = { 
+#			has_global_flag = endtimes_monthly_flag
+#		}
+#		NOT = { any_country = { has_country_flag = endtimes_allow_end_game } }
+#	}
+#	
+#	immediate = {
+#		every_country = {
+#			limit = { is_country_type = global_event }
+#			if = {
+#				limit = {
+#					check_variable = { 
+#						which = endtimes_rift_count_var
+#						value >= 7
+#					}
+#				}
+#				set_country_flag = endtimes_allow_end_game
+#			}
+#			else = {
+#				set_timed_global_flag = { flag = endtimes_monthly_flag months = 1 }
+#			}
+#		}
+#	}
+#}
+
+country_event = {
+	id = endtimescrisis.4416
+	hide_window = yes
+	
+	is_triggered_only = yes
+	
+	immediate = {
+		random_planet = {
+			limit = {
+				any_tile = {
+					has_pop = yes
+				}
+			}
+			every_pop = {
+				kill_pop = yes
+			}
+		}
+		
+		country_event = { id = endtimescrisis.4416 days = 1 }
+	}
+}
 
 ### Resistance Chain
 

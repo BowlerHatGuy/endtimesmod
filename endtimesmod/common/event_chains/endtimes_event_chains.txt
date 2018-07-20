@@ -16,12 +16,24 @@ neutron_star_chain = {
 	picture = GFX_evt_star_pulsar
 }
 
-crash_the_simulation_chain = {
+crash_the_simulation_chain_coop = {
 	icon = "gfx/interface/icons/situation_log/situation_log_precursor.dds"
 	picture = GFX_evt_glitchy_matrix
 	counter = {
 		endtimes_active_jupiter_brains = {
-			max = 18 # Placeholder value. Change to the calculated value once that is up
+		}
+		endtimes_jupiter_brains_kills_others = {
+		}
+		endtimes_simulation_cracks = {
+		}
+	}
+}
+
+crash_the_simulation_chain_resist = {
+	icon = "gfx/interface/icons/situation_log/situation_log_precursor.dds"
+	picture = GFX_evt_glitchy_matrix
+	counter = {
+		endtimes_active_jupiter_brains = {
 		}
 		endtimes_jupiter_brains_kills_us = {
 		}

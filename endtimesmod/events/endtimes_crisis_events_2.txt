@@ -31,7 +31,7 @@ country_event = {
 						has_ethic = ethic_spiritualist
 						has_ethic = ethic_fanatic_spiritualist
 						has_ethic = ethic_xenophobe
-						has_ethic = ethic_fanatic_xeonophobe
+						has_ethic = ethic_fanatic_xenophobe
 					}
 				}
 				country_event = { id = endtimesradiant.4101 }
@@ -43,7 +43,7 @@ country_event = {
 						has_ethic = ethic_spiritualist
 						has_ethic = ethic_fanatic_spiritualist
 						has_ethic = ethic_xenophobe
-						has_ethic = ethic_fanatic_xeonophobe
+						has_ethic = ethic_fanatic_xenophobe
 						has_ethic = ethic_gestalt_consciousness
 					}
 				}
@@ -67,7 +67,7 @@ country_event = {
 						has_ethic = ethic_spiritualist
 						has_ethic = ethic_fanatic_spiritualist
 						has_ethic = ethic_xenophobe
-						has_ethic = ethic_fanatic_xeonophobe
+						has_ethic = ethic_fanatic_xenophobe
 						has_ethic = ethic_gestalt_consciousness
 					}
 				}
@@ -101,7 +101,7 @@ country_event = {
 	title = "endtimesradiant.4102.name"
 	desc = "endtimesradiant.4102.desc"
 	picture = GFX_evt_arguing_senate
-	show_sound = event_factions_01
+	show_sound = event_factions
 	
 	is_triggered_only = yes
 	
@@ -137,7 +137,7 @@ country_event = {
 	title = "endtimesradiant.4104.name"
 	desc = "endtimesradiant.4104.desc"
 	picture = GFX_evt_news_room
-	show_sound = event_administrative_work_04
+	show_sound = event_administrative_work
 	
 	is_triggered_only = yes
 	
@@ -156,7 +156,7 @@ country_event = {
 	hide_window = yes
 	
 	mean_time_to_happen = {
-		months = 60
+		months = 360
 	}
 	
 	trigger = {
@@ -179,7 +179,7 @@ country_event = {
 	hide_window = yes
 	
 	mean_time_to_happen = {
-		months = 60
+		months = 360
 	}
 	
 	trigger = {
@@ -204,7 +204,7 @@ country_event = {
 	hide_window = yes
 	
 	mean_time_to_happen = {
-		months = 60
+		months = 360
 	}
 	
 	trigger = {
@@ -226,7 +226,7 @@ country_event = {
 	hide_window = yes
 	
 	mean_time_to_happen = {
-		months = 60
+		months = 360
 	}
 	
 	trigger = {
@@ -250,12 +250,13 @@ country_event = {
 					has_country_flag = endtimes_screams_in_the_void
 				}
 				modifier = {
-					add = 8
+					add = 8		# Addding 8 results in a 33% chance for the remaining 3 options.
 					OR = {
 						has_country_flag = endtimes_harder_to_think
 						has_country_flag = endtimes_broken_laws
 						has_country_flag = endtimes_disappearing_people
 					}
+					# Note that balancing actually make the rare events rarer due to this term. Should keep that in mind.
 				}
 				modifier = {
 					factor = 2
@@ -436,8 +437,8 @@ country_event = {
 	id = endtimesradiant.4501
 	title = "endtimesradiant.4501.name"
 	desc = "endtimesradiant.4501.desc"
-	#picture = GFX_evt_news_room
-	#show_sound = event_administrative_work_04
+	picture = GFX_evt_news_room #temp
+	#show_sound = event_administrative_work
 	
 	is_triggered_only = yes
 	
@@ -455,8 +456,8 @@ country_event = {
 	id = endtimesradiant.4502
 	title = "endtimesradiant.4502.name"
 	desc = "endtimesradiant.4502.desc"
-	#picture = GFX_evt_news_room
-	#show_sound = event_administrative_work_04
+	picture = GFX_evt_news_room #temp
+	#show_sound = event_administrative_work
 	
 	is_triggered_only = yes
 	
@@ -474,8 +475,8 @@ country_event = {
 	id = endtimesradiant.4503
 	title = "endtimesradiant.4503.name"
 	desc = "endtimesradiant.4503.desc"
-	#picture = GFX_evt_news_room
-	#show_sound = event_administrative_work_04
+	picture = GFX_evt_news_room #temp
+	#show_sound = event_administrative_work
 	
 	is_triggered_only = yes
 	
@@ -493,8 +494,8 @@ country_event = {
 	id = endtimesradiant.4504
 	title = "endtimesradiant.4504.name"
 	desc = "endtimesradiant.4504.desc"
-	#picture = GFX_evt_news_room
-	#show_sound = event_administrative_work_04
+	picture = GFX_evt_news_room #temp
+	#show_sound = event_administrative_work
 	
 	is_triggered_only = yes
 	
@@ -512,8 +513,8 @@ country_event = {
 	id = endtimesradiant.4505
 	title = "endtimesradiant.4505.name"
 	desc = "endtimesradiant.4505.desc"
-	#picture = GFX_evt_news_room
-	#show_sound = event_administrative_work_04
+	picture = GFX_evt_news_room #temp
+	#show_sound = event_administrative_work
 	
 	is_triggered_only = yes
 	
@@ -531,8 +532,8 @@ country_event = {
 	id = endtimesradiant.4506
 	title = "endtimesradiant.4506.name"
 	desc = "endtimesradiant.4506.desc"
-	#picture = GFX_evt_news_room
-	#show_sound = event_administrative_work_04
+	picture = GFX_evt_news_room #temp
+	#show_sound = event_administrative_work
 	
 	is_triggered_only = yes
 	
@@ -542,38 +543,5 @@ country_event = {
 	
 	option = {
 	
-	}
-}
-
-## BOOKKEEPER EVENTS
-# Pared Down FE Awakening Event to prevent War in Heaven on Awakening
-country_event = {
-	id = endtimesradiant.0001
-	title = OK
-	desc = OK
-	hide_window = yes
-	
-	is_triggered_only = yes
-
-	immediate = {
-		set_global_flag = sleepers_awake_happened
-
-		country_event = { id = fallen_empires_awakening.3 }
-
-		# Notify players
-		every_country = {
-			limit = {
-				is_ai = no
-			}
-			country_event = { id = fallen_empires_awakening.2 }
-		}
-
-		# Fragged a holy world
-		if = {
-			limit = {
-				has_country_flag = holy_world_killed
-			}
-			country_event = { id = planet_destruction.611 days = 5 }
-		}
 	}
 }

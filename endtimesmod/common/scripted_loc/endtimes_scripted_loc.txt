@@ -4,9 +4,9 @@
 #####################################
 
 # Debug Keys for Logging
-defined_text = { # Probably does not work
-	name = endtimesGetNumEmpires
-	text = {
-		localization_key = endtimes_total_empires_var
-	}
-}
+#defined_text = { # Probably does not work
+#	name = endtimesGetNumEmpires
+#	text = {
+#		localization_key = endtimes_total_empires_var
+#	}
+#}

@@ -12,10 +12,10 @@ biomechanical_terror_army = {
 	war_exhaustion = 1.25
 	time = 180
 	maintenance = 3.0
-	icon_fram = 11
+	icon_frame = 11
 	prerequisites = { "tech_project_e" }
 	cost = {
-		mineral = 400
+		minerals = 400
 		energy = 100
 	}
 	potential = {

@@ -2,13 +2,25 @@
 @base_moon_distance = 10
 
 # Sol System (Water World)
-special_init_05 = {
+endtimes_special_init = {
 	name = "NAME_Sol"
 	class = "sc_g"
 	asteroid_belt = {
 		type = rocky_asteroid_belt
 		radius = 145
 	}
+	
+	usage_odds = {
+		base = 500
+		modifier = {
+			factor = 0
+			any_system = {
+				has_star_flag = sol
+			}
+		}
+	}
+	
+	max_instances = 1
 
 	flags = { empty_sol sol }
 	
@@ -192,7 +204,7 @@ special_init_05 = {
 ### Deprecitated Vultaum Home System
 endtimes_dep_vultaumar_system = {
 	name = "NAME_Vultaumar"
-	class = "sc_b"
+	class = "sc_neutron_star"
 	flags = { vultaumar }
 	
 	planet = {

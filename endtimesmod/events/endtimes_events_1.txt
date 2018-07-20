@@ -96,7 +96,7 @@ ship_event = {
 		hidden_effect = {
 			FROM = {
 				add_modifier = {
-					modifier = "empty_world"
+					modifier = "endtimes_empty_world"
 					days = -1
 				}
 			}
@@ -120,7 +120,7 @@ ship_event = {
 		hidden_effect = {
 			FROM = {
 				add_modifier = {
-					modifier = "empty_world"
+					modifier = "endtimes_empty_world"
 					days = -1
 				}
 			}
@@ -144,7 +144,7 @@ ship_event = {
 		hidden_effect = {
 			FROM = {
 				add_modifier = {
-					modifier = "empty_world"
+					modifier = "endtimes_empty_world"
 					days = -1
 				}
 			}
@@ -168,7 +168,7 @@ ship_event = {
 		hidden_effect = {
 			FROM = {
 				add_modifier = {
-					modifier = "empty_world"
+					modifier = "endtimes_empty_world"
 					days = -1
 				}
 			}
@@ -192,7 +192,7 @@ ship_event = {
 		hidden_effect = {
 			FROM = {
 				add_modifier = {
-					modifier = "empty_world"
+					modifier = "endtimes_empty_world"
 					days = -1
 				}
 			}
@@ -216,7 +216,7 @@ ship_event = {
 		hidden_effect = {
 			FROM = {
 				add_modifier = {
-					modifier = "empty_world"
+					modifier = "endtimes_empty_world"
 					days = -1
 				}
 			}
@@ -240,7 +240,7 @@ ship_event = {
 		hidden_effect = {
 			FROM = {
 				add_modifier = {
-					modifier = "empty_world"
+					modifier = "endtimes_empty_world"
 					days = -1
 				}
 			}
@@ -261,7 +261,7 @@ ship_event = {
 		hidden_effect = {
 			FROM = {
 				add_modifier = {
-					modifier = "empty_world"
+					modifier = "endtimes_empty_world"
 					days = -1
 				}
 			}
@@ -282,7 +282,7 @@ ship_event = {
 		hidden_effect = {
 			FROM = {
 				add_modifier = {
-					modifier = "empty_world"
+					modifier = "endtimes_empty_world"
 					days = -1
 				}
 			}
@@ -306,7 +306,7 @@ ship_event = {
 		hidden_effect = {
 			FROM = {
 				add_modifier = {
-					modifier = "empty_world"
+					modifier = "endtimes_empty_world"
 					days = -1
 				}
 			}
@@ -411,7 +411,7 @@ ship_event = {
 		name = endtimesanom.1001.choice.hiveno
 		trigger = {
 			hidden:owner = {
-				has_authority = auth_hivemind
+				has_authority = auth_hive_mind
 			}
 		}
 		owner = {

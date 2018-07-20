@@ -1,263 +1,1887 @@
-endtimes_allocate_poi = {
+####################################
+# Scripted Effects for Endtimes Mod
+####################################
+
+endtimes_allocate_poi_flag = {
 	if = {
 		limit = {
-			NOT = { has_point_of_interest = { poi = endtimes_jupiter_brain.1 } }
-			has_event_chain = crash_the_simulation_chain
+			any_system = {
+				NOT = {
+					any_planet = {
+						AND = {
+							has_planet_flag = endtimes_is_jupiter_brain
+							has_planet_flag = endtimes_jupiter_brain_01
+						}
+					}
+				}
+			}
 		}
-		create_point_of_interest = {
-		id = endtimes_jupiter_brain.1
-		name = "endtimes_jupiter_brain_poi"
-			desc = "endtimes_jupiter_brain_poi_desc"
-			event_chain = crash_the_simulation_chain
-			location = event_target:endtimes_recent_jupiter_brain
-		}
-	}
-	else_if = {
-		limit = {
-			NOT = { has_point_of_interest = { poi = endtimes_jupiter_brain.2 } }
-			has_event_chain = crash_the_simulation_chain
-		}
-		create_point_of_interest = {
-			id = endtimes_jupiter_brain.2
-			name = "endtimes_jupiter_brain_poi"
-			desc = "endtimes_jupiter_brain_poi_desc"
-			event_chain = crash_the_simulation_chain
-			location = event_target:endtimes_recent_jupiter_brain
+		event_target:endtimes_recent_jupiter_brain = {
+			set_planet_flag = endtimes_jupiter_brain_01
+			save_global_event_target_as = endtimes_brain_01
 		}
 	}
 	else_if = {
 		limit = {
-			NOT = { has_point_of_interest = { poi = endtimes_jupiter_brain.3 } }
-			has_event_chain = crash_the_simulation_chain
+			any_system = {
+				NOT = {
+					any_planet = {
+						AND = {
+							has_planet_flag = endtimes_is_jupiter_brain
+							has_planet_flag = endtimes_jupiter_brain_02
+						}
+					}
+				}
+			}
 		}
-		create_point_of_interest = {
-			id = endtimes_jupiter_brain.3
-			name = "endtimes_jupiter_brain_poi"
-			desc = "endtimes_jupiter_brain_poi_desc"
-			event_chain = crash_the_simulation_chain
-			location = event_target:endtimes_recent_jupiter_brain
-		}
-	}
-	else_if = {
-		limit = {
-			NOT = { has_point_of_interest = { poi = endtimes_jupiter_brain.4 } }
-			has_event_chain = crash_the_simulation_chain
-		}
-		create_point_of_interest = {
-			id = endtimes_jupiter_brain.4
-			name = "endtimes_jupiter_brain_poi"
-			desc = "endtimes_jupiter_brain_poi_desc"
-			event_chain = crash_the_simulation_chain
-			location = event_target:endtimes_recent_jupiter_brain
+		event_target:endtimes_recent_jupiter_brain = {
+			set_planet_flag = endtimes_jupiter_brain_02
+			save_global_event_target_as = endtimes_brain_02
 		}
 	}
 	else_if = {
 		limit = {
-			NOT = { has_point_of_interest = { poi = endtimes_jupiter_brain.5 } }
-			has_event_chain = crash_the_simulation_chain
+			any_system = {
+				NOT = {
+					any_planet = {
+						AND = {
+							has_planet_flag = endtimes_is_jupiter_brain
+							has_planet_flag = endtimes_jupiter_brain_03
+						}
+					}
+				}
+			}
 		}
-		create_point_of_interest = {
-			id = endtimes_jupiter_brain.5
-			name = "endtimes_jupiter_brain_poi"
-			desc = "endtimes_jupiter_brain_poi_desc"
-			event_chain = crash_the_simulation_chain
-			location = event_target:endtimes_recent_jupiter_brain
-		}
-	}
-	else_if = {
-		limit = {
-			NOT = { has_point_of_interest = { poi = endtimes_jupiter_brain.6 } }
-			has_event_chain = crash_the_simulation_chain
-		}
-		create_point_of_interest = {
-			id = endtimes_jupiter_brain.6
-			name = "endtimes_jupiter_brain_poi"
-			desc = "endtimes_jupiter_brain_poi_desc"
-			event_chain = crash_the_simulation_chain
-			location = event_target:endtimes_recent_jupiter_brain
+		event_target:endtimes_recent_jupiter_brain = {
+			set_planet_flag = endtimes_jupiter_brain_03
+			save_global_event_target_as = endtimes_brain_03
 		}
 	}
 	else_if = {
 		limit = {
-			NOT = { has_point_of_interest = { poi = endtimes_jupiter_brain.7 } }
-			has_event_chain = crash_the_simulation_chain
+			any_system = {
+				NOT = {
+					any_planet = {
+						AND = {
+							has_planet_flag = endtimes_is_jupiter_brain
+							has_planet_flag = endtimes_jupiter_brain_04
+						}
+					}
+				}
+			}
 		}
-		create_point_of_interest = {
-			id = endtimes_jupiter_brain.7
-			name = "endtimes_jupiter_brain_poi"
-			desc = "endtimes_jupiter_brain_poi_desc"
-			event_chain = crash_the_simulation_chain
-			location = event_target:endtimes_recent_jupiter_brain
-		}
-	}
-	else_if = {
-		limit = {
-			NOT = { has_point_of_interest = { poi = endtimes_jupiter_brain.8 } }
-			has_event_chain = crash_the_simulation_chain
-		}
-		create_point_of_interest = {
-			id = endtimes_jupiter_brain.8
-			name = "endtimes_jupiter_brain_poi"
-			desc = "endtimes_jupiter_brain_poi_desc"
-			event_chain = crash_the_simulation_chain
-			location = event_target:endtimes_recent_jupiter_brain
+		event_target:endtimes_recent_jupiter_brain = {
+			set_planet_flag = endtimes_jupiter_brain_04
+			save_global_event_target_as = endtimes_brain_04
 		}
 	}
 	else_if = {
 		limit = {
-			NOT = { has_point_of_interest = { poi = endtimes_jupiter_brain.9 } }
-			has_event_chain = crash_the_simulation_chain
+			any_system = {
+				NOT = {
+					any_planet = {
+						AND = {
+							has_planet_flag = endtimes_is_jupiter_brain
+							has_planet_flag = endtimes_jupiter_brain_05
+						}
+					}
+				}
+			}
 		}
-		create_point_of_interest = {
-			id = endtimes_jupiter_brain.9
-			name = "endtimes_jupiter_brain_poi"
-			desc = "endtimes_jupiter_brain_poi_desc"
-			event_chain = crash_the_simulation_chain
-			location = event_target:endtimes_recent_jupiter_brain
-		}
-	}
-	else_if = {
-		limit = {
-			NOT = { has_point_of_interest = { poi = endtimes_jupiter_brain.10 } }
-			has_event_chain = crash_the_simulation_chain
-		}
-		create_point_of_interest = {
-			id = endtimes_jupiter_brain.10
-			name = "endtimes_jupiter_brain_poi"
-			desc = "endtimes_jupiter_brain_poi_desc"
-			event_chain = crash_the_simulation_chain
-			location = event_target:endtimes_recent_jupiter_brain
+		event_target:endtimes_recent_jupiter_brain = {
+			set_planet_flag = endtimes_jupiter_brain_05
+			save_global_event_target_as = endtimes_brain_05
 		}
 	}
 	else_if = {
 		limit = {
-			NOT = { has_point_of_interest = { poi = endtimes_jupiter_brain.11 } }
-			has_event_chain = crash_the_simulation_chain
+			any_system = {
+				NOT = {
+					any_planet = {
+						AND = {
+							has_planet_flag = endtimes_is_jupiter_brain
+							has_planet_flag = endtimes_jupiter_brain_06
+						}
+					}
+				}
+			}
 		}
-		create_point_of_interest = {
-			id = endtimes_jupiter_brain.11
-			name = "endtimes_jupiter_brain_poi"
-			desc = "endtimes_jupiter_brain_poi_desc"
-			event_chain = crash_the_simulation_chain
-			location = event_target:endtimes_recent_jupiter_brain
-		}
-	}
-	else_if = {
-		limit = {
-			NOT = { has_point_of_interest = { poi = endtimes_jupiter_brain.12 } }
-			has_event_chain = crash_the_simulation_chain
-		}
-		create_point_of_interest = {
-			id = endtimes_jupiter_brain.12
-			name = "endtimes_jupiter_brain_poi"
-			desc = "endtimes_jupiter_brain_poi_desc"
-			event_chain = crash_the_simulation_chain
-			location = event_target:endtimes_recent_jupiter_brain
+		event_target:endtimes_recent_jupiter_brain = {
+			set_planet_flag = endtimes_jupiter_brain_06
+			save_global_event_target_as = endtimes_brain_06
 		}
 	}
 	else_if = {
 		limit = {
-			NOT = { has_point_of_interest = { poi = endtimes_jupiter_brain.13 } }
-			has_event_chain = crash_the_simulation_chain
+			any_system = {
+				NOT = {
+					any_planet = {
+						AND = {
+							has_planet_flag = endtimes_is_jupiter_brain
+							has_planet_flag = endtimes_jupiter_brain_07
+						}
+					}
+				}
+			}
 		}
-		create_point_of_interest = {
-			id = endtimes_jupiter_brain.13
-			name = "endtimes_jupiter_brain_poi"
-			desc = "endtimes_jupiter_brain_poi_desc"
-			event_chain = crash_the_simulation_chain
-			location = event_target:endtimes_recent_jupiter_brain
-		}
-	}
-	else_if = {
-		limit = {
-			NOT = { has_point_of_interest = { poi = endtimes_jupiter_brain.14 } }
-			has_event_chain = crash_the_simulation_chain
-		}
-		create_point_of_interest = {
-			id = endtimes_jupiter_brain.14
-			name = "endtimes_jupiter_brain_poi"
-			desc = "endtimes_jupiter_brain_poi_desc"
-			event_chain = crash_the_simulation_chain
-			location = event_target:endtimes_recent_jupiter_brain
+		event_target:endtimes_recent_jupiter_brain = {
+			set_planet_flag = endtimes_jupiter_brain_07
+			save_global_event_target_as = endtimes_brain_07
 		}
 	}
 	else_if = {
 		limit = {
-			NOT = { has_point_of_interest = { poi = endtimes_jupiter_brain.15 } }
-			has_event_chain = crash_the_simulation_chain
+			any_system = {
+				NOT = {
+					any_planet = {
+						AND = {
+							has_planet_flag = endtimes_is_jupiter_brain
+							has_planet_flag = endtimes_jupiter_brain_08
+						}
+					}
+				}
+			}
 		}
-		create_point_of_interest = {
-			id = endtimes_jupiter_brain.15
-			name = "endtimes_jupiter_brain_poi"
-			desc = "endtimes_jupiter_brain_poi_desc"
-			event_chain = crash_the_simulation_chain
-			location = event_target:endtimes_recent_jupiter_brain
-		}
-	}
-	else_if = {
-		limit = {
-			NOT = { has_point_of_interest = { poi = endtimes_jupiter_brain.16 } }
-			has_event_chain = crash_the_simulation_chain
-		}
-		create_point_of_interest = {
-			id = endtimes_jupiter_brain.16
-			name = "endtimes_jupiter_brain_poi"
-			desc = "endtimes_jupiter_brain_poi_desc"
-			event_chain = crash_the_simulation_chain
-			location = event_target:endtimes_recent_jupiter_brain
+		event_target:endtimes_recent_jupiter_brain = {
+			set_planet_flag = endtimes_jupiter_brain_08
+			save_global_event_target_as = endtimes_brain_08
 		}
 	}
 	else_if = {
 		limit = {
-			NOT = { has_point_of_interest = { poi = endtimes_jupiter_brain.17 } }
-			has_event_chain = crash_the_simulation_chain
+			any_system = {
+				NOT = {
+					any_planet = {
+						AND = {
+							has_planet_flag = endtimes_is_jupiter_brain
+							has_planet_flag = endtimes_jupiter_brain_09
+						}
+					}
+				}
+			}
 		}
-		create_point_of_interest = {
-			id = endtimes_jupiter_brain.17
-			name = "endtimes_jupiter_brain_poi"
-			desc = "endtimes_jupiter_brain_poi_desc"
-			event_chain = crash_the_simulation_chain
-			location = event_target:endtimes_recent_jupiter_brain
-		}
-	}
-	else_if = {
-		limit = {
-			NOT = { has_point_of_interest = { poi = endtimes_jupiter_brain.18 } }
-			has_event_chain = crash_the_simulation_chain
-		}
-		create_point_of_interest = {
-			id = endtimes_jupiter_brain.18
-			name = "endtimes_jupiter_brain_poi"
-			desc = "endtimes_jupiter_brain_poi_desc"
-			event_chain = crash_the_simulation_chain
-			location = event_target:endtimes_recent_jupiter_brain
+		event_target:endtimes_recent_jupiter_brain = {
+			set_planet_flag = endtimes_jupiter_brain_09
+			save_global_event_target_as = endtimes_brain_09
 		}
 	}
 	else_if = {
 		limit = {
-			NOT = { has_point_of_interest = { poi = endtimes_jupiter_brain.19 } }
-			has_event_chain = crash_the_simulation_chain
+			any_system = {
+				NOT = {
+					any_planet = {
+						AND = {
+							has_planet_flag = endtimes_is_jupiter_brain
+							has_planet_flag = endtimes_jupiter_brain_10
+						}
+					}
+				}
+			}
 		}
-		create_point_of_interest = {
-			id = endtimes_jupiter_brain.19
-			name = "endtimes_jupiter_brain_poi"
-			desc = "endtimes_jupiter_brain_poi_desc"
-			event_chain = crash_the_simulation_chain
-			location = event_target:endtimes_recent_jupiter_brain
+		event_target:endtimes_recent_jupiter_brain = {
+			set_planet_flag = endtimes_jupiter_brain_10
+			save_global_event_target_as = endtimes_brain_10
 		}
 	}
 	else_if = {
 		limit = {
-			NOT = { has_point_of_interest = { poi = endtimes_jupiter_brain.20 } }
-			has_event_chain = crash_the_simulation_chain
+			any_system = {
+				NOT = {
+					any_planet = {
+						AND = {
+							has_planet_flag = endtimes_is_jupiter_brain
+							has_planet_flag = endtimes_jupiter_brain_11
+						}
+					}
+				}
+			}
 		}
-		create_point_of_interest = {
-			id = endtimes_jupiter_brain.20
-			name = "endtimes_jupiter_brain_poi"
-			desc = "endtimes_jupiter_brain_poi_desc"
-			event_chain = crash_the_simulation_chain
-			location = event_target:endtimes_recent_jupiter_brain
+		event_target:endtimes_recent_jupiter_brain = {
+			set_planet_flag = endtimes_jupiter_brain_11
+			save_global_event_target_as = endtimes_brain_11
 		}
-	}	
+	}
+	else_if = {
+		limit = {
+			any_system = {
+				NOT = {
+					any_planet = {
+						AND = {
+							has_planet_flag = endtimes_is_jupiter_brain
+							has_planet_flag = endtimes_jupiter_brain_12
+						}
+					}
+				}
+			}
+		}
+		event_target:endtimes_recent_jupiter_brain = {
+			set_planet_flag = endtimes_jupiter_brain_12
+			save_global_event_target_as = endtimes_brain_12
+		}
+	}
+	else_if = {
+		limit = {
+			any_system = {
+				NOT = {
+					any_planet = {
+						AND = {
+							has_planet_flag = endtimes_is_jupiter_brain
+							has_planet_flag = endtimes_jupiter_brain_13
+						}
+					}
+				}
+			}
+		}
+		event_target:endtimes_recent_jupiter_brain = {
+			set_planet_flag = endtimes_jupiter_brain_13
+			save_global_event_target_as = endtimes_brain_13
+		}
+	}
+	else_if = {
+		limit = {
+			any_system = {
+				NOT = {
+					any_planet = {
+						AND = {
+							has_planet_flag = endtimes_is_jupiter_brain
+							has_planet_flag = endtimes_jupiter_brain_14
+						}
+					}
+				}
+			}
+		}
+		event_target:endtimes_recent_jupiter_brain = {
+			set_planet_flag = endtimes_jupiter_brain_14
+			save_global_event_target_as = endtimes_brain_14
+		}
+	}
+	else_if = {
+		limit = {
+			any_system = {
+				NOT = {
+					any_planet = {
+						AND = {
+							has_planet_flag = endtimes_is_jupiter_brain
+							has_planet_flag = endtimes_jupiter_brain_15
+						}
+					}
+				}
+			}
+		}
+		event_target:endtimes_recent_jupiter_brain = {
+			set_planet_flag = endtimes_jupiter_brain_15
+			save_global_event_target_as = endtimes_brain_15
+		}
+	}
+	else_if = {
+		limit = {
+			any_system = {
+				NOT = {
+					any_planet = {
+						AND = {
+							has_planet_flag = endtimes_is_jupiter_brain
+							has_planet_flag = endtimes_jupiter_brain_16
+						}
+					}
+				}
+			}
+		}
+		event_target:endtimes_recent_jupiter_brain = {
+			set_planet_flag = endtimes_jupiter_brain_16
+			save_global_event_target_as = endtimes_brain_16
+		}
+	}
+	else_if = {
+		limit = {
+			any_system = {
+				NOT = {
+					any_planet = {
+						AND = {
+							has_planet_flag = endtimes_is_jupiter_brain
+							has_planet_flag = endtimes_jupiter_brain_17
+						}
+					}
+				}
+			}
+		}
+		event_target:endtimes_recent_jupiter_brain = {
+			set_planet_flag = endtimes_jupiter_brain_17
+			save_global_event_target_as = endtimes_brain_17
+		}
+	}
+	else_if = {
+		limit = {
+			any_system = {
+				NOT = {
+					any_planet = {
+						AND = {
+							has_planet_flag = endtimes_is_jupiter_brain
+							has_planet_flag = endtimes_jupiter_brain_18
+						}
+					}
+				}
+			}
+		}
+		event_target:endtimes_recent_jupiter_brain = {
+			set_planet_flag = endtimes_jupiter_brain_18
+			save_global_event_target_as = endtimes_brain_18
+		}
+	}
+	else_if = {
+		limit = {
+			any_system = {
+				NOT = {
+					any_planet = {
+						AND = {
+							has_planet_flag = endtimes_is_jupiter_brain
+							has_planet_flag = endtimes_jupiter_brain_19
+						}
+					}
+				}
+			}
+		}
+		event_target:endtimes_recent_jupiter_brain = {
+			set_planet_flag = endtimes_jupiter_brain_19
+			save_global_event_target_as = endtimes_brain_19
+		}
+	}
+	else_if = {
+		limit = {
+			any_system = {
+				NOT = {
+					any_planet = {
+						AND = {
+							has_planet_flag = endtimes_is_jupiter_brain
+							has_planet_flag = endtimes_jupiter_brain_20
+						}
+					}
+				}
+			}
+		}
+		event_target:endtimes_recent_jupiter_brain = {
+			set_planet_flag = endtimes_jupiter_brain_20
+			save_global_event_target_as = endtimes_brain_20
+		}
+	}
+	else_if = {
+		limit = {
+			any_system = {
+				NOT = {
+					any_planet = {
+						AND = {
+							has_planet_flag = endtimes_is_jupiter_brain
+							has_planet_flag = endtimes_jupiter_brain_21
+						}
+					}
+				}
+			}
+		}
+		event_target:endtimes_recent_jupiter_brain = {
+			set_planet_flag = endtimes_jupiter_brain_21
+			save_global_event_target_as = endtimes_brain_21
+		}
+	}
+	else_if = {
+		limit = {
+			any_system = {
+				NOT = {
+					any_planet = {
+						AND = {
+							has_planet_flag = endtimes_is_jupiter_brain
+							has_planet_flag = endtimes_jupiter_brain_22
+						}
+					}
+				}
+			}
+		}
+		event_target:endtimes_recent_jupiter_brain = {
+			set_planet_flag = endtimes_jupiter_brain_22
+			save_global_event_target_as = endtimes_brain_22
+		}
+	}
+	else_if = {
+		limit = {
+			any_system = {
+				NOT = {
+					any_planet = {
+						AND = {
+							has_planet_flag = endtimes_is_jupiter_brain
+							has_planet_flag = endtimes_jupiter_brain_23
+						}
+					}
+				}
+			}
+		}
+		event_target:endtimes_recent_jupiter_brain = {
+			set_planet_flag = endtimes_jupiter_brain_23
+			save_global_event_target_as = endtimes_brain_23
+		}
+	}
+	else_if = {
+		limit = {
+			any_system = {
+				NOT = {
+					any_planet = {
+						AND = {
+							has_planet_flag = endtimes_is_jupiter_brain
+							has_planet_flag = endtimes_jupiter_brain_24
+						}
+					}
+				}
+			}
+		}
+		event_target:endtimes_recent_jupiter_brain = {
+			set_planet_flag = endtimes_jupiter_brain_24
+			save_global_event_target_as = endtimes_brain_24
+		}
+	}
+	else_if = {
+		limit = {
+			any_system = {
+				NOT = {
+					any_planet = {
+						AND = {
+							has_planet_flag = endtimes_is_jupiter_brain
+							has_planet_flag = endtimes_jupiter_brain_25
+						}
+					}
+				}
+			}
+		}
+		event_target:endtimes_recent_jupiter_brain = {
+			set_planet_flag = endtimes_jupiter_brain_25
+			save_global_event_target_as = endtimes_brain_25
+		}
+	}
+	else_if = {
+		limit = {
+			any_system = {
+				NOT = {
+					any_planet = {
+						AND = {
+							has_planet_flag = endtimes_is_jupiter_brain
+							has_planet_flag = endtimes_jupiter_brain_26
+						}
+					}
+				}
+			}
+		}
+		event_target:endtimes_recent_jupiter_brain = {
+			set_planet_flag = endtimes_jupiter_brain_26
+			save_global_event_target_as = endtimes_brain_26
+		}
+	}
+	else_if = {
+		limit = {
+			any_system = {
+				NOT = {
+					any_planet = {
+						AND = {
+							has_planet_flag = endtimes_is_jupiter_brain
+							has_planet_flag = endtimes_jupiter_brain_27
+						}
+					}
+				}
+			}
+		}
+		event_target:endtimes_recent_jupiter_brain = {
+			set_planet_flag = endtimes_jupiter_brain_27
+			save_global_event_target_as = endtimes_brain_27
+		}
+	}
+	else_if = {
+		limit = {
+			any_system = {
+				NOT = {
+					any_planet = {
+						AND = {
+							has_planet_flag = endtimes_is_jupiter_brain
+							has_planet_flag = endtimes_jupiter_brain_28
+						}
+					}
+				}
+			}
+		}
+		event_target:endtimes_recent_jupiter_brain = {
+			set_planet_flag = endtimes_jupiter_brain_28
+			save_global_event_target_as = endtimes_brain_28
+		}
+	}
+	else_if = {
+		limit = {
+			any_system = {
+				NOT = {
+					any_planet = {
+						AND = {
+							has_planet_flag = endtimes_is_jupiter_brain
+							has_planet_flag = endtimes_jupiter_brain_29
+						}
+					}
+				}
+			}
+		}
+		event_target:endtimes_recent_jupiter_brain = {
+			set_planet_flag = endtimes_jupiter_brain_29
+			save_global_event_target_as = endtimes_brain_29
+		}
+	}
+	else_if = {
+		limit = {
+			any_system = {
+				NOT = {
+					any_planet = {
+						AND = {
+							has_planet_flag = endtimes_is_jupiter_brain
+							has_planet_flag = endtimes_jupiter_brain_30
+						}
+					}
+				}
+			}
+		}
+		event_target:endtimes_recent_jupiter_brain = {
+			set_planet_flag = endtimes_jupiter_brain_30
+			save_global_event_target_as = endtimes_brain_30
+		}
+	}
+	else_if = {
+		limit = {
+			any_system = {
+				NOT = {
+					any_planet = {
+						AND = {
+							has_planet_flag = endtimes_is_jupiter_brain
+							has_planet_flag = endtimes_jupiter_brain_31
+						}
+					}
+				}
+			}
+		}
+		event_target:endtimes_recent_jupiter_brain = {
+			set_planet_flag = endtimes_jupiter_brain_31
+			save_global_event_target_as = endtimes_brain_31
+		}
+	}
+	else_if = {
+		limit = {
+			any_system = {
+				NOT = {
+					any_planet = {
+						AND = {
+							has_planet_flag = endtimes_is_jupiter_brain
+							has_planet_flag = endtimes_jupiter_brain_32
+						}
+					}
+				}
+			}
+		}
+		event_target:endtimes_recent_jupiter_brain = {
+			set_planet_flag = endtimes_jupiter_brain_32
+			save_global_event_target_as = endtimes_brain_32
+		}
+	}
+	else_if = {
+		limit = {
+			any_system = {
+				NOT = {
+					any_planet = {
+						AND = {
+							has_planet_flag = endtimes_is_jupiter_brain
+							has_planet_flag = endtimes_jupiter_brain_33
+						}
+					}
+				}
+			}
+		}
+		event_target:endtimes_recent_jupiter_brain = {
+			set_planet_flag = endtimes_jupiter_brain_33
+			save_global_event_target_as = endtimes_brain_33
+		}
+	}
+	else_if = {
+		limit = {
+			any_system = {
+				NOT = {
+					any_planet = {
+						AND = {
+							has_planet_flag = endtimes_is_jupiter_brain
+							has_planet_flag = endtimes_jupiter_brain_34
+						}
+					}
+				}
+			}
+		}
+		event_target:endtimes_recent_jupiter_brain = {
+			set_planet_flag = endtimes_jupiter_brain_34
+			save_global_event_target_as = endtimes_brain_34
+		}
+	}
+	else_if = {
+		limit = {
+			any_system = {
+				NOT = {
+					any_planet = {
+						AND = {
+							has_planet_flag = endtimes_is_jupiter_brain
+							has_planet_flag = endtimes_jupiter_brain_35
+						}
+					}
+				}
+			}
+		}
+		event_target:endtimes_recent_jupiter_brain = {
+			set_planet_flag = endtimes_jupiter_brain_35
+			save_global_event_target_as = endtimes_brain_35
+		}
+	}
+	else_if = {
+		limit = {
+			any_system = {
+				NOT = {
+					any_planet = {
+						AND = {
+							has_planet_flag = endtimes_is_jupiter_brain
+							has_planet_flag = endtimes_jupiter_brain_36
+						}
+					}
+				}
+			}
+		}
+		event_target:endtimes_recent_jupiter_brain = {
+			set_planet_flag = endtimes_jupiter_brain_36
+			save_global_event_target_as = endtimes_brain_36
+		}
+	}
 }
 
+endtimes_allocate_poi = {
+	endtimes_allocate_poi_flag = yes
+	
+	if = {
+		limit = {
+			OR = {
+				has_event_chain = crash_the_simulation_chain_coop
+				has_event_chain = crash_the_simulation_chain_resist
+			}
+			NOT = { 
+				has_point_of_interest = { poi = endtimes_jupiter_brain.1 }
+			}
+			any_system = {
+				any_planet = { has_planet_flag = endtimes_jupiter_brain_01 }
+			}
+		}
+		
+		if = {
+			limit = { has_event_chain = crash_the_simulation_chain_coop }
+			create_point_of_interest = {
+				id = endtimes_jupiter_brain.1
+				name = "endtimes_jupiter_brain_poi"
+				desc = "endtimes_jupiter_brain_poi_desc"
+				event_chain = crash_the_simulation_chain_coop
+				location = event_target:endtimes_brain_01
+			}
+		}
+		else = {
+			create_point_of_interest = {
+				id = endtimes_jupiter_brain.1
+				name = "endtimes_jupiter_brain_poi"
+				desc = "endtimes_jupiter_brain_poi_desc"
+				event_chain = crash_the_simulation_chain_resist
+				location = event_target:endtimes_brain_01
+			}
+		}
+	}
+	if = {
+		limit = {
+			OR = {
+				has_event_chain = crash_the_simulation_chain_coop
+				has_event_chain = crash_the_simulation_chain_resist
+			}
+			NOT = { 
+				has_point_of_interest = { poi = endtimes_jupiter_brain.2 }
+			}
+			any_system = {
+				any_planet = { has_planet_flag = endtimes_jupiter_brain_02 }
+			}
+		}
+		
+		if = {
+			limit = { has_event_chain = crash_the_simulation_chain_coop }
+			create_point_of_interest = {
+				id = endtimes_jupiter_brain.2
+				name = "endtimes_jupiter_brain_poi"
+				desc = "endtimes_jupiter_brain_poi_desc"
+				event_chain = crash_the_simulation_chain_coop
+				location = event_target:endtimes_brain_02
+			}
+		}
+		else = {
+			create_point_of_interest = {
+				id = endtimes_jupiter_brain.2
+				name = "endtimes_jupiter_brain_poi"
+				desc = "endtimes_jupiter_brain_poi_desc"
+				event_chain = crash_the_simulation_chain_resist
+				location = event_target:endtimes_brain_02
+			}
+		}
+	}
+	if = {
+		limit = {
+			OR = {
+				has_event_chain = crash_the_simulation_chain_coop
+				has_event_chain = crash_the_simulation_chain_resist
+			}
+			NOT = { 
+				has_point_of_interest = { poi = endtimes_jupiter_brain.3 }
+			}
+			any_system = {
+				any_planet = { has_planet_flag = endtimes_jupiter_brain_03 }
+			}
+		}
+		
+		if = {
+			limit = { has_event_chain = crash_the_simulation_chain_coop }
+			create_point_of_interest = {
+				id = endtimes_jupiter_brain.3
+				name = "endtimes_jupiter_brain_poi"
+				desc = "endtimes_jupiter_brain_poi_desc"
+				event_chain = crash_the_simulation_chain_coop
+				location = event_target:endtimes_brain_03
+			}
+		}
+		else = {
+			create_point_of_interest = {
+				id = endtimes_jupiter_brain.3
+				name = "endtimes_jupiter_brain_poi"
+				desc = "endtimes_jupiter_brain_poi_desc"
+				event_chain = crash_the_simulation_chain_resist
+				location = event_target:endtimes_brain_03
+			}
+		}
+	}
+	if = {
+		limit = {
+			OR = {
+				has_event_chain = crash_the_simulation_chain_coop
+				has_event_chain = crash_the_simulation_chain_resist
+			}
+			NOT = { 
+				has_point_of_interest = { poi = endtimes_jupiter_brain.4 }
+			}
+			any_system = {
+				any_planet = { has_planet_flag = endtimes_jupiter_brain_04 }
+			}
+		}
+		
+		if = {
+			limit = { has_event_chain = crash_the_simulation_chain_coop }
+			create_point_of_interest = {
+				id = endtimes_jupiter_brain.4
+				name = "endtimes_jupiter_brain_poi"
+				desc = "endtimes_jupiter_brain_poi_desc"
+				event_chain = crash_the_simulation_chain_coop
+				location = event_target:endtimes_brain_04
+			}
+		}
+		else = {
+			create_point_of_interest = {
+				id = endtimes_jupiter_brain.4
+				name = "endtimes_jupiter_brain_poi"
+				desc = "endtimes_jupiter_brain_poi_desc"
+				event_chain = crash_the_simulation_chain_resist
+				location = event_target:endtimes_brain_04
+			}
+		}
+	}
+	if = {
+		limit = {
+			OR = {
+				has_event_chain = crash_the_simulation_chain_coop
+				has_event_chain = crash_the_simulation_chain_resist
+			}
+			NOT = { 
+				has_point_of_interest = { poi = endtimes_jupiter_brain.5 }
+			}
+			any_system = {
+				any_planet = { has_planet_flag = endtimes_jupiter_brain_05 }
+			}
+		}
+		
+		if = {
+			limit = { has_event_chain = crash_the_simulation_chain_coop }
+			create_point_of_interest = {
+				id = endtimes_jupiter_brain.5
+				name = "endtimes_jupiter_brain_poi"
+				desc = "endtimes_jupiter_brain_poi_desc"
+				event_chain = crash_the_simulation_chain_coop
+				location = event_target:endtimes_brain_05
+			}
+		}
+		else = {
+			create_point_of_interest = {
+				id = endtimes_jupiter_brain.5
+				name = "endtimes_jupiter_brain_poi"
+				desc = "endtimes_jupiter_brain_poi_desc"
+				event_chain = crash_the_simulation_chain_resist
+				location = event_target:endtimes_brain_05
+			}
+		}
+	}
+	if = {
+		limit = {
+			OR = {
+				has_event_chain = crash_the_simulation_chain_coop
+				has_event_chain = crash_the_simulation_chain_resist
+			}
+			NOT = { 
+				has_point_of_interest = { poi = endtimes_jupiter_brain.6 }
+			}
+			any_system = {
+				any_planet = { has_planet_flag = endtimes_jupiter_brain_06 }
+			}
+		}
+		
+		if = {
+			limit = { has_event_chain = crash_the_simulation_chain_coop }
+			create_point_of_interest = {
+				id = endtimes_jupiter_brain.6
+				name = "endtimes_jupiter_brain_poi"
+				desc = "endtimes_jupiter_brain_poi_desc"
+				event_chain = crash_the_simulation_chain_coop
+				location = event_target:endtimes_brain_06
+			}
+		}
+		else = {
+			create_point_of_interest = {
+				id = endtimes_jupiter_brain.6
+				name = "endtimes_jupiter_brain_poi"
+				desc = "endtimes_jupiter_brain_poi_desc"
+				event_chain = crash_the_simulation_chain_resist
+				location = event_target:endtimes_brain_06
+			}
+		}
+	}
+	if = {
+		limit = {
+			OR = {
+				has_event_chain = crash_the_simulation_chain_coop
+				has_event_chain = crash_the_simulation_chain_resist
+			}
+			NOT = { 
+				has_point_of_interest = { poi = endtimes_jupiter_brain.7 }
+			}
+			any_system = {
+				any_planet = { has_planet_flag = endtimes_jupiter_brain_07 }
+			}
+		}
+		
+		if = {
+			limit = { has_event_chain = crash_the_simulation_chain_coop }
+			create_point_of_interest = {
+				id = endtimes_jupiter_brain.7
+				name = "endtimes_jupiter_brain_poi"
+				desc = "endtimes_jupiter_brain_poi_desc"
+				event_chain = crash_the_simulation_chain_coop
+				location = event_target:endtimes_brain_07
+			}
+		}
+		else = {
+			create_point_of_interest = {
+				id = endtimes_jupiter_brain.7
+				name = "endtimes_jupiter_brain_poi"
+				desc = "endtimes_jupiter_brain_poi_desc"
+				event_chain = crash_the_simulation_chain_resist
+				location = event_target:endtimes_brain_07
+			}
+		}
+	}
+	if = {
+		limit = {
+			OR = {
+				has_event_chain = crash_the_simulation_chain_coop
+				has_event_chain = crash_the_simulation_chain_resist
+			}
+			NOT = { 
+				has_point_of_interest = { poi = endtimes_jupiter_brain.8 }
+			}
+			any_system = {
+				any_planet = { has_planet_flag = endtimes_jupiter_brain_08 }
+			}
+		}
+		
+		if = {
+			limit = { has_event_chain = crash_the_simulation_chain_coop }
+			create_point_of_interest = {
+				id = endtimes_jupiter_brain.8
+				name = "endtimes_jupiter_brain_poi"
+				desc = "endtimes_jupiter_brain_poi_desc"
+				event_chain = crash_the_simulation_chain_coop
+				location = event_target:endtimes_brain_08
+			}
+		}
+		else = {
+			create_point_of_interest = {
+				id = endtimes_jupiter_brain.8
+				name = "endtimes_jupiter_brain_poi"
+				desc = "endtimes_jupiter_brain_poi_desc"
+				event_chain = crash_the_simulation_chain_resist
+				location = event_target:endtimes_brain_08
+			}
+		}
+	}
+	if = {
+		limit = {
+			OR = {
+				has_event_chain = crash_the_simulation_chain_coop
+				has_event_chain = crash_the_simulation_chain_resist
+			}
+			NOT = { 
+				has_point_of_interest = { poi = endtimes_jupiter_brain.9 }
+			}
+			any_system = {
+				any_planet = { has_planet_flag = endtimes_jupiter_brain_09 }
+			}
+		}
+		
+		if = {
+			limit = { has_event_chain = crash_the_simulation_chain_coop }
+			create_point_of_interest = {
+				id = endtimes_jupiter_brain.9
+				name = "endtimes_jupiter_brain_poi"
+				desc = "endtimes_jupiter_brain_poi_desc"
+				event_chain = crash_the_simulation_chain_coop
+				location = event_target:endtimes_brain_09
+			}
+		}
+		else = {
+			create_point_of_interest = {
+				id = endtimes_jupiter_brain.9
+				name = "endtimes_jupiter_brain_poi"
+				desc = "endtimes_jupiter_brain_poi_desc"
+				event_chain = crash_the_simulation_chain_resist
+				location = event_target:endtimes_brain_09
+			}
+		}
+	}
+	if = {
+		limit = {
+			OR = {
+				has_event_chain = crash_the_simulation_chain_coop
+				has_event_chain = crash_the_simulation_chain_resist
+			}
+			NOT = { 
+				has_point_of_interest = { poi = endtimes_jupiter_brain.10 }
+			}
+			any_system = {
+				any_planet = { has_planet_flag = endtimes_jupiter_brain_10 }
+			}
+		}
+		
+		if = {
+			limit = { has_event_chain = crash_the_simulation_chain_coop }
+			create_point_of_interest = {
+				id = endtimes_jupiter_brain.10
+				name = "endtimes_jupiter_brain_poi"
+				desc = "endtimes_jupiter_brain_poi_desc"
+				event_chain = crash_the_simulation_chain_coop
+				location = event_target:endtimes_brain_10
+			}
+		}
+		else = {
+			create_point_of_interest = {
+				id = endtimes_jupiter_brain.10
+				name = "endtimes_jupiter_brain_poi"
+				desc = "endtimes_jupiter_brain_poi_desc"
+				event_chain = crash_the_simulation_chain_resist
+				location = event_target:endtimes_brain_10
+			}
+		}
+	}
+	if = {
+		limit = {
+			OR = {
+				has_event_chain = crash_the_simulation_chain_coop
+				has_event_chain = crash_the_simulation_chain_resist
+			}
+			NOT = { 
+				has_point_of_interest = { poi = endtimes_jupiter_brain.11 }
+			}
+			any_system = {
+				any_planet = { has_planet_flag = endtimes_jupiter_brain_11 }
+			}
+		}
+		
+		if = {
+			limit = { has_event_chain = crash_the_simulation_chain_coop }
+			create_point_of_interest = {
+				id = endtimes_jupiter_brain.11
+				name = "endtimes_jupiter_brain_poi"
+				desc = "endtimes_jupiter_brain_poi_desc"
+				event_chain = crash_the_simulation_chain_coop
+				location = event_target:endtimes_brain_11
+			}
+		}
+		else = {
+			create_point_of_interest = {
+				id = endtimes_jupiter_brain.11
+				name = "endtimes_jupiter_brain_poi"
+				desc = "endtimes_jupiter_brain_poi_desc"
+				event_chain = crash_the_simulation_chain_resist
+				location = event_target:endtimes_brain_11
+			}
+		}
+	}
+	if = {
+		limit = {
+			OR = {
+				has_event_chain = crash_the_simulation_chain_coop
+				has_event_chain = crash_the_simulation_chain_resist
+			}
+			NOT = { 
+				has_point_of_interest = { poi = endtimes_jupiter_brain.12 }
+			}
+			any_system = {
+				any_planet = { has_planet_flag = endtimes_jupiter_brain_12 }
+			}
+		}
+		
+		if = {
+			limit = { has_event_chain = crash_the_simulation_chain_coop }
+			create_point_of_interest = {
+				id = endtimes_jupiter_brain.12
+				name = "endtimes_jupiter_brain_poi"
+				desc = "endtimes_jupiter_brain_poi_desc"
+				event_chain = crash_the_simulation_chain_coop
+				location = event_target:endtimes_brain_12
+			}
+		}
+		else = {
+			create_point_of_interest = {
+				id = endtimes_jupiter_brain.12
+				name = "endtimes_jupiter_brain_poi"
+				desc = "endtimes_jupiter_brain_poi_desc"
+				event_chain = crash_the_simulation_chain_resist
+				location = event_target:endtimes_brain_12
+			}
+		}
+	}
+	if = {
+		limit = {
+			OR = {
+				has_event_chain = crash_the_simulation_chain_coop
+				has_event_chain = crash_the_simulation_chain_resist
+			}
+			NOT = { 
+				has_point_of_interest = { poi = endtimes_jupiter_brain.13 }
+			}
+			any_system = {
+				any_planet = { has_planet_flag = endtimes_jupiter_brain_13 }
+			}
+		}
+		
+		if = {
+			limit = { has_event_chain = crash_the_simulation_chain_coop }
+			create_point_of_interest = {
+				id = endtimes_jupiter_brain.13
+				name = "endtimes_jupiter_brain_poi"
+				desc = "endtimes_jupiter_brain_poi_desc"
+				event_chain = crash_the_simulation_chain_coop
+				location = event_target:endtimes_brain_13
+			}
+		}
+		else = {
+			create_point_of_interest = {
+				id = endtimes_jupiter_brain.13
+				name = "endtimes_jupiter_brain_poi"
+				desc = "endtimes_jupiter_brain_poi_desc"
+				event_chain = crash_the_simulation_chain_resist
+				location = event_target:endtimes_brain_13
+			}
+		}
+	}
+	if = {
+		limit = {
+			OR = {
+				has_event_chain = crash_the_simulation_chain_coop
+				has_event_chain = crash_the_simulation_chain_resist
+			}
+			NOT = { 
+				has_point_of_interest = { poi = endtimes_jupiter_brain.14 }
+			}
+			any_system = {
+				any_planet = { has_planet_flag = endtimes_jupiter_brain_14 }
+			}
+		}
+		
+		if = {
+			limit = { has_event_chain = crash_the_simulation_chain_coop }
+			create_point_of_interest = {
+				id = endtimes_jupiter_brain.14
+				name = "endtimes_jupiter_brain_poi"
+				desc = "endtimes_jupiter_brain_poi_desc"
+				event_chain = crash_the_simulation_chain_coop
+				location = event_target:endtimes_brain_14
+			}
+		}
+		else = {
+			create_point_of_interest = {
+				id = endtimes_jupiter_brain.14
+				name = "endtimes_jupiter_brain_poi"
+				desc = "endtimes_jupiter_brain_poi_desc"
+				event_chain = crash_the_simulation_chain_resist
+				location = event_target:endtimes_brain_14
+			}
+		}
+	}
+	if = {
+		limit = {
+			OR = {
+				has_event_chain = crash_the_simulation_chain_coop
+				has_event_chain = crash_the_simulation_chain_resist
+			}
+			NOT = { 
+				has_point_of_interest = { poi = endtimes_jupiter_brain.15 }
+			}
+			any_system = {
+				any_planet = { has_planet_flag = endtimes_jupiter_brain_15 }
+			}
+		}
+		
+		if = {
+			limit = { has_event_chain = crash_the_simulation_chain_coop }
+			create_point_of_interest = {
+				id = endtimes_jupiter_brain.15
+				name = "endtimes_jupiter_brain_poi"
+				desc = "endtimes_jupiter_brain_poi_desc"
+				event_chain = crash_the_simulation_chain_coop
+				location = event_target:endtimes_brain_15
+			}
+		}
+		else = {
+			create_point_of_interest = {
+				id = endtimes_jupiter_brain.15
+				name = "endtimes_jupiter_brain_poi"
+				desc = "endtimes_jupiter_brain_poi_desc"
+				event_chain = crash_the_simulation_chain_resist
+				location = event_target:endtimes_brain_15
+			}
+		}
+	}
+	if = {
+		limit = {
+			OR = {
+				has_event_chain = crash_the_simulation_chain_coop
+				has_event_chain = crash_the_simulation_chain_resist
+			}
+			NOT = { 
+				has_point_of_interest = { poi = endtimes_jupiter_brain.16 }
+			}
+			any_system = {
+				any_planet = { has_planet_flag = endtimes_jupiter_brain_16 }
+			}
+		}
+		
+		if = {
+			limit = { has_event_chain = crash_the_simulation_chain_coop }
+			create_point_of_interest = {
+				id = endtimes_jupiter_brain.16
+				name = "endtimes_jupiter_brain_poi"
+				desc = "endtimes_jupiter_brain_poi_desc"
+				event_chain = crash_the_simulation_chain_coop
+				location = event_target:endtimes_brain_16
+			}
+		}
+		else = {
+			create_point_of_interest = {
+				id = endtimes_jupiter_brain.16
+				name = "endtimes_jupiter_brain_poi"
+				desc = "endtimes_jupiter_brain_poi_desc"
+				event_chain = crash_the_simulation_chain_resist
+				location = event_target:endtimes_brain_16
+			}
+		}
+	}
+	if = {
+		limit = {
+			OR = {
+				has_event_chain = crash_the_simulation_chain_coop
+				has_event_chain = crash_the_simulation_chain_resist
+			}
+			NOT = { 
+				has_point_of_interest = { poi = endtimes_jupiter_brain.17 }
+			}
+			any_system = {
+				any_planet = { has_planet_flag = endtimes_jupiter_brain_17 }
+			}
+		}
+		
+		if = {
+			limit = { has_event_chain = crash_the_simulation_chain_coop }
+			create_point_of_interest = {
+				id = endtimes_jupiter_brain.17
+				name = "endtimes_jupiter_brain_poi"
+				desc = "endtimes_jupiter_brain_poi_desc"
+				event_chain = crash_the_simulation_chain_coop
+				location = event_target:endtimes_brain_17
+			}
+		}
+		else = {
+			create_point_of_interest = {
+				id = endtimes_jupiter_brain.17
+				name = "endtimes_jupiter_brain_poi"
+				desc = "endtimes_jupiter_brain_poi_desc"
+				event_chain = crash_the_simulation_chain_resist
+				location = event_target:endtimes_brain_17
+			}
+		}
+	}
+	if = {
+		limit = {
+			OR = {
+				has_event_chain = crash_the_simulation_chain_coop
+				has_event_chain = crash_the_simulation_chain_resist
+			}
+			NOT = { 
+				has_point_of_interest = { poi = endtimes_jupiter_brain.18 }
+			}
+			any_system = {
+				any_planet = { has_planet_flag = endtimes_jupiter_brain_18 }
+			}
+		}
+		
+		if = {
+			limit = { has_event_chain = crash_the_simulation_chain_coop }
+			create_point_of_interest = {
+				id = endtimes_jupiter_brain.18
+				name = "endtimes_jupiter_brain_poi"
+				desc = "endtimes_jupiter_brain_poi_desc"
+				event_chain = crash_the_simulation_chain_coop
+				location = event_target:endtimes_brain_18
+			}
+		}
+		else = {
+			create_point_of_interest = {
+				id = endtimes_jupiter_brain.18
+				name = "endtimes_jupiter_brain_poi"
+				desc = "endtimes_jupiter_brain_poi_desc"
+				event_chain = crash_the_simulation_chain_resist
+				location = event_target:endtimes_brain_18
+			}
+		}
+	}
+	if = {
+		limit = {
+			OR = {
+				has_event_chain = crash_the_simulation_chain_coop
+				has_event_chain = crash_the_simulation_chain_resist
+			}
+			NOT = { 
+				has_point_of_interest = { poi = endtimes_jupiter_brain.19 }
+			}
+			any_system = {
+				any_planet = { has_planet_flag = endtimes_jupiter_brain_19 }
+			}
+		}
+		
+		if = {
+			limit = { has_event_chain = crash_the_simulation_chain_coop }
+			create_point_of_interest = {
+				id = endtimes_jupiter_brain.19
+				name = "endtimes_jupiter_brain_poi"
+				desc = "endtimes_jupiter_brain_poi_desc"
+				event_chain = crash_the_simulation_chain_coop
+				location = event_target:endtimes_brain_19
+			}
+		}
+		else = {
+			create_point_of_interest = {
+				id = endtimes_jupiter_brain.19
+				name = "endtimes_jupiter_brain_poi"
+				desc = "endtimes_jupiter_brain_poi_desc"
+				event_chain = crash_the_simulation_chain_resist
+				location = event_target:endtimes_brain_19
+			}
+		}
+	}
+	if = {
+		limit = {
+			OR = {
+				has_event_chain = crash_the_simulation_chain_coop
+				has_event_chain = crash_the_simulation_chain_resist
+			}
+			NOT = { 
+				has_point_of_interest = { poi = endtimes_jupiter_brain.20 }
+			}
+			any_system = {
+				any_planet = { has_planet_flag = endtimes_jupiter_brain_20 }
+			}
+		}
+		
+		if = {
+			limit = { has_event_chain = crash_the_simulation_chain_coop }
+			create_point_of_interest = {
+				id = endtimes_jupiter_brain.20
+				name = "endtimes_jupiter_brain_poi"
+				desc = "endtimes_jupiter_brain_poi_desc"
+				event_chain = crash_the_simulation_chain_coop
+				location = event_target:endtimes_brain_20
+			}
+		}
+		else = {
+			create_point_of_interest = {
+				id = endtimes_jupiter_brain.20
+				name = "endtimes_jupiter_brain_poi"
+				desc = "endtimes_jupiter_brain_poi_desc"
+				event_chain = crash_the_simulation_chain_resist
+				location = event_target:endtimes_brain_20
+			}
+		}
+	}
+	if = {
+		limit = {
+			OR = {
+				has_event_chain = crash_the_simulation_chain_coop
+				has_event_chain = crash_the_simulation_chain_resist
+			}
+			NOT = { 
+				has_point_of_interest = { poi = endtimes_jupiter_brain.21 }
+			}
+			any_system = {
+				any_planet = { has_planet_flag = endtimes_jupiter_brain_21 }
+			}
+		}
+		
+		if = {
+			limit = { has_event_chain = crash_the_simulation_chain_coop }
+			create_point_of_interest = {
+				id = endtimes_jupiter_brain.21
+				name = "endtimes_jupiter_brain_poi"
+				desc = "endtimes_jupiter_brain_poi_desc"
+				event_chain = crash_the_simulation_chain_coop
+				location = event_target:endtimes_brain_21
+			}
+		}
+		else = {
+			create_point_of_interest = {
+				id = endtimes_jupiter_brain.21
+				name = "endtimes_jupiter_brain_poi"
+				desc = "endtimes_jupiter_brain_poi_desc"
+				event_chain = crash_the_simulation_chain_resist
+				location = event_target:endtimes_brain_21
+			}
+		}
+	}
+	if = {
+		limit = {
+			OR = {
+				has_event_chain = crash_the_simulation_chain_coop
+				has_event_chain = crash_the_simulation_chain_resist
+			}
+			NOT = { 
+				has_point_of_interest = { poi = endtimes_jupiter_brain.22 }
+			}
+			any_system = {
+				any_planet = { has_planet_flag = endtimes_jupiter_brain_22 }
+			}
+		}
+		
+		if = {
+			limit = { has_event_chain = crash_the_simulation_chain_coop }
+			create_point_of_interest = {
+				id = endtimes_jupiter_brain.22
+				name = "endtimes_jupiter_brain_poi"
+				desc = "endtimes_jupiter_brain_poi_desc"
+				event_chain = crash_the_simulation_chain_coop
+				location = event_target:endtimes_brain_22
+			}
+		}
+		else = {
+			create_point_of_interest = {
+				id = endtimes_jupiter_brain.22
+				name = "endtimes_jupiter_brain_poi"
+				desc = "endtimes_jupiter_brain_poi_desc"
+				event_chain = crash_the_simulation_chain_resist
+				location = event_target:endtimes_brain_22
+			}
+		}
+	}
+	if = {
+		limit = {
+			OR = {
+				has_event_chain = crash_the_simulation_chain_coop
+				has_event_chain = crash_the_simulation_chain_resist
+			}
+			NOT = { 
+				has_point_of_interest = { poi = endtimes_jupiter_brain.23 }
+			}
+			any_system = {
+				any_planet = { has_planet_flag = endtimes_jupiter_brain_23 }
+			}
+		}
+		
+		if = {
+			limit = { has_event_chain = crash_the_simulation_chain_coop }
+			create_point_of_interest = {
+				id = endtimes_jupiter_brain.23
+				name = "endtimes_jupiter_brain_poi"
+				desc = "endtimes_jupiter_brain_poi_desc"
+				event_chain = crash_the_simulation_chain_coop
+				location = event_target:endtimes_brain_23
+			}
+		}
+		else = {
+			create_point_of_interest = {
+				id = endtimes_jupiter_brain.23
+				name = "endtimes_jupiter_brain_poi"
+				desc = "endtimes_jupiter_brain_poi_desc"
+				event_chain = crash_the_simulation_chain_resist
+				location = event_target:endtimes_brain_23
+			}
+		}
+	}
+	if = {
+		limit = {
+			OR = {
+				has_event_chain = crash_the_simulation_chain_coop
+				has_event_chain = crash_the_simulation_chain_resist
+			}
+			NOT = { 
+				has_point_of_interest = { poi = endtimes_jupiter_brain.24 }
+			}
+			any_system = {
+				any_planet = { has_planet_flag = endtimes_jupiter_brain_24 }
+			}
+		}
+		
+		if = {
+			limit = { has_event_chain = crash_the_simulation_chain_coop }
+			create_point_of_interest = {
+				id = endtimes_jupiter_brain.24
+				name = "endtimes_jupiter_brain_poi"
+				desc = "endtimes_jupiter_brain_poi_desc"
+				event_chain = crash_the_simulation_chain_coop
+				location = event_target:endtimes_brain_24
+			}
+		}
+		else = {
+			create_point_of_interest = {
+				id = endtimes_jupiter_brain.24
+				name = "endtimes_jupiter_brain_poi"
+				desc = "endtimes_jupiter_brain_poi_desc"
+				event_chain = crash_the_simulation_chain_resist
+				location = event_target:endtimes_brain_24
+			}
+		}
+	}
+	if = {
+		limit = {
+			OR = {
+				has_event_chain = crash_the_simulation_chain_coop
+				has_event_chain = crash_the_simulation_chain_resist
+			}
+			NOT = { 
+				has_point_of_interest = { poi = endtimes_jupiter_brain.25 }
+			}
+			any_system = {
+				any_planet = { has_planet_flag = endtimes_jupiter_brain_25 }
+			}
+		}
+		
+		if = {
+			limit = { has_event_chain = crash_the_simulation_chain_coop }
+			create_point_of_interest = {
+				id = endtimes_jupiter_brain.25
+				name = "endtimes_jupiter_brain_poi"
+				desc = "endtimes_jupiter_brain_poi_desc"
+				event_chain = crash_the_simulation_chain_coop
+				location = event_target:endtimes_brain_25
+			}
+		}
+		else = {
+			create_point_of_interest = {
+				id = endtimes_jupiter_brain.25
+				name = "endtimes_jupiter_brain_poi"
+				desc = "endtimes_jupiter_brain_poi_desc"
+				event_chain = crash_the_simulation_chain_resist
+				location = event_target:endtimes_brain_25
+			}
+		}
+	}
+	if = {
+		limit = {
+			OR = {
+				has_event_chain = crash_the_simulation_chain_coop
+				has_event_chain = crash_the_simulation_chain_resist
+			}
+			NOT = { 
+				has_point_of_interest = { poi = endtimes_jupiter_brain.26 }
+			}
+			any_system = {
+				any_planet = { has_planet_flag = endtimes_jupiter_brain_26 }
+			}
+		}
+		
+		if = {
+			limit = { has_event_chain = crash_the_simulation_chain_coop }
+			create_point_of_interest = {
+				id = endtimes_jupiter_brain.26
+				name = "endtimes_jupiter_brain_poi"
+				desc = "endtimes_jupiter_brain_poi_desc"
+				event_chain = crash_the_simulation_chain_coop
+				location = event_target:endtimes_brain_26
+			}
+		}
+		else = {
+			create_point_of_interest = {
+				id = endtimes_jupiter_brain.26
+				name = "endtimes_jupiter_brain_poi"
+				desc = "endtimes_jupiter_brain_poi_desc"
+				event_chain = crash_the_simulation_chain_resist
+				location = event_target:endtimes_brain_26
+			}
+		}
+	}
+	if = {
+		limit = {
+			OR = {
+				has_event_chain = crash_the_simulation_chain_coop
+				has_event_chain = crash_the_simulation_chain_resist
+			}
+			NOT = { 
+				has_point_of_interest = { poi = endtimes_jupiter_brain.27 }
+			}
+			any_system = {
+				any_planet = { has_planet_flag = endtimes_jupiter_brain_27 }
+			}
+		}
+		
+		if = {
+			limit = { has_event_chain = crash_the_simulation_chain_coop }
+			create_point_of_interest = {
+				id = endtimes_jupiter_brain.27
+				name = "endtimes_jupiter_brain_poi"
+				desc = "endtimes_jupiter_brain_poi_desc"
+				event_chain = crash_the_simulation_chain_coop
+				location = event_target:endtimes_brain_27
+			}
+		}
+		else = {
+			create_point_of_interest = {
+				id = endtimes_jupiter_brain.27
+				name = "endtimes_jupiter_brain_poi"
+				desc = "endtimes_jupiter_brain_poi_desc"
+				event_chain = crash_the_simulation_chain_resist
+				location = event_target:endtimes_brain_27
+			}
+		}
+	}
+	if = {
+		limit = {
+			OR = {
+				has_event_chain = crash_the_simulation_chain_coop
+				has_event_chain = crash_the_simulation_chain_resist
+			}
+			NOT = { 
+				has_point_of_interest = { poi = endtimes_jupiter_brain.28 }
+			}
+			any_system = {
+				any_planet = { has_planet_flag = endtimes_jupiter_brain_28 }
+			}
+		}
+		
+		if = {
+			limit = { has_event_chain = crash_the_simulation_chain_coop }
+			create_point_of_interest = {
+				id = endtimes_jupiter_brain.28
+				name = "endtimes_jupiter_brain_poi"
+				desc = "endtimes_jupiter_brain_poi_desc"
+				event_chain = crash_the_simulation_chain_coop
+				location = event_target:endtimes_brain_28
+			}
+		}
+		else = {
+			create_point_of_interest = {
+				id = endtimes_jupiter_brain.28
+				name = "endtimes_jupiter_brain_poi"
+				desc = "endtimes_jupiter_brain_poi_desc"
+				event_chain = crash_the_simulation_chain_resist
+				location = event_target:endtimes_brain_28
+			}
+		}
+	}
+	if = {
+		limit = {
+			OR = {
+				has_event_chain = crash_the_simulation_chain_coop
+				has_event_chain = crash_the_simulation_chain_resist
+			}
+			NOT = { 
+				has_point_of_interest = { poi = endtimes_jupiter_brain.29 }
+			}
+			any_system = {
+				any_planet = { has_planet_flag = endtimes_jupiter_brain_29 }
+			}
+		}
+		
+		if = {
+			limit = { has_event_chain = crash_the_simulation_chain_coop }
+			create_point_of_interest = {
+				id = endtimes_jupiter_brain.29
+				name = "endtimes_jupiter_brain_poi"
+				desc = "endtimes_jupiter_brain_poi_desc"
+				event_chain = crash_the_simulation_chain_coop
+				location = event_target:endtimes_brain_29
+			}
+		}
+		else = {
+			create_point_of_interest = {
+				id = endtimes_jupiter_brain.29
+				name = "endtimes_jupiter_brain_poi"
+				desc = "endtimes_jupiter_brain_poi_desc"
+				event_chain = crash_the_simulation_chain_resist
+				location = event_target:endtimes_brain_29
+			}
+		}
+	}
+	if = {
+		limit = {
+			OR = {
+				has_event_chain = crash_the_simulation_chain_coop
+				has_event_chain = crash_the_simulation_chain_resist
+			}
+			NOT = { 
+				has_point_of_interest = { poi = endtimes_jupiter_brain.30 }
+			}
+			any_system = {
+				any_planet = { has_planet_flag = endtimes_jupiter_brain_30 }
+			}
+		}
+		
+		if = {
+			limit = { has_event_chain = crash_the_simulation_chain_coop }
+			create_point_of_interest = {
+				id = endtimes_jupiter_brain.30
+				name = "endtimes_jupiter_brain_poi"
+				desc = "endtimes_jupiter_brain_poi_desc"
+				event_chain = crash_the_simulation_chain_coop
+				location = event_target:endtimes_brain_30
+			}
+		}
+		else = {
+			create_point_of_interest = {
+				id = endtimes_jupiter_brain.30
+				name = "endtimes_jupiter_brain_poi"
+				desc = "endtimes_jupiter_brain_poi_desc"
+				event_chain = crash_the_simulation_chain_resist
+				location = event_target:endtimes_brain_30
+			}
+		}
+	}
+	if = {
+		limit = {
+			OR = {
+				has_event_chain = crash_the_simulation_chain_coop
+				has_event_chain = crash_the_simulation_chain_resist
+			}
+			NOT = { 
+				has_point_of_interest = { poi = endtimes_jupiter_brain.31 }
+			}
+			any_system = {
+				any_planet = { has_planet_flag = endtimes_jupiter_brain_31 }
+			}
+		}
+		
+		if = {
+			limit = { has_event_chain = crash_the_simulation_chain_coop }
+			create_point_of_interest = {
+				id = endtimes_jupiter_brain.31
+				name = "endtimes_jupiter_brain_poi"
+				desc = "endtimes_jupiter_brain_poi_desc"
+				event_chain = crash_the_simulation_chain_coop
+				location = event_target:endtimes_brain_31
+			}
+		}
+		else = {
+			create_point_of_interest = {
+				id = endtimes_jupiter_brain.31
+				name = "endtimes_jupiter_brain_poi"
+				desc = "endtimes_jupiter_brain_poi_desc"
+				event_chain = crash_the_simulation_chain_resist
+				location = event_target:endtimes_brain_31
+			}
+		}
+	}
+	if = {
+		limit = {
+			OR = {
+				has_event_chain = crash_the_simulation_chain_coop
+				has_event_chain = crash_the_simulation_chain_resist
+			}
+			NOT = { 
+				has_point_of_interest = { poi = endtimes_jupiter_brain.32 }
+			}
+			any_system = {
+				any_planet = { has_planet_flag = endtimes_jupiter_brain_32 }
+			}
+		}
+		
+		if = {
+			limit = { has_event_chain = crash_the_simulation_chain_coop }
+			create_point_of_interest = {
+				id = endtimes_jupiter_brain.32
+				name = "endtimes_jupiter_brain_poi"
+				desc = "endtimes_jupiter_brain_poi_desc"
+				event_chain = crash_the_simulation_chain_coop
+				location = event_target:endtimes_brain_32
+			}
+		}
+		else = {
+			create_point_of_interest = {
+				id = endtimes_jupiter_brain.32
+				name = "endtimes_jupiter_brain_poi"
+				desc = "endtimes_jupiter_brain_poi_desc"
+				event_chain = crash_the_simulation_chain_resist
+				location = event_target:endtimes_brain_32
+			}
+		}
+	}
+	if = {
+		limit = {
+			OR = {
+				has_event_chain = crash_the_simulation_chain_coop
+				has_event_chain = crash_the_simulation_chain_resist
+			}
+			NOT = { 
+				has_point_of_interest = { poi = endtimes_jupiter_brain.33 }
+			}
+			any_system = {
+				any_planet = { has_planet_flag = endtimes_jupiter_brain_33 }
+			}
+		}
+		
+		if = {
+			limit = { has_event_chain = crash_the_simulation_chain_coop }
+			create_point_of_interest = {
+				id = endtimes_jupiter_brain.33
+				name = "endtimes_jupiter_brain_poi"
+				desc = "endtimes_jupiter_brain_poi_desc"
+				event_chain = crash_the_simulation_chain_coop
+				location = event_target:endtimes_brain_33
+			}
+		}
+		else = {
+			create_point_of_interest = {
+				id = endtimes_jupiter_brain.33
+				name = "endtimes_jupiter_brain_poi"
+				desc = "endtimes_jupiter_brain_poi_desc"
+				event_chain = crash_the_simulation_chain_resist
+				location = event_target:endtimes_brain_33
+			}
+		}
+	}
+	if = {
+		limit = {
+			OR = {
+				has_event_chain = crash_the_simulation_chain_coop
+				has_event_chain = crash_the_simulation_chain_resist
+			}
+			NOT = { 
+				has_point_of_interest = { poi = endtimes_jupiter_brain.34 }
+			}
+			any_system = {
+				any_planet = { has_planet_flag = endtimes_jupiter_brain_34 }
+			}
+		}
+		
+		if = {
+			limit = { has_event_chain = crash_the_simulation_chain_coop }
+			create_point_of_interest = {
+				id = endtimes_jupiter_brain.34
+				name = "endtimes_jupiter_brain_poi"
+				desc = "endtimes_jupiter_brain_poi_desc"
+				event_chain = crash_the_simulation_chain_coop
+				location = event_target:endtimes_brain_34
+			}
+		}
+		else = {
+			create_point_of_interest = {
+				id = endtimes_jupiter_brain.34
+				name = "endtimes_jupiter_brain_poi"
+				desc = "endtimes_jupiter_brain_poi_desc"
+				event_chain = crash_the_simulation_chain_resist
+				location = event_target:endtimes_brain_34
+			}
+		}
+	}
+	if = {
+		limit = {
+			OR = {
+				has_event_chain = crash_the_simulation_chain_coop
+				has_event_chain = crash_the_simulation_chain_resist
+			}
+			NOT = { 
+				has_point_of_interest = { poi = endtimes_jupiter_brain.35 }
+			}
+			any_system = {
+				any_planet = { has_planet_flag = endtimes_jupiter_brain_35 }
+			}
+		}
+		
+		if = {
+			limit = { has_event_chain = crash_the_simulation_chain_coop }
+			create_point_of_interest = {
+				id = endtimes_jupiter_brain.35
+				name = "endtimes_jupiter_brain_poi"
+				desc = "endtimes_jupiter_brain_poi_desc"
+				event_chain = crash_the_simulation_chain_coop
+				location = event_target:endtimes_brain_35
+			}
+		}
+		else = {
+			create_point_of_interest = {
+				id = endtimes_jupiter_brain.35
+				name = "endtimes_jupiter_brain_poi"
+				desc = "endtimes_jupiter_brain_poi_desc"
+				event_chain = crash_the_simulation_chain_resist
+				location = event_target:endtimes_brain_35
+			}
+		}
+	}
+	if = {
+		limit = {
+			OR = {
+				has_event_chain = crash_the_simulation_chain_coop
+				has_event_chain = crash_the_simulation_chain_resist
+			}
+			NOT = { 
+				has_point_of_interest = { poi = endtimes_jupiter_brain.36 }
+			}
+			any_system = {
+				any_planet = { has_planet_flag = endtimes_jupiter_brain_36 }
+			}
+		}
+		
+		if = {
+			limit = { has_event_chain = crash_the_simulation_chain_coop }
+			create_point_of_interest = {
+				id = endtimes_jupiter_brain.36
+				name = "endtimes_jupiter_brain_poi"
+				desc = "endtimes_jupiter_brain_poi_desc"
+				event_chain = crash_the_simulation_chain_coop
+				location = event_target:endtimes_brain_36
+			}
+		}
+		else = {
+			create_point_of_interest = {
+				id = endtimes_jupiter_brain.36
+				name = "endtimes_jupiter_brain_poi"
+				desc = "endtimes_jupiter_brain_poi_desc"
+				event_chain = crash_the_simulation_chain_resist
+				location = event_target:endtimes_brain_36
+			}
+		}
+	}
+}
+
+endtimes_remove_poi = {
+	
+}

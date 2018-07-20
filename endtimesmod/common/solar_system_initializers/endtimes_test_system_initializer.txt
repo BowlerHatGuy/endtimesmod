@@ -3,7 +3,7 @@
 
 
 ### Instrumentality Sol System
-sol_system_initializer = {
+test_sol_system_initializer = {
 	name = "NAME_Sol"
 	class = "sc_g"
 	asteroid_belt = {
@@ -222,7 +222,7 @@ sol_system_initializer = {
 }
 
 # Home System
-sol_neighbor_t1_first_colony = {	
+test_sol_neighbor_t1_first_colony = {	
 	name = "NAME_Alpha_Centauri"
 	class = sc_trinary_1
 

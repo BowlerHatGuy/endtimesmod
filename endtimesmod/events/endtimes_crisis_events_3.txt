@@ -45,7 +45,7 @@ country_event = {
 }
 
 # Event calculate the number of Jupiter Brains needed to destabilize the universe at all stages
-country_event = { # Not sure where to call this from yet, will be scoped to global_event country to centralize
+country_event = {
 	id = endtimesutility.0002
 	hide_window = yes
 	fire_only_once = yes
@@ -54,8 +54,9 @@ country_event = { # Not sure where to call this from yet, will be scoped to glob
 	
 	immediate = {
 		set_variable = { which = "endtimes_goal_jupiter_brains_var" value = 0 }
-		set_variable = { which = "endtimes_goal_simulation_cracks_var" value = 0 }
-		set_variable = { which = "endtimes_jb_to_crack_ratio_var" value = 0 }
+		set_variable = { which = "endtimes_jb_stage_I_var" value = 0 }
+		set_variable = { which = "endtimes_jb_stage_II_var" value = 0 }
+		set_variable = { which = "endtimes_jb_stage_III_var" value = 0 }
 		set_variable = { which = "endtimes_total_empires_var" value = 0 }
 		
 		# Counts the number of countries in the game
@@ -89,9 +90,56 @@ country_event = { # Not sure where to call this from yet, will be scoped to glob
 			change_variable = { which = "endtimes_total_empires_var" value = 1 }
 		}
 		
-		log = "======================================================"
-		log = "= There are this many non-FE empires in the game: [endtimesGetNumEmpires] ="
-		log = "======================================================"
+		# Sets and bounds the total number of Jupiter Brains are needed to destroy the universe
+		if = { # May need to tweak bounds depending on method used to scale for difficulty. 36 is max in default game for 1-to-1 ratio.
+			limit = { check_variable = { which = endtimes_total_empires_var value >= 32 } }
+			set_variable = { which = "endtimes_goal_jupiter_brains_var" value = 32 }
+			# Remember to add POI if this cap increases
+		}
+		else_if = {
+			limit = { check_variable = { which = endtimes_total_empires_var value <= 12 } }
+			set_variable = { which = "endtimes_goal_jupiter_brains_var" value = 12 }
+		}
+		else = { # Value was chosen based on the assumption that half of all empires would go cooperator on average. 
+				 # If this proves to be untrue, may adjust count to be 2x total number of cooperators
+			set_variable = { 
+				which = "endtimes_goal_jupiter_brains_var" value = endtimes_total_empires_var }
+		}
+		
+		# This Section is messy. Needed to do modulo arithmetic so this was... easier.
+		# Division (ceiling rounded)!
+		set_variable = { which = "endtimes_math_temp_var" value = endtimes_goal_jupiter_brains_var }
+		set_variable = { which = "endtimes_math_temp_result" value = 0 }
+		
+		while = {
+			limit = { check_variable = { which = endtimes_math_temp_var value > 0 } }
+			change_variable = { which = endtimes_math_temp_var value = -4 }
+			change_variable = { which = endtimes_math_temp_result value = 1 }
+		}
+		
+		# Offset to remove ceiling
+		#change_variable = { which = endtimes_math_temp_result value = -1 }
+		
+		set_variable = { which = "endtimes_jb_stage_I_var" value = endtimes_math_temp_result }
+		
+		# Multiplication!
+		set_variable = { which = "endtimes_jb_stage_II_var" value = endtimes_math_temp_result }
+		change_variable = { which = endtimes_jb_stage_II_var value = endtimes_math_temp_result }
+		
+		set_variable = { which = "endtimes_jb_stage_III_var" value = endtimes_jb_stage_II_var }
+		change_variable = { which = endtimes_jb_stage_III_var value = endtimes_math_temp_result }
+		
+		# Default Method
+		#divide_variable = { which = endtimes_math_temp_var value = 4 }
+		#set_variable = { which = "endtimes_jb_stage_I_var" value = endtimes_math_temp_var }
+		
+		
+		#every_country = { # Debug
+		#	limit = { is_country_type = default }
+		#	country_event = { id = endtimesutility.9999 }
+		#}
+		
+		#endtimes_debug_log = yes
 	}
 }
 
@@ -111,6 +159,140 @@ country_event = {
 		change_variable = { which = "endtimes_active_jupiter_brains_var" value = 1 }
 	}
 }
+
+## Event to trigger things on_monthly_pulse
+country_event = {
+	id = endtimesutility.0004
+	hide_window = yes
+	
+	is_triggered_only = yes
+	
+	immediate = {
+		random_country = {
+			country_event = { id = endtimesutility.0005 }
+		}
+		
+		random_country = {
+			limit = { is_country_type = global_event }
+			country_event = { id = endtimesdebug.9996 }
+		}
+	}
+}
+
+## Event to progress crisis severity.
+country_event = {
+	id = endtimesutility.0005
+	hide_window = yes
+	
+	is_triggered_only = yes
+	
+	trigger = {
+		has_global_flag = endtimes_outsiders_plan
+		NOT = { any_country = { has_country_flag = endtimes_allow_instability } }
+	}
+	
+	immediate = {
+		if = {
+			limit = {
+				NOR = {
+					has_global_flag = endtimes_instability_I
+					has_global_flag = endtimes_instability_II
+					has_global_flag = endtimes_instability_III
+					has_global_flag = endtimes_the_escape
+				}
+			}
+			every_country = {
+				limit = { is_country_type = global_event }
+				if = {
+					limit = {
+						check_variable = { 
+							which = endtimes_jb_stage_I_var 
+							value <= endtimes_active_jupiter_brains_var
+						}
+					}
+					set_country_flag = endtimes_allow_instability
+				}
+			}
+		}
+		else_if = {
+			limit = {
+				has_global_flag = endtimes_instability_I
+			}
+			every_country = {
+				limit = { is_country_type = global_event }
+				if = {
+					limit = {
+						check_variable = { 
+							which = endtimes_jb_stage_II_var 
+							value <= endtimes_active_jupiter_brains_var
+						}
+					}
+					set_country_flag = endtimes_allow_instability
+				}
+			}
+		}
+		else_if = {
+			limit = {
+				has_global_flag = endtimes_instability_II
+			}
+			every_country = {
+				limit = { is_country_type = global_event }
+				if = {
+					limit = {
+						check_variable = { 
+							which = endtimes_jb_stage_III_var 
+							value <= endtimes_active_jupiter_brains_var
+						}
+					}
+					set_country_flag = endtimes_allow_instability
+				}
+			}
+		}
+		else_if = {
+			limit = {
+				has_global_flag = endtimes_instability_III
+			}
+			every_country = {
+				limit = { is_country_type = global_event }
+				if = {
+					limit = {
+						check_variable = { 
+							which = endtimes_goal_jupiter_brains_var
+							value <= endtimes_active_jupiter_brains_var
+						}
+					}
+					set_country_flag = endtimes_allow_instability
+				}
+			}
+		}
+		else_if = {
+			limit = {
+				has_global_flag = endtimes_the_escape
+			}
+			every_country = {
+				limit = { is_country_type = global_event }
+				if = {
+					limit = {
+						check_variable = { 
+							which = endtimes_rift_count_var
+							value >= 7
+						}
+					}
+					set_country_flag = endtimes_allow_end_game
+				}
+			}
+		}
+	}
+}
+
+
+
+
+
+
+
+
+
 
 
 
