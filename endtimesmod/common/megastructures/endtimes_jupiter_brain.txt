@@ -10,15 +10,20 @@ jupiter_brain_0 = {
 	portrait = "GFX_megastructure_construction_background"
 	place_entity_on_planet_plane = no
 	entity_offset = { x = -12 y = -12 }
-	build_time = 10
+	build_time = 10 #DEBUG
 	#build_time = 600
-	build_cost = {
-		minerals = 10000
-		influence = 60
+	resources = {
+		category = megastructures
+		cost = {
+			minerals = 10000
+			influence = 60
+		}
+
+		upkeep = {
+			energy = 5
+		}
 	}
-	maintenance = {
-		energy = 5
-	}
+
 	potential = {
 		has_global_flag = endtimes_outsiders_plan
 		has_country_flag = endtimes_cooperator
@@ -29,23 +34,20 @@ jupiter_brain_0 = {
 			is_inside_border = from
 		}
 		custom_tooltip = {
-			fail_text = "requires_surveyed_system"
-			NOT = {
-				any_planet = {
-					is_surveyed = {
-						who = prev.from
-						status = no
-					}
-				}
-			}
-		}
-		custom_tooltip = {
 			fail_text = "requires_no_existing_megastructure"
 			has_no_non_gate_megastructure = yes
 		}
 	}
 	placement_rules = {
 		planet_possible = {
+			custom_tooltip = {
+				fail_text = "requires_survey_not_habitable"
+				is_surveyed = {
+					who = prev.from
+					status = yes
+				}
+				colonizeable_planet = no
+			}
 			custom_tooltip = {
 				fail_text = "endtimes_must_build_around_gas_giant"
 				is_planet_class = pc_gas_giant
@@ -62,45 +64,36 @@ jupiter_brain_0 = {
 	}
 	
 	ai_weight = {
-		base = 200
+		factor = 1000 #DEBUG
 		
-		modifier = {
-			factor = 0.5
-			starbase = { NOT = { has_starbase_size >= starbase_starfortress } }
-		}	
-		
-		modifier = {
-			factor = 0.1
-			any_neighbor_system = { 
-				NOT = { 
-					owner = { is_same_value = from } 
-				}
-			}
-		}
+		#modifier = {
+		#	factor = 0.1
+		#	any_neighbor_system = { 
+		#		NOT = { 
+		#			owner = { is_same_value = from } 
+		#		}
+		#	}
+		#}
 		
 		modifier = {
 			factor = 0
 			from = {
-				AND = {
-					OR = {
-						is_country_type = fallen_empire
-						is_country_type = awakened_fallen_empire
-					}
-					has_country_flag = endtimes_FE_builds_jupiter_brain
+				OR = {
+					is_country_type = fallen_empire
+					is_country_type = awakened_fallen_empire
 				}
+				has_country_flag = endtimes_FE_builds_jupiter_brain
 			}
 		}
 		
 		modifier = {
 			factor = 10
 			from = {
-				AND = {
-					OR = {
-						is_country_type = fallen_empire
-						is_country_type = awakened_fallen_empire
-					}
-					NOT = { has_country_flag = endtimes_FE_builds_jupiter_brain }
+				OR = {
+					is_country_type = fallen_empire
+					is_country_type = awakened_fallen_empire
 				}
+				NOT = { has_country_flag = endtimes_FE_builds_jupiter_brain }
 			}
 		}
 	}
@@ -125,10 +118,14 @@ jupiter_brain_1 = {
 	upgrade_from = {
 		jupiter_brain_0
 	}
-	build_time = 10
+	build_time = 10 #DEBUG
 	#build_time = 2400
-	build_cost = {
-		minerals = 20000
+
+	resources = {
+		category = megastructures
+		cost = {
+			minerals = 20000
+		}
 	}
 
 	possible = {
@@ -146,8 +143,8 @@ jupiter_brain_1 = {
 			limit = { 
 				from = {
 					OR = {
-						country_type = fallen_empire
-						country_type = awakened_fallen_empire
+						is_country_type = fallen_empire
+						is_country_type = awakened_fallen_empire
 					}
 				}
 			}
@@ -160,10 +157,11 @@ jupiter_brain_1 = {
 		fromfrom.planet = {
 			change_pc = pc_jupiter_brain
 			reset_planet = yes
-			orbital_deposit_tile = {
-				clear_deposits = yes
-				add_deposit = endtimes_d_jupiter_brain_deposit
-			}
+
+
+			clear_deposits = yes
+			add_deposit = endtimes_d_jupiter_brain_deposit
+
 			set_name = "endtimes_jupiter_brain"
 			set_planet_flag = endtimes_is_jupiter_brain
 		

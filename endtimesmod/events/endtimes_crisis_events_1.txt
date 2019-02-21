@@ -158,8 +158,6 @@ country_event = {
 					min_distance = 20
 					max_distance = 50
 					initializer = "vultaumar_system"
-					
-					save_global_event_target_as = endtimes_neutron_star_evt
 				}
 			}
 			
@@ -199,7 +197,7 @@ country_event = {
 		
 		# Creates POI
 		random_system = {
-			limit = { has_star_flag = vultaumar }
+			limit = { has_star_flag = vultaumar } #FIXME
 		}
 		
 		every_country = {
@@ -566,7 +564,7 @@ country_event = {
 		}
 		
 		ai_chance = {
-			base = 0
+			factor = 0
 		}
 	}
 	
@@ -600,7 +598,7 @@ country_event = {
 		}
 		
 		ai_chance = {
-			base = 50
+			factor = 50
 			modifier = {
 				factor = 1.5
 				OR = {
@@ -660,7 +658,7 @@ country_event = {
 		}
 		
 		ai_chance = {
-			base = 50
+			factor = 50
 			modifier = {
 				factor = 1.5
 				OR = {
@@ -751,15 +749,16 @@ country_event = {
 	}
 	
 	trigger = {
-		has_country_flag = endtimes_cooperator
-		
 		NOT = { has_country_flag = endtimes_crisis_timeout }
 	}
 	
 	immediate = {
 		set_global_flag = endtimes_outsiders_plan
 		every_country = {
-			limit = { is_country_type = default }
+			limit = { 
+				is_country_type = default 
+				has_country_flag = endtimes_cooperator
+			}
 			country_event = { id = endtimescrisis.4105 }
 			set_timed_country_flag = { flag = endtimes_event_holdoff days = 10 }
 		}
@@ -795,7 +794,7 @@ country_event = {
 	}
 	
 	immediate = { # Go straight into the diplo screen again to avoid annoyances. EVALUATE FOR CHANGE
-		country_event = { id = endtimescrisis.4305 days = 1 }
+		country_event = { id = endtimescrisis.4305 }
 	}
 }
 
@@ -1122,9 +1121,7 @@ country_event = {
 	
 	trigger = {
 		has_global_flag = endtimes_outsiders_plan
-		any_country = {
-			has_country_flag = endtimes_allow_instability
-		}
+		has_global_flag = endtimes_allow_instability
 		NOR = {
 			has_global_flag = endtimes_instability_I
 			has_global_flag = endtimes_instability_II
@@ -1135,17 +1132,11 @@ country_event = {
 	
 	immediate  ={
 		set_global_flag = endtimes_instability_I
+		remove_global_flag = endtimes_allow_instability
 		
 		every_country = {
 			limit = { is_country_type = default }
 			country_event = { id = endtimescrisis.4108 }
-			
-			remove_country_flag = endtimes_allow_instability
-		}
-		
-		every_country = { # Debug
-			limit = { is_country_type = global_event }
-			country_event = { id = endtimesdebug.9998 }
 		}
 	}
 }
@@ -1178,7 +1169,7 @@ country_event = {
 #	id = endtimescrisis.4208
 #	hide_window = yes
 #	
-#	# To be added to On_Monthly_Pulse
+#	# MOVED TO MONTHLY PULSE
 #	
 #	trigger = {
 #		has_global_flag = endtimes_outsiders_plan
@@ -1242,11 +1233,9 @@ country_event = {
 					entity_offset = { min = 10 max = 20 }
 					entity_offset_angle = { min = 0 max = 360 }
 					entity_offset_height = { min = -5 max = 5 }
-					
-					save_global_event_target_as = endtimes_rift_01
-					save_global_event_target_as = endtimes_recent_rift
 				}
 				
+				save_global_event_target_as = endtimes_rift_01
 				set_planet_flag = endtimes_spawned_rift
 			}
 		}
@@ -1268,7 +1257,7 @@ country_event = {
 	title = "endtimescrisis.4109.name"
 	desc = "endtimescrisis.4109.desc"
 	picture = "GFX_evt_star_pulsar"
-	location = event_target:endtimes_recent_rift
+	location = event_target:endtimes_rift_01
 	
 	is_triggered_only = yes
 	
@@ -1329,66 +1318,16 @@ country_event = {
 	fire_only_once = yes
 	
 	trigger = {
-		has_global_flag = endtimes_outsiders_plan
 		has_global_flag = endtimes_instability_I
-		any_country = {
-			has_country_flag = endtimes_allow_instability
-		}
+		has_global_flag = endtimes_allow_instability
 	}
 	
 	immediate  ={
 		set_global_flag = endtimes_instability_II
 		remove_global_flag = endtimes_instability_I
-		
-		every_country = {
-			limit = { is_country_type = global_event }
-			remove_country_flag = endtimes_allow_instability
-		}
-		
-		every_country = { # Debug
-			limit = { is_country_type = global_event }
-			country_event = { id = endtimesdebug.9998 }
-		}
+		remove_global_flag = endtimes_allow_instability
 	}
 }
-
-# Workaround event because idiot cannot the language
-#country_event = {
-#	id = endtimescrisis.4210
-#	hide_window = yes
-#	
-#	# To be added to On_Montly_Pulse
-#	
-#	trigger = {
-#		has_global_flag = endtimes_outsiders_plan
-#		has_global_flag = endtimes_instability_I
-#		NOR = { 
-#			has_global_flag = endtimes_instability_II
-#			has_global_flag = endtimes_instability_III
-#			
-#			has_global_flag = endtimes_monthly_flag
-#		}
-#		NOT = { any_country = { has_country_flag = endtimes_allow_instability } }
-#	}
-#	
-#	immediate = {
-#		every_country = {
-#			limit = { is_country_type = global_event }
-#			if = {
-#				limit = {
-#					check_variable = { 
-#						which = endtimes_jb_stage_II_var 
-#						value <= endtimes_active_jupiter_brains_var
-#					}
-#				}
-#				set_country_flag = endtimes_allow_instability
-#			}
-#			else = {
-#				set_timed_global_flag = { flag = endtimes_monthly_flag months = 1 }
-#			}
-#		}
-#	}
-#}
 
 # Second Rift Event
 country_event = {
@@ -1409,18 +1348,14 @@ country_event = {
 		random_system = {
 			limit = { 
 				any_planet = { 
-					AND = { 
-						has_planet_flag = endtimes_is_jupiter_brain
-						NOT = { has_planet_flag = endtimes_spawned_rift }
-					}
+					has_planet_flag = endtimes_is_jupiter_brain
+					NOT = { has_planet_flag = endtimes_spawned_rift }
 				}
 			}
 			random_planet = {
 				limit = {
-					AND = { 
-						has_planet_flag = endtimes_is_jupiter_brain
-						NOT = { has_planet_flag = endtimes_spawned_rift }
-					}
+					has_planet_flag = endtimes_is_jupiter_brain
+					NOT = { has_planet_flag = endtimes_spawned_rift }
 				}
 				
 				create_ambient_object = {
@@ -1430,11 +1365,9 @@ country_event = {
 					entity_offset = { min = 10 max = 20 }
 					entity_offset_angle = { min = 0 max = 360 }
 					entity_offset_height = { min = -5 max = 5 }
-					
-					save_global_event_target_as = endtimes_rift_02
-					save_global_event_target_as = endtimes_recent_rift
 				}
 				
+				save_global_event_target_as = endtimes_rift_02
 				set_planet_flag = endtimes_spawned_rift
 			}
 		}
@@ -1519,58 +1452,15 @@ country_event = {
 	trigger = {
 		has_global_flag = endtimes_outsiders_plan
 		has_global_flag = endtimes_instability_II
-		any_country = {
-			has_country_flag = endtimes_allow_instability
-		}
+		has_global_flag = endtimes_allow_instability
 	}
 	
 	immediate  ={
 		set_global_flag = endtimes_instability_III
 		remove_global_flag = endtimes_instability_II
-		
-		every_country = {
-			limit = { is_country_type = global_event }
-			remove_country_flag = endtimes_allow_instability
-		}
+		remove_global_flag = endtimes_allow_instability
 	}
 }
-
-# Workaround Event
-#country_event = {
-#	id = endtimescrisis.4212
-#	hide_window = yes
-#	
-#	# To be added to On_Monthly_Pulse
-#	
-#	trigger = {
-#		has_global_flag = endtimes_outsiders_plan
-#		has_global_flag = endtimes_instability_II
-#		NOR = { 
-#			has_global_flag = endtimes_instability_III
-#			
-#			has_global_flag = endtimes_monthly_flag
-#		}
-#		NOT = { any_country = { has_country_flag = endtimes_allow_instability } }
-#	}
-#	
-#	immediate = {
-#		every_country = {
-#			limit = { is_country_type = global_event }
-#			if = {
-#				limit = {
-#					check_variable = { 
-#						which = endtimes_jb_stage_III_var 
-#						value <= endtimes_active_jupiter_brains_var
-#					}
-#				}
-#				set_country_flag = endtimes_allow_instability
-#			}
-#			else = {
-#				set_timed_global_flag = { flag = endtimes_monthly_flag months = 1 }
-#			}
-#		}
-#	}
-#}
 
 # Third Rift Event
 country_event = {
@@ -1588,22 +1478,17 @@ country_event = {
 	}
 	
 	immediate = {
-		set_global_flag = endtimes_first_rift
 		random_system = {
 			limit = { 
 				any_planet = { 
-					AND = { 
-						has_planet_flag = endtimes_is_jupiter_brain
-						NOT = { has_planet_flag = endtimes_spawned_rift }
-					}
+					has_planet_flag = endtimes_is_jupiter_brain
+					NOT = { has_planet_flag = endtimes_spawned_rift }
 				}
 			}
 			random_planet = {
 				limit = {
-					AND = { 
-						has_planet_flag = endtimes_is_jupiter_brain
-						NOT = { has_planet_flag = endtimes_spawned_rift }
-					}
+					has_planet_flag = endtimes_is_jupiter_brain
+					NOT = { has_planet_flag = endtimes_spawned_rift }
 				}
 				
 				create_ambient_object = {
@@ -1613,11 +1498,9 @@ country_event = {
 					entity_offset = { min = 10 max = 20 }
 					entity_offset_angle = { min = 0 max = 360 }
 					entity_offset_height = { min = 0 max = 0 }
-					
-					save_global_event_target_as = endtimes_rift_02
-					save_global_event_target_as = endtimes_recent_rift
 				}
 				
+				save_global_event_target_as = endtimes_rift_03
 				set_planet_flag = endtimes_spawned_rift
 			}
 		}
@@ -1702,55 +1585,14 @@ country_event = {
 	trigger = {
 		has_global_flag = endtimes_outsiders_plan
 		has_global_flag = endtimes_instability_III
-		any_country = {
-			has_country_flag = endtimes_allow_instability
-		}
+		has_global_flag = endtimes_allow_instability
 	}
 	
 	immediate  ={
 		set_global_flag = endtimes_the_escape
 		remove_global_flag = endtimes_instability_III
-		
-		every_country = {
-			limit = { is_country_type = global_event }
-		}
 	}
 }
-
-# Workaround Event
-#country_event = {
-#	id = endtimescrisis.4214
-#	hide_window = yes
-#	
-#	# To be added to On_Monthly_Pulse
-#	
-#	trigger = {
-#		has_global_flag = endtimes_outsiders_plan
-#		has_global_flag = endtimes_instability_III
-#		NOT = { 
-#			has_global_flag = endtimes_monthly_flag
-#		}
-#		NOT = { any_country = { has_country_flag = endtimes_allow_instability } }
-#	}
-#	
-#	immediate = {
-#		every_country = {
-#			limit = { is_country_type = global_event }
-#			if = {
-#				limit = {
-#					check_variable = { 
-#						which = endtimes_goal_jupiter_brains_var
-#						value <= endtimes_active_jupiter_brains_var
-#					}
-#				}
-#				set_country_flag = endtimes_allow_instability
-#			}
-#			else = {
-#				set_timed_global_flag = { flag = endtimes_monthly_flag months = 1 }
-#			}
-#		}
-#	}
-#}
 
 # Pulsing Rift Events
 country_event = {
@@ -1770,10 +1612,8 @@ country_event = {
 		random_system = {
 			limit = { 
 				any_planet = { 
-					AND = { 
-						has_planet_flag = endtimes_is_jupiter_brain
-						NOT = { has_planet_flag = endtimes_spawned_rift }
-					}
+					has_planet_flag = endtimes_is_jupiter_brain
+					NOT = { has_planet_flag = endtimes_spawned_rift }
 				}
 			}
 			random_planet = {
@@ -1851,10 +1691,6 @@ country_event = {
 					amount = 1
 				}
 			}
-			add_modifier = {
-				modifier = endtimes_nihilist_outlook
-				days = -1
-			}
 		}
 	}
 	option = {
@@ -1872,10 +1708,17 @@ country_event = {
 					amount = 1
 				}
 			}
+			
+		}
+	}
+	
+	after = {
+		hidden_effect = {
 			add_modifier = {
 				modifier = endtimes_nihilist_outlook
 				days = -1
 			}
+			set_country_flag = endtimes_beginning_of_the_end
 		}
 	}
 }
@@ -1956,6 +1799,7 @@ country_event = {
 	}
 }
 
+# THE END OF DAYS
 country_event = {
 	id = endtimescrisis.4016
 	hide_window = yes
@@ -1995,41 +1839,6 @@ country_event = {
 	}
 }
 
-# THE END OF DAYS
-# Workaround Event
-#country_event = {
-#	id = endtimescrisis.4216
-#	hide_window = yes
-#	
-#	# To be added to On_Monthly_Pulse
-#	
-#	trigger = {
-#		has_global_flag = endtimes_the_escape
-#		NOT = { 
-#			has_global_flag = endtimes_monthly_flag
-#		}
-#		NOT = { any_country = { has_country_flag = endtimes_allow_end_game } }
-#	}
-#	
-#	immediate = {
-#		every_country = {
-#			limit = { is_country_type = global_event }
-#			if = {
-#				limit = {
-#					check_variable = { 
-#						which = endtimes_rift_count_var
-#						value >= 7
-#					}
-#				}
-#				set_country_flag = endtimes_allow_end_game
-#			}
-#			else = {
-#				set_timed_global_flag = { flag = endtimes_monthly_flag months = 1 }
-#			}
-#		}
-#	}
-#}
-
 country_event = {
 	id = endtimescrisis.4416
 	hide_window = yes
@@ -2038,22 +1847,92 @@ country_event = {
 	
 	immediate = {
 		random_planet = {
-			limit = {
-				any_tile = {
-					has_pop = yes
+			limit = { #FIXME
+				count_pops = {
+					count > 0
 				}
 			}
 			every_pop = {
 				kill_pop = yes
 			}
 		}
-		
 		country_event = { id = endtimescrisis.4416 days = 1 }
 	}
 }
 
 ### Resistance Chain
+# Courtesy Event to let Resistance empires know that any means must be taken to preserve themselves
+country_event = {
+	id = endtimescrisis.4017
+	hide_window = yes
+	fire_only_once = yes
+	
+	mean_time_to_happen = {
+		months = 2
+	}
+	
+	trigger = { 
+		has_global_flag = endtimes_first_rift
+	}
+	
+	immediate = {
+		every_country = {
+			limit = { has_country_flag = endtimes_resistance }
+			country_event = { id = endtimescrisis.4117 }
+		}
+	}
+}
 
+# Enables CB?
+country_event = {
+	id = endtimescrisis.4117
+	title = "endtimescrisis.4117.name"
+	desc = {
+		trigger = {
+			OR = {
+				has_ethic = ethic_spiritualist
+				has_ethic = ethic_fanatic_spiritualist
+			}
+		}
+		text = endtimescrisis.4117.desc.spirit
+	}
+	desc = {
+		trigger = {
+			NOR = {
+				has_ethic = ethic_spiritualist
+				has_ethic = ethic_fanatic_spiritualist
+			}
+		}
+		text = endtimescrisis.4117.desc
+	}
+	picture = GFX_evt_wormhole # Temp
+	show_sound = event_red_alert
+	
+	is_triggered_only = yes
+	
+	option = {
+		trigger = {
+			OR = {
+				has_ethic = ethic_spiritualist
+				has_ethic = ethic_fanatic_spiritualist
+			}
+		}
+		name = endtimescrisis.4117.a
+	}
+	option = {
+		trigger = {
+			NOR = {
+				has_ethic = ethic_spiritualist
+				has_ethic = ethic_fanatic_spiritualist
+			}
+		}
+		name = endtimescrisis.4117.b
+	}
+	
+	after = {
+		
+	}
+}
 
 ## Events Related to destruction of Jupiter Brains
 # TODO

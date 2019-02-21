@@ -11,20 +11,25 @@ biomechanical_terror_army = {
 	collateral_damage = 4.0
 	war_exhaustion = 1.25
 	time = 180
-	maintenance = 3.0
 	icon_frame = 11
 	prerequisites = { "tech_project_e" }
-	cost = {
-		minerals = 400
-		energy = 100
+	resources = {
+		category = armies
+		cost = {
+			minerals = 400
+			energy = 100
+		}
+
+		upkeep = {
+			energy = 3
+		}
 	}
+	
 	potential = {
 		from = {
 			NOR = {
-				has_trait = "trait_robotic_1"
-				has_trait = "trait_robotic_2"
-				has_trait = "trait_robotic_3"
-				has_trait = "trait_machine_unit"
+				is_species_class = ROBOT
+				has_trait = trait_machine_unit
 				is_sapient = no
 			}
 		}

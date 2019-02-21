@@ -7,7 +7,7 @@ special_project = {
 	cost = 0
 	days_to_research = 210
 	tech_department = society_technology
-	picture = GFX_evt_continental_planet
+	picture = "GFX_evt_continental_planet"
 	
 	event_scope = ship_event
 	

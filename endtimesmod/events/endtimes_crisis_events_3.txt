@@ -59,6 +59,8 @@ country_event = {
 		set_variable = { which = "endtimes_jb_stage_III_var" value = 0 }
 		set_variable = { which = "endtimes_total_empires_var" value = 0 }
 		
+		set_variable = { which = "endtimes_active_jupiter_brains_var" value = 0 } # Pre-init for later use
+		
 		# Counts the number of countries in the game
 		while = {
 			limit = {
@@ -161,7 +163,7 @@ country_event = {
 }
 
 ## Event to trigger things on_monthly_pulse
-country_event = {
+event = {
 	id = endtimesutility.0004
 	hide_window = yes
 	
@@ -172,10 +174,10 @@ country_event = {
 			country_event = { id = endtimesutility.0005 }
 		}
 		
-		random_country = {
-			limit = { is_country_type = global_event }
-			country_event = { id = endtimesdebug.9996 }
-		}
+		#random_country = {
+		#	limit = { is_country_type = global_event }
+		#	country_event = { id = endtimesdebug.9996 }
+		#}
 	}
 }
 
@@ -188,7 +190,7 @@ country_event = {
 	
 	trigger = {
 		has_global_flag = endtimes_outsiders_plan
-		NOT = { any_country = { has_country_flag = endtimes_allow_instability } }
+		NOT = { has_global_flag = endtimes_allow_instability }
 	}
 	
 	immediate = {
@@ -210,7 +212,7 @@ country_event = {
 							value <= endtimes_active_jupiter_brains_var
 						}
 					}
-					set_country_flag = endtimes_allow_instability
+					set_global_flag = endtimes_allow_instability
 				}
 			}
 		}
@@ -227,7 +229,7 @@ country_event = {
 							value <= endtimes_active_jupiter_brains_var
 						}
 					}
-					set_country_flag = endtimes_allow_instability
+					set_global_flag = endtimes_allow_instability
 				}
 			}
 		}
@@ -244,7 +246,7 @@ country_event = {
 							value <= endtimes_active_jupiter_brains_var
 						}
 					}
-					set_country_flag = endtimes_allow_instability
+					set_global_flag = endtimes_allow_instability
 				}
 			}
 		}
@@ -261,7 +263,7 @@ country_event = {
 							value <= endtimes_active_jupiter_brains_var
 						}
 					}
-					set_country_flag = endtimes_allow_instability
+					set_global_flag = endtimes_allow_instability
 				}
 			}
 		}
@@ -278,7 +280,7 @@ country_event = {
 							value >= 7
 						}
 					}
-					set_country_flag = endtimes_allow_end_game
+					set_global_flag = endtimes_allow_end_game
 				}
 			}
 		}

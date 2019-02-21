@@ -3,9 +3,9 @@
 ###############################
 
 # Universal Rift
-ambient_object = {
+ambient_object = { #FIXME
 	name = "endtimes_stellar_rift"
-	entity = "dimensional_horror_energy_particle_entity" # Definitely temporary
+	entity = "dimensional_horror_energy_particle_entity" #DEBUG
 	selectable = yes
 	show_name = yes
 	tooltip = "endtimes_stellar_rift_tooltip"

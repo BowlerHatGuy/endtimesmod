@@ -1,0 +1,88 @@
+##############################
+# Endtimes OPINION MODIFIERS
+#############################
+
+### THE FAULT IN THE STARS
+opinion_endtimes_mistrust = {
+	opinion = {
+		base = 0
+		modifier = { # Mistrust
+			add = -100
+			has_country_flag = endtimes_cooperator
+			NOT = { has_global_flag = endtimes_first_rift }
+			
+			FROM = {
+				has_country_flag = endtimes_resistance
+			}
+		}
+		modifier = { # Mistrust
+			add = -100
+			has_country_flag = endtimes_resistance
+			NOT = { has_global_flag = endtimes_first_rift }
+			
+			FROM = {
+				has_country_flag = endtimes_cooperator
+			}
+		}
+	}
+}
+
+opinion_endtimes_militant_resistance = {
+	opinion = {
+		base = 0
+		modifier = { # Militant Resistance
+			add = -1000
+			has_country_flag = endtimes_cooperator
+			has_global_flag = endtimes_first_rift
+			
+			FROM = { 
+				has_country_flag = endtimes_resistance
+			}
+		}
+	}
+}
+
+opinion_endtimes_end_bringers = {
+	opinion = {
+		base = 0
+		modifier = {
+			add = -1000
+			has_country_flag = endtimes_resistance
+			has_global_flag = endtimes_first_rift
+		
+			FROM = { 
+				has_country_flag = endtimes_cooperator
+			}
+		}
+	}
+}
+
+opinion_endtimes_resist_same_side = {
+	opinion = {
+		base = 0
+		modifier = {
+			add = 1000
+			has_country_flag = endtimes_resistance
+			has_global_flag = endtimes_first_rift
+			
+			FROM = { 
+				has_country_flag = endtimes_resistance
+			}
+		}
+	}
+}
+
+opinion_endtimes_coop_same_side = {
+	opinion = {
+		base = 0
+		modifier = {
+			add = 1000
+			has_country_flag = endtimes_cooperator
+			has_global_flag = endtimes_first_rift
+		
+			FROM = { 
+				has_country_flag = endtimes_cooperator
+			}
+		}
+	}
+}

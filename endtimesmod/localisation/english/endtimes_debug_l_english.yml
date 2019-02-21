@@ -1,4 +1,2 @@
 ﻿l_english:
-
- endtimesutility.9997.desc:0 "Active JB: [from.endtimes_active_jupiter_brains_var]\nStage I Var: [from.endtimes_jb_stage_I_var]\nStage II Var: [from.endtimes_jb_stage_II_var]\nStage III Var: [from.endtimes_jb_stage_III_var]\nStage IV Var: [from.endtimes_goal_jupiter_brains_var]"
- endtimesutility.9999.desc:0 "The Scopes are as follows:\nEvent Target: [root.event_target:endtimes_recent_jupiter_brain]\nThis: [This.GetName]\nRoot: [Root.GetName]\nPrev: [Prev.GetName]\nPrevPrev: [Prev.Prev.GetName]\nPrevPrevPrev: [Prev.Prev.Prev.GetName]\nPrevPrevPrevPrev: [Prev.Prev.Prev.Prev.GetName]\nFrom: [From.GetName]\nFromFrom: [From.From.GetName]\nFromFromFrom: [From.From.From.GetName]\nFromFromFromFrom: [From.From.From.From.GetName]\nThis's Solar System: [This.GetStarName]\nThis's Planet: [This.Planet.GetName]\nThis's Sector: [This.Sector.GetName]\nRoot's Solar System: [Root.GetStarName]\nRoot's Owner's Name: [Root.Owner.GetName]\nRoot's Owner's Capital's Name: [Root.Owner.Capital.GetName]"
+ 

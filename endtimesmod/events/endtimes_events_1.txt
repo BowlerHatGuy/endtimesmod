@@ -64,30 +64,12 @@ ship_event = {
 	
 	immediate = {
 		FROM = {
-			random_tile = {
-				limit = { has_blocker = no }
-				set_blocker = tb_city_ruins
-			}
-			random_tile = {
-				limit = { has_blocker = no }
-				set_blocker = tb_city_ruins
-			}
-			random_tile = {
-				limit = { has_blocker = no }
-				set_blocker = tb_city_ruins
-			}
-			random_tile = {
-				limit = { has_blocker = no }
-				set_blocker = tb_city_ruins
-			}
-			random_tile = {
-				limit = { has_blocker = no }
-				set_blocker = tb_city_ruins
-			}
-			random_tile = {
-				limit = { has_blocker = no }
-				set_blocker = tb_city_ruins
-			}
+			add_deposit = d_city_ruins
+			add_deposit = d_city_ruins
+			add_deposit = d_city_ruins
+			add_deposit = d_city_ruins
+			add_deposit = d_city_ruins
+			add_deposit = d_city_ruins
 		}
 	}
 	

@@ -450,7 +450,6 @@ country_event = {
 	
 	}
 }
-
 # Harder to Think (Walruses?)
 country_event = {
 	id = endtimesradiant.4502
@@ -469,7 +468,6 @@ country_event = {
 	
 	}
 }
-
 # Broken Laws (Physics)
 country_event = {
 	id = endtimesradiant.4503
@@ -488,7 +486,6 @@ country_event = {
 	
 	}
 }
-
 # Disappearing People
 country_event = {
 	id = endtimesradiant.4504
@@ -507,7 +504,6 @@ country_event = {
 	
 	}
 }
-
 # Reappearing People
 country_event = {
 	id = endtimesradiant.4505
@@ -526,7 +522,6 @@ country_event = {
 	
 	}
 }
-
 # Disappearing World
 country_event = {
 	id = endtimesradiant.4506
@@ -545,3 +540,6 @@ country_event = {
 	
 	}
 }
+
+
+# Rift System Events

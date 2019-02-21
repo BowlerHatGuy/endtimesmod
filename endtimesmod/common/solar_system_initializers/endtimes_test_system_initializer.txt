@@ -58,7 +58,9 @@ test_sol_system_initializer = {
 		orbit_angle = 120
 		size = 20
 		has_ring = no
-		tile_blockers = none
+		entity = "continental_planet_earth_entity" #FIXME
+		deposit_blockers = none
+		modifiers = none
 		anomaly = "SOL_INSTRUMENTALITY_CAT"
 		flags = { empty_earth }
 		
@@ -332,7 +334,8 @@ test_sol_neighbor_t1_first_colony = {
 		orbit_angle = { min = 90 max = 270 }
 		size = { min = 16 max = 20 }
 		starting_planet = yes
-		tile_blockers = none
+		deposit_blockers = none
+		modifiers = none
 		
 		init_effect = {
 			prevent_anomaly = yes

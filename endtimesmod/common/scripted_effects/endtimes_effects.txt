@@ -2,16 +2,16 @@
 # Scripted Effects for Endtimes Mod
 ####################################
 
-endtimes_allocate_poi_flag = {
+# TODO: Dynamic POI allocation is only kinda functional. It tries to allocate all POIs to the same object
+
+endtimes_allocate_poi_flag = { #FIXMEEEEEEEEE
 	if = {
 		limit = {
-			any_system = {
-				NOT = {
+			NOT = {
+				any_system = {
 					any_planet = {
-						AND = {
-							has_planet_flag = endtimes_is_jupiter_brain
-							has_planet_flag = endtimes_jupiter_brain_01
-						}
+						#has_planet_flag = endtimes_is_jupiter_brain
+						has_planet_flag = endtimes_jupiter_brain_01
 					}
 				}
 			}
@@ -23,13 +23,11 @@ endtimes_allocate_poi_flag = {
 	}
 	else_if = {
 		limit = {
-			any_system = {
-				NOT = {
+			NOT = {
+				any_system = {
 					any_planet = {
-						AND = {
-							has_planet_flag = endtimes_is_jupiter_brain
-							has_planet_flag = endtimes_jupiter_brain_02
-						}
+						#has_planet_flag = endtimes_is_jupiter_brain
+						has_planet_flag = endtimes_jupiter_brain_02
 					}
 				}
 			}
@@ -41,11 +39,11 @@ endtimes_allocate_poi_flag = {
 	}
 	else_if = {
 		limit = {
-			any_system = {
-				NOT = {
+			NOT = {
+				any_system = {
 					any_planet = {
 						AND = {
-							has_planet_flag = endtimes_is_jupiter_brain
+							#has_planet_flag = endtimes_is_jupiter_brain
 							has_planet_flag = endtimes_jupiter_brain_03
 						}
 					}
@@ -59,11 +57,11 @@ endtimes_allocate_poi_flag = {
 	}
 	else_if = {
 		limit = {
-			any_system = {
-				NOT = {
+			NOT = {
+				any_system = {
 					any_planet = {
 						AND = {
-							has_planet_flag = endtimes_is_jupiter_brain
+							#has_planet_flag = endtimes_is_jupiter_brain
 							has_planet_flag = endtimes_jupiter_brain_04
 						}
 					}
@@ -77,11 +75,11 @@ endtimes_allocate_poi_flag = {
 	}
 	else_if = {
 		limit = {
-			any_system = {
-				NOT = {
+			NOT = {
+				any_system = {
 					any_planet = {
 						AND = {
-							has_planet_flag = endtimes_is_jupiter_brain
+							#has_planet_flag = endtimes_is_jupiter_brain
 							has_planet_flag = endtimes_jupiter_brain_05
 						}
 					}
@@ -95,11 +93,11 @@ endtimes_allocate_poi_flag = {
 	}
 	else_if = {
 		limit = {
-			any_system = {
-				NOT = {
+			NOT = {
+				any_system = {
 					any_planet = {
 						AND = {
-							has_planet_flag = endtimes_is_jupiter_brain
+							#has_planet_flag = endtimes_is_jupiter_brain
 							has_planet_flag = endtimes_jupiter_brain_06
 						}
 					}
@@ -113,11 +111,11 @@ endtimes_allocate_poi_flag = {
 	}
 	else_if = {
 		limit = {
-			any_system = {
-				NOT = {
+			NOT = {
+				any_system = {
 					any_planet = {
 						AND = {
-							has_planet_flag = endtimes_is_jupiter_brain
+							#has_planet_flag = endtimes_is_jupiter_brain
 							has_planet_flag = endtimes_jupiter_brain_07
 						}
 					}
@@ -131,11 +129,11 @@ endtimes_allocate_poi_flag = {
 	}
 	else_if = {
 		limit = {
-			any_system = {
-				NOT = {
+			NOT = {
+				any_system = {
 					any_planet = {
 						AND = {
-							has_planet_flag = endtimes_is_jupiter_brain
+							#has_planet_flag = endtimes_is_jupiter_brain
 							has_planet_flag = endtimes_jupiter_brain_08
 						}
 					}
@@ -149,11 +147,11 @@ endtimes_allocate_poi_flag = {
 	}
 	else_if = {
 		limit = {
-			any_system = {
-				NOT = {
+			NOT = {
+				any_system = {
 					any_planet = {
 						AND = {
-							has_planet_flag = endtimes_is_jupiter_brain
+							#has_planet_flag = endtimes_is_jupiter_brain
 							has_planet_flag = endtimes_jupiter_brain_09
 						}
 					}
@@ -167,11 +165,11 @@ endtimes_allocate_poi_flag = {
 	}
 	else_if = {
 		limit = {
-			any_system = {
-				NOT = {
+			NOT = {
+				any_system = {
 					any_planet = {
 						AND = {
-							has_planet_flag = endtimes_is_jupiter_brain
+							#has_planet_flag = endtimes_is_jupiter_brain
 							has_planet_flag = endtimes_jupiter_brain_10
 						}
 					}
@@ -185,11 +183,11 @@ endtimes_allocate_poi_flag = {
 	}
 	else_if = {
 		limit = {
-			any_system = {
-				NOT = {
+			NOT = {
+				any_system = {
 					any_planet = {
 						AND = {
-							has_planet_flag = endtimes_is_jupiter_brain
+							#has_planet_flag = endtimes_is_jupiter_brain
 							has_planet_flag = endtimes_jupiter_brain_11
 						}
 					}
@@ -203,11 +201,11 @@ endtimes_allocate_poi_flag = {
 	}
 	else_if = {
 		limit = {
-			any_system = {
-				NOT = {
+			NOT = {
+				any_system = {
 					any_planet = {
 						AND = {
-							has_planet_flag = endtimes_is_jupiter_brain
+							#has_planet_flag = endtimes_is_jupiter_brain
 							has_planet_flag = endtimes_jupiter_brain_12
 						}
 					}
@@ -221,11 +219,11 @@ endtimes_allocate_poi_flag = {
 	}
 	else_if = {
 		limit = {
-			any_system = {
-				NOT = {
+			NOT = {
+				any_system = {
 					any_planet = {
 						AND = {
-							has_planet_flag = endtimes_is_jupiter_brain
+							#has_planet_flag = endtimes_is_jupiter_brain
 							has_planet_flag = endtimes_jupiter_brain_13
 						}
 					}
@@ -239,11 +237,11 @@ endtimes_allocate_poi_flag = {
 	}
 	else_if = {
 		limit = {
-			any_system = {
-				NOT = {
+			NOT = {
+				any_system = {
 					any_planet = {
 						AND = {
-							has_planet_flag = endtimes_is_jupiter_brain
+							#has_planet_flag = endtimes_is_jupiter_brain
 							has_planet_flag = endtimes_jupiter_brain_14
 						}
 					}
@@ -257,11 +255,11 @@ endtimes_allocate_poi_flag = {
 	}
 	else_if = {
 		limit = {
-			any_system = {
-				NOT = {
+			NOT = {
+				any_system = {
 					any_planet = {
 						AND = {
-							has_planet_flag = endtimes_is_jupiter_brain
+							#has_planet_flag = endtimes_is_jupiter_brain
 							has_planet_flag = endtimes_jupiter_brain_15
 						}
 					}
@@ -275,11 +273,11 @@ endtimes_allocate_poi_flag = {
 	}
 	else_if = {
 		limit = {
-			any_system = {
-				NOT = {
+			NOT = {
+				any_system = {
 					any_planet = {
 						AND = {
-							has_planet_flag = endtimes_is_jupiter_brain
+							#has_planet_flag = endtimes_is_jupiter_brain
 							has_planet_flag = endtimes_jupiter_brain_16
 						}
 					}
@@ -293,11 +291,11 @@ endtimes_allocate_poi_flag = {
 	}
 	else_if = {
 		limit = {
-			any_system = {
-				NOT = {
+			NOT = {
+				any_system = {
 					any_planet = {
 						AND = {
-							has_planet_flag = endtimes_is_jupiter_brain
+							#has_planet_flag = endtimes_is_jupiter_brain
 							has_planet_flag = endtimes_jupiter_brain_17
 						}
 					}
@@ -311,11 +309,11 @@ endtimes_allocate_poi_flag = {
 	}
 	else_if = {
 		limit = {
-			any_system = {
-				NOT = {
+			NOT = {
+				any_system = {
 					any_planet = {
 						AND = {
-							has_planet_flag = endtimes_is_jupiter_brain
+							#has_planet_flag = endtimes_is_jupiter_brain
 							has_planet_flag = endtimes_jupiter_brain_18
 						}
 					}
@@ -329,11 +327,11 @@ endtimes_allocate_poi_flag = {
 	}
 	else_if = {
 		limit = {
-			any_system = {
-				NOT = {
+			NOT = {
+				any_system = {
 					any_planet = {
 						AND = {
-							has_planet_flag = endtimes_is_jupiter_brain
+							#has_planet_flag = endtimes_is_jupiter_brain
 							has_planet_flag = endtimes_jupiter_brain_19
 						}
 					}
@@ -347,11 +345,11 @@ endtimes_allocate_poi_flag = {
 	}
 	else_if = {
 		limit = {
-			any_system = {
-				NOT = {
+			NOT = {
+				any_system = {
 					any_planet = {
 						AND = {
-							has_planet_flag = endtimes_is_jupiter_brain
+							#has_planet_flag = endtimes_is_jupiter_brain
 							has_planet_flag = endtimes_jupiter_brain_20
 						}
 					}
@@ -365,11 +363,11 @@ endtimes_allocate_poi_flag = {
 	}
 	else_if = {
 		limit = {
-			any_system = {
-				NOT = {
+			NOT = {
+				any_system = {
 					any_planet = {
 						AND = {
-							has_planet_flag = endtimes_is_jupiter_brain
+							#has_planet_flag = endtimes_is_jupiter_brain
 							has_planet_flag = endtimes_jupiter_brain_21
 						}
 					}
@@ -383,11 +381,11 @@ endtimes_allocate_poi_flag = {
 	}
 	else_if = {
 		limit = {
-			any_system = {
-				NOT = {
+			NOT = {
+				any_system = {
 					any_planet = {
 						AND = {
-							has_planet_flag = endtimes_is_jupiter_brain
+							#has_planet_flag = endtimes_is_jupiter_brain
 							has_planet_flag = endtimes_jupiter_brain_22
 						}
 					}
@@ -401,11 +399,11 @@ endtimes_allocate_poi_flag = {
 	}
 	else_if = {
 		limit = {
-			any_system = {
-				NOT = {
+			NOT = {
+				any_system = {
 					any_planet = {
 						AND = {
-							has_planet_flag = endtimes_is_jupiter_brain
+							#has_planet_flag = endtimes_is_jupiter_brain
 							has_planet_flag = endtimes_jupiter_brain_23
 						}
 					}
@@ -419,11 +417,11 @@ endtimes_allocate_poi_flag = {
 	}
 	else_if = {
 		limit = {
-			any_system = {
-				NOT = {
+			NOT = {
+				any_system = {
 					any_planet = {
 						AND = {
-							has_planet_flag = endtimes_is_jupiter_brain
+							#has_planet_flag = endtimes_is_jupiter_brain
 							has_planet_flag = endtimes_jupiter_brain_24
 						}
 					}
@@ -437,11 +435,11 @@ endtimes_allocate_poi_flag = {
 	}
 	else_if = {
 		limit = {
-			any_system = {
-				NOT = {
+			NOT = {
+				any_system = {
 					any_planet = {
 						AND = {
-							has_planet_flag = endtimes_is_jupiter_brain
+							#has_planet_flag = endtimes_is_jupiter_brain
 							has_planet_flag = endtimes_jupiter_brain_25
 						}
 					}
@@ -455,11 +453,11 @@ endtimes_allocate_poi_flag = {
 	}
 	else_if = {
 		limit = {
-			any_system = {
-				NOT = {
+			NOT = {
+				any_system = {
 					any_planet = {
 						AND = {
-							has_planet_flag = endtimes_is_jupiter_brain
+							#has_planet_flag = endtimes_is_jupiter_brain
 							has_planet_flag = endtimes_jupiter_brain_26
 						}
 					}
@@ -473,11 +471,11 @@ endtimes_allocate_poi_flag = {
 	}
 	else_if = {
 		limit = {
-			any_system = {
-				NOT = {
+			NOT = {
+				any_system = {
 					any_planet = {
 						AND = {
-							has_planet_flag = endtimes_is_jupiter_brain
+							#has_planet_flag = endtimes_is_jupiter_brain
 							has_planet_flag = endtimes_jupiter_brain_27
 						}
 					}
@@ -491,11 +489,11 @@ endtimes_allocate_poi_flag = {
 	}
 	else_if = {
 		limit = {
-			any_system = {
-				NOT = {
+			NOT = {
+				any_system = {
 					any_planet = {
 						AND = {
-							has_planet_flag = endtimes_is_jupiter_brain
+							#has_planet_flag = endtimes_is_jupiter_brain
 							has_planet_flag = endtimes_jupiter_brain_28
 						}
 					}
@@ -509,11 +507,11 @@ endtimes_allocate_poi_flag = {
 	}
 	else_if = {
 		limit = {
-			any_system = {
-				NOT = {
+			NOT = {
+				any_system = {
 					any_planet = {
 						AND = {
-							has_planet_flag = endtimes_is_jupiter_brain
+							#has_planet_flag = endtimes_is_jupiter_brain
 							has_planet_flag = endtimes_jupiter_brain_29
 						}
 					}
@@ -527,11 +525,11 @@ endtimes_allocate_poi_flag = {
 	}
 	else_if = {
 		limit = {
-			any_system = {
-				NOT = {
+			NOT = {
+				any_system = {
 					any_planet = {
 						AND = {
-							has_planet_flag = endtimes_is_jupiter_brain
+							#has_planet_flag = endtimes_is_jupiter_brain
 							has_planet_flag = endtimes_jupiter_brain_30
 						}
 					}
@@ -545,11 +543,11 @@ endtimes_allocate_poi_flag = {
 	}
 	else_if = {
 		limit = {
-			any_system = {
-				NOT = {
+			NOT = {
+				any_system = {
 					any_planet = {
 						AND = {
-							has_planet_flag = endtimes_is_jupiter_brain
+							#has_planet_flag = endtimes_is_jupiter_brain
 							has_planet_flag = endtimes_jupiter_brain_31
 						}
 					}
@@ -563,11 +561,11 @@ endtimes_allocate_poi_flag = {
 	}
 	else_if = {
 		limit = {
-			any_system = {
-				NOT = {
+			NOT = {
+				any_system = {
 					any_planet = {
 						AND = {
-							has_planet_flag = endtimes_is_jupiter_brain
+							#has_planet_flag = endtimes_is_jupiter_brain
 							has_planet_flag = endtimes_jupiter_brain_32
 						}
 					}
@@ -581,11 +579,11 @@ endtimes_allocate_poi_flag = {
 	}
 	else_if = {
 		limit = {
-			any_system = {
-				NOT = {
+			NOT = {
+				any_system = {
 					any_planet = {
 						AND = {
-							has_planet_flag = endtimes_is_jupiter_brain
+							#has_planet_flag = endtimes_is_jupiter_brain
 							has_planet_flag = endtimes_jupiter_brain_33
 						}
 					}
@@ -599,11 +597,11 @@ endtimes_allocate_poi_flag = {
 	}
 	else_if = {
 		limit = {
-			any_system = {
-				NOT = {
+			NOT = {
+				any_system = {
 					any_planet = {
 						AND = {
-							has_planet_flag = endtimes_is_jupiter_brain
+							#has_planet_flag = endtimes_is_jupiter_brain
 							has_planet_flag = endtimes_jupiter_brain_34
 						}
 					}
@@ -617,11 +615,11 @@ endtimes_allocate_poi_flag = {
 	}
 	else_if = {
 		limit = {
-			any_system = {
-				NOT = {
+			NOT = {
+				any_system = {
 					any_planet = {
 						AND = {
-							has_planet_flag = endtimes_is_jupiter_brain
+							#has_planet_flag = endtimes_is_jupiter_brain
 							has_planet_flag = endtimes_jupiter_brain_35
 						}
 					}
@@ -635,11 +633,11 @@ endtimes_allocate_poi_flag = {
 	}
 	else_if = {
 		limit = {
-			any_system = {
-				NOT = {
+			NOT = {
+				any_system = {
 					any_planet = {
 						AND = {
-							has_planet_flag = endtimes_is_jupiter_brain
+							#has_planet_flag = endtimes_is_jupiter_brain
 							has_planet_flag = endtimes_jupiter_brain_36
 						}
 					}
@@ -658,10 +656,6 @@ endtimes_allocate_poi = {
 	
 	if = {
 		limit = {
-			OR = {
-				has_event_chain = crash_the_simulation_chain_coop
-				has_event_chain = crash_the_simulation_chain_resist
-			}
 			NOT = { 
 				has_point_of_interest = { poi = endtimes_jupiter_brain.1 }
 			}
@@ -674,7 +668,7 @@ endtimes_allocate_poi = {
 			limit = { has_event_chain = crash_the_simulation_chain_coop }
 			create_point_of_interest = {
 				id = endtimes_jupiter_brain.1
-				name = "endtimes_jupiter_brain_poi"
+				name = "endtimes_jupiter_brain_poi_A1"
 				desc = "endtimes_jupiter_brain_poi_desc"
 				event_chain = crash_the_simulation_chain_coop
 				location = event_target:endtimes_brain_01
@@ -683,19 +677,15 @@ endtimes_allocate_poi = {
 		else = {
 			create_point_of_interest = {
 				id = endtimes_jupiter_brain.1
-				name = "endtimes_jupiter_brain_poi"
+				name = "endtimes_jupiter_brain_poi_B1"
 				desc = "endtimes_jupiter_brain_poi_desc"
 				event_chain = crash_the_simulation_chain_resist
 				location = event_target:endtimes_brain_01
 			}
 		}
 	}
-	if = {
+	else_if = {
 		limit = {
-			OR = {
-				has_event_chain = crash_the_simulation_chain_coop
-				has_event_chain = crash_the_simulation_chain_resist
-			}
 			NOT = { 
 				has_point_of_interest = { poi = endtimes_jupiter_brain.2 }
 			}
@@ -708,7 +698,7 @@ endtimes_allocate_poi = {
 			limit = { has_event_chain = crash_the_simulation_chain_coop }
 			create_point_of_interest = {
 				id = endtimes_jupiter_brain.2
-				name = "endtimes_jupiter_brain_poi"
+				name = "endtimes_jupiter_brain_poi_A2"
 				desc = "endtimes_jupiter_brain_poi_desc"
 				event_chain = crash_the_simulation_chain_coop
 				location = event_target:endtimes_brain_02
@@ -717,19 +707,15 @@ endtimes_allocate_poi = {
 		else = {
 			create_point_of_interest = {
 				id = endtimes_jupiter_brain.2
-				name = "endtimes_jupiter_brain_poi"
+				name = "endtimes_jupiter_brain_poi_B2"
 				desc = "endtimes_jupiter_brain_poi_desc"
 				event_chain = crash_the_simulation_chain_resist
 				location = event_target:endtimes_brain_02
 			}
 		}
 	}
-	if = {
+	else_if = {
 		limit = {
-			OR = {
-				has_event_chain = crash_the_simulation_chain_coop
-				has_event_chain = crash_the_simulation_chain_resist
-			}
 			NOT = { 
 				has_point_of_interest = { poi = endtimes_jupiter_brain.3 }
 			}
@@ -758,12 +744,8 @@ endtimes_allocate_poi = {
 			}
 		}
 	}
-	if = {
+	else_if = {
 		limit = {
-			OR = {
-				has_event_chain = crash_the_simulation_chain_coop
-				has_event_chain = crash_the_simulation_chain_resist
-			}
 			NOT = { 
 				has_point_of_interest = { poi = endtimes_jupiter_brain.4 }
 			}
@@ -792,12 +774,8 @@ endtimes_allocate_poi = {
 			}
 		}
 	}
-	if = {
+	else_if = {
 		limit = {
-			OR = {
-				has_event_chain = crash_the_simulation_chain_coop
-				has_event_chain = crash_the_simulation_chain_resist
-			}
 			NOT = { 
 				has_point_of_interest = { poi = endtimes_jupiter_brain.5 }
 			}
@@ -826,12 +804,8 @@ endtimes_allocate_poi = {
 			}
 		}
 	}
-	if = {
+	else_if = {
 		limit = {
-			OR = {
-				has_event_chain = crash_the_simulation_chain_coop
-				has_event_chain = crash_the_simulation_chain_resist
-			}
 			NOT = { 
 				has_point_of_interest = { poi = endtimes_jupiter_brain.6 }
 			}
@@ -860,12 +834,8 @@ endtimes_allocate_poi = {
 			}
 		}
 	}
-	if = {
+	else_if = {
 		limit = {
-			OR = {
-				has_event_chain = crash_the_simulation_chain_coop
-				has_event_chain = crash_the_simulation_chain_resist
-			}
 			NOT = { 
 				has_point_of_interest = { poi = endtimes_jupiter_brain.7 }
 			}
@@ -894,12 +864,8 @@ endtimes_allocate_poi = {
 			}
 		}
 	}
-	if = {
+	else_if = {
 		limit = {
-			OR = {
-				has_event_chain = crash_the_simulation_chain_coop
-				has_event_chain = crash_the_simulation_chain_resist
-			}
 			NOT = { 
 				has_point_of_interest = { poi = endtimes_jupiter_brain.8 }
 			}
@@ -928,12 +894,8 @@ endtimes_allocate_poi = {
 			}
 		}
 	}
-	if = {
+	else_if = {
 		limit = {
-			OR = {
-				has_event_chain = crash_the_simulation_chain_coop
-				has_event_chain = crash_the_simulation_chain_resist
-			}
 			NOT = { 
 				has_point_of_interest = { poi = endtimes_jupiter_brain.9 }
 			}
@@ -962,12 +924,8 @@ endtimes_allocate_poi = {
 			}
 		}
 	}
-	if = {
+	else_if = {
 		limit = {
-			OR = {
-				has_event_chain = crash_the_simulation_chain_coop
-				has_event_chain = crash_the_simulation_chain_resist
-			}
 			NOT = { 
 				has_point_of_interest = { poi = endtimes_jupiter_brain.10 }
 			}
@@ -996,12 +954,8 @@ endtimes_allocate_poi = {
 			}
 		}
 	}
-	if = {
+	else_if = {
 		limit = {
-			OR = {
-				has_event_chain = crash_the_simulation_chain_coop
-				has_event_chain = crash_the_simulation_chain_resist
-			}
 			NOT = { 
 				has_point_of_interest = { poi = endtimes_jupiter_brain.11 }
 			}
@@ -1030,12 +984,8 @@ endtimes_allocate_poi = {
 			}
 		}
 	}
-	if = {
+	else_if = {
 		limit = {
-			OR = {
-				has_event_chain = crash_the_simulation_chain_coop
-				has_event_chain = crash_the_simulation_chain_resist
-			}
 			NOT = { 
 				has_point_of_interest = { poi = endtimes_jupiter_brain.12 }
 			}
@@ -1064,12 +1014,8 @@ endtimes_allocate_poi = {
 			}
 		}
 	}
-	if = {
+	else_if = {
 		limit = {
-			OR = {
-				has_event_chain = crash_the_simulation_chain_coop
-				has_event_chain = crash_the_simulation_chain_resist
-			}
 			NOT = { 
 				has_point_of_interest = { poi = endtimes_jupiter_brain.13 }
 			}
@@ -1098,12 +1044,8 @@ endtimes_allocate_poi = {
 			}
 		}
 	}
-	if = {
+	else_if = {
 		limit = {
-			OR = {
-				has_event_chain = crash_the_simulation_chain_coop
-				has_event_chain = crash_the_simulation_chain_resist
-			}
 			NOT = { 
 				has_point_of_interest = { poi = endtimes_jupiter_brain.14 }
 			}
@@ -1132,12 +1074,8 @@ endtimes_allocate_poi = {
 			}
 		}
 	}
-	if = {
+	else_if = {
 		limit = {
-			OR = {
-				has_event_chain = crash_the_simulation_chain_coop
-				has_event_chain = crash_the_simulation_chain_resist
-			}
 			NOT = { 
 				has_point_of_interest = { poi = endtimes_jupiter_brain.15 }
 			}
@@ -1166,12 +1104,8 @@ endtimes_allocate_poi = {
 			}
 		}
 	}
-	if = {
+	else_if = {
 		limit = {
-			OR = {
-				has_event_chain = crash_the_simulation_chain_coop
-				has_event_chain = crash_the_simulation_chain_resist
-			}
 			NOT = { 
 				has_point_of_interest = { poi = endtimes_jupiter_brain.16 }
 			}
@@ -1200,12 +1134,8 @@ endtimes_allocate_poi = {
 			}
 		}
 	}
-	if = {
+	else_if = {
 		limit = {
-			OR = {
-				has_event_chain = crash_the_simulation_chain_coop
-				has_event_chain = crash_the_simulation_chain_resist
-			}
 			NOT = { 
 				has_point_of_interest = { poi = endtimes_jupiter_brain.17 }
 			}
@@ -1234,12 +1164,8 @@ endtimes_allocate_poi = {
 			}
 		}
 	}
-	if = {
+	else_if = {
 		limit = {
-			OR = {
-				has_event_chain = crash_the_simulation_chain_coop
-				has_event_chain = crash_the_simulation_chain_resist
-			}
 			NOT = { 
 				has_point_of_interest = { poi = endtimes_jupiter_brain.18 }
 			}
@@ -1268,12 +1194,8 @@ endtimes_allocate_poi = {
 			}
 		}
 	}
-	if = {
+	else_if = {
 		limit = {
-			OR = {
-				has_event_chain = crash_the_simulation_chain_coop
-				has_event_chain = crash_the_simulation_chain_resist
-			}
 			NOT = { 
 				has_point_of_interest = { poi = endtimes_jupiter_brain.19 }
 			}
@@ -1302,12 +1224,8 @@ endtimes_allocate_poi = {
 			}
 		}
 	}
-	if = {
+	else_if = {
 		limit = {
-			OR = {
-				has_event_chain = crash_the_simulation_chain_coop
-				has_event_chain = crash_the_simulation_chain_resist
-			}
 			NOT = { 
 				has_point_of_interest = { poi = endtimes_jupiter_brain.20 }
 			}
@@ -1336,12 +1254,8 @@ endtimes_allocate_poi = {
 			}
 		}
 	}
-	if = {
+	else_if = {
 		limit = {
-			OR = {
-				has_event_chain = crash_the_simulation_chain_coop
-				has_event_chain = crash_the_simulation_chain_resist
-			}
 			NOT = { 
 				has_point_of_interest = { poi = endtimes_jupiter_brain.21 }
 			}
@@ -1370,12 +1284,8 @@ endtimes_allocate_poi = {
 			}
 		}
 	}
-	if = {
+	else_if = {
 		limit = {
-			OR = {
-				has_event_chain = crash_the_simulation_chain_coop
-				has_event_chain = crash_the_simulation_chain_resist
-			}
 			NOT = { 
 				has_point_of_interest = { poi = endtimes_jupiter_brain.22 }
 			}
@@ -1404,12 +1314,8 @@ endtimes_allocate_poi = {
 			}
 		}
 	}
-	if = {
+	else_if = {
 		limit = {
-			OR = {
-				has_event_chain = crash_the_simulation_chain_coop
-				has_event_chain = crash_the_simulation_chain_resist
-			}
 			NOT = { 
 				has_point_of_interest = { poi = endtimes_jupiter_brain.23 }
 			}
@@ -1438,12 +1344,8 @@ endtimes_allocate_poi = {
 			}
 		}
 	}
-	if = {
+	else_if = {
 		limit = {
-			OR = {
-				has_event_chain = crash_the_simulation_chain_coop
-				has_event_chain = crash_the_simulation_chain_resist
-			}
 			NOT = { 
 				has_point_of_interest = { poi = endtimes_jupiter_brain.24 }
 			}
@@ -1472,12 +1374,8 @@ endtimes_allocate_poi = {
 			}
 		}
 	}
-	if = {
+	else_if = {
 		limit = {
-			OR = {
-				has_event_chain = crash_the_simulation_chain_coop
-				has_event_chain = crash_the_simulation_chain_resist
-			}
 			NOT = { 
 				has_point_of_interest = { poi = endtimes_jupiter_brain.25 }
 			}
@@ -1506,12 +1404,8 @@ endtimes_allocate_poi = {
 			}
 		}
 	}
-	if = {
+	else_if = {
 		limit = {
-			OR = {
-				has_event_chain = crash_the_simulation_chain_coop
-				has_event_chain = crash_the_simulation_chain_resist
-			}
 			NOT = { 
 				has_point_of_interest = { poi = endtimes_jupiter_brain.26 }
 			}
@@ -1540,12 +1434,8 @@ endtimes_allocate_poi = {
 			}
 		}
 	}
-	if = {
+	else_if = {
 		limit = {
-			OR = {
-				has_event_chain = crash_the_simulation_chain_coop
-				has_event_chain = crash_the_simulation_chain_resist
-			}
 			NOT = { 
 				has_point_of_interest = { poi = endtimes_jupiter_brain.27 }
 			}
@@ -1574,12 +1464,8 @@ endtimes_allocate_poi = {
 			}
 		}
 	}
-	if = {
+	else_if = {
 		limit = {
-			OR = {
-				has_event_chain = crash_the_simulation_chain_coop
-				has_event_chain = crash_the_simulation_chain_resist
-			}
 			NOT = { 
 				has_point_of_interest = { poi = endtimes_jupiter_brain.28 }
 			}
@@ -1608,12 +1494,8 @@ endtimes_allocate_poi = {
 			}
 		}
 	}
-	if = {
+	else_if = {
 		limit = {
-			OR = {
-				has_event_chain = crash_the_simulation_chain_coop
-				has_event_chain = crash_the_simulation_chain_resist
-			}
 			NOT = { 
 				has_point_of_interest = { poi = endtimes_jupiter_brain.29 }
 			}
@@ -1642,12 +1524,8 @@ endtimes_allocate_poi = {
 			}
 		}
 	}
-	if = {
+	else_if = {
 		limit = {
-			OR = {
-				has_event_chain = crash_the_simulation_chain_coop
-				has_event_chain = crash_the_simulation_chain_resist
-			}
 			NOT = { 
 				has_point_of_interest = { poi = endtimes_jupiter_brain.30 }
 			}
@@ -1676,12 +1554,8 @@ endtimes_allocate_poi = {
 			}
 		}
 	}
-	if = {
+	else_if = {
 		limit = {
-			OR = {
-				has_event_chain = crash_the_simulation_chain_coop
-				has_event_chain = crash_the_simulation_chain_resist
-			}
 			NOT = { 
 				has_point_of_interest = { poi = endtimes_jupiter_brain.31 }
 			}
@@ -1710,12 +1584,8 @@ endtimes_allocate_poi = {
 			}
 		}
 	}
-	if = {
+	else_if = {
 		limit = {
-			OR = {
-				has_event_chain = crash_the_simulation_chain_coop
-				has_event_chain = crash_the_simulation_chain_resist
-			}
 			NOT = { 
 				has_point_of_interest = { poi = endtimes_jupiter_brain.32 }
 			}
@@ -1744,12 +1614,8 @@ endtimes_allocate_poi = {
 			}
 		}
 	}
-	if = {
+	else_if = {
 		limit = {
-			OR = {
-				has_event_chain = crash_the_simulation_chain_coop
-				has_event_chain = crash_the_simulation_chain_resist
-			}
 			NOT = { 
 				has_point_of_interest = { poi = endtimes_jupiter_brain.33 }
 			}
@@ -1778,12 +1644,8 @@ endtimes_allocate_poi = {
 			}
 		}
 	}
-	if = {
+	else_if = {
 		limit = {
-			OR = {
-				has_event_chain = crash_the_simulation_chain_coop
-				has_event_chain = crash_the_simulation_chain_resist
-			}
 			NOT = { 
 				has_point_of_interest = { poi = endtimes_jupiter_brain.34 }
 			}
@@ -1812,12 +1674,8 @@ endtimes_allocate_poi = {
 			}
 		}
 	}
-	if = {
+	else_if = {
 		limit = {
-			OR = {
-				has_event_chain = crash_the_simulation_chain_coop
-				has_event_chain = crash_the_simulation_chain_resist
-			}
 			NOT = { 
 				has_point_of_interest = { poi = endtimes_jupiter_brain.35 }
 			}
@@ -1846,12 +1704,8 @@ endtimes_allocate_poi = {
 			}
 		}
 	}
-	if = {
+	else_if = {
 		limit = {
-			OR = {
-				has_event_chain = crash_the_simulation_chain_coop
-				has_event_chain = crash_the_simulation_chain_resist
-			}
 			NOT = { 
 				has_point_of_interest = { poi = endtimes_jupiter_brain.36 }
 			}
